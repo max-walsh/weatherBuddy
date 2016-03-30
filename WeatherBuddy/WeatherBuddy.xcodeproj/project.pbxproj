@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		232A8B301CAC6E690008E9D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A8B2F1CAC6E690008E9D5 /* AppDelegate.swift */; };
-		232A8B321CAC6E690008E9D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A8B311CAC6E690008E9D5 /* ViewController.swift */; };
 		232A8B351CAC6E690008E9D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232A8B331CAC6E690008E9D5 /* Main.storyboard */; };
 		232A8B381CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 232A8B361CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld */; };
 		232A8B3A1CAC6E690008E9D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232A8B391CAC6E690008E9D5 /* Assets.xcassets */; };
 		232A8B3D1CAC6E690008E9D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232A8B3B1CAC6E690008E9D5 /* LaunchScreen.storyboard */; };
 		232A8B481CAC6E690008E9D5 /* WeatherBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A8B471CAC6E690008E9D5 /* WeatherBuddyTests.swift */; };
 		232A8B531CAC6E690008E9D5 /* WeatherBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A8B521CAC6E690008E9D5 /* WeatherBuddyUITests.swift */; };
+		F13F20281CAC71CB00FC87AD /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13F20271CAC71CB00FC87AD /* City.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,6 @@
 /* Begin PBXFileReference section */
 		232A8B2C1CAC6E690008E9D5 /* WeatherBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		232A8B2F1CAC6E690008E9D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		232A8B311CAC6E690008E9D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		232A8B341CAC6E690008E9D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		232A8B371CAC6E690008E9D5 /* WeatherBuddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherBuddy.xcdatamodel; sourceTree = "<group>"; };
 		232A8B391CAC6E690008E9D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		232A8B4E1CAC6E690008E9D5 /* WeatherBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		232A8B521CAC6E690008E9D5 /* WeatherBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBuddyUITests.swift; sourceTree = "<group>"; };
 		232A8B541CAC6E690008E9D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F13F20271CAC71CB00FC87AD /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +79,7 @@
 		232A8B231CAC6E680008E9D5 = {
 			isa = PBXGroup;
 			children = (
+				F13F20271CAC71CB00FC87AD /* City.swift */,
 				232A8B2E1CAC6E690008E9D5 /* WeatherBuddy */,
 				232A8B461CAC6E690008E9D5 /* WeatherBuddyTests */,
 				232A8B511CAC6E690008E9D5 /* WeatherBuddyUITests */,
@@ -100,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				232A8B2F1CAC6E690008E9D5 /* AppDelegate.swift */,
-				232A8B311CAC6E690008E9D5 /* ViewController.swift */,
 				232A8B331CAC6E690008E9D5 /* Main.storyboard */,
 				232A8B391CAC6E690008E9D5 /* Assets.xcassets */,
 				232A8B3B1CAC6E690008E9D5 /* LaunchScreen.storyboard */,
@@ -259,9 +259,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				232A8B321CAC6E690008E9D5 /* ViewController.swift in Sources */,
 				232A8B381CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld in Sources */,
 				232A8B301CAC6E690008E9D5 /* AppDelegate.swift in Sources */,
+				F13F20281CAC71CB00FC87AD /* City.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +488,7 @@
 				232A8B591CAC6E690008E9D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		232A8B5A1CAC6E690008E9D5 /* Build configuration list for PBXNativeTarget "WeatherBuddyTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +497,7 @@
 				232A8B5C1CAC6E690008E9D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		232A8B5D1CAC6E690008E9D5 /* Build configuration list for PBXNativeTarget "WeatherBuddyUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +506,7 @@
 				232A8B5F1CAC6E690008E9D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
