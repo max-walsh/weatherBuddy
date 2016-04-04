@@ -29,6 +29,7 @@ class City {
     var barometricPressure:Int
     var coordinates:Coordinates
     var ows:OpenWeatherService
+    var gms:GoogleMapsService
     
     init() {
         self.currentTemp = 0.0
@@ -48,6 +49,7 @@ class City {
         self.barometricPressure = 0
         self.coordinates = Coordinates()
         self.ows = OpenWeatherService()
+        self.gms = GoogleMapsService()
         
     }
     
@@ -61,8 +63,21 @@ class City {
         let lat = coord?.latitude
         let long = coord?.longitude
         
-        self.coordinates.latitude = lat!
-        self.coordinates.longitude = long!
+        
+        
+        self.coordinates.latitude = 40.714224
+        self.coordinates.longitude = -73.961452
+        /*
+        gms.getCurrentCity {
+            (self.name) in
+                self = self
+                self.tableview.reloadData() ///??? maybe dont need
+        }
+        */
+        //let newCity = gms.getCurrentCity(self.coordinates)
+        //self.name = newCity
+
+        
         
     }
     
