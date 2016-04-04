@@ -91,7 +91,6 @@
 		232A8B231CAC6E680008E9D5 = {
 			isa = PBXGroup;
 			children = (
-				F121A6C21CB18E920022E964 /* Model */,
 				232A8B2E1CAC6E690008E9D5 /* WeatherBuddy */,
 				232A8B461CAC6E690008E9D5 /* WeatherBuddyTests */,
 				232A8B511CAC6E690008E9D5 /* WeatherBuddyUITests */,
@@ -112,12 +111,10 @@
 		232A8B2E1CAC6E690008E9D5 /* WeatherBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				232A8B2F1CAC6E690008E9D5 /* AppDelegate.swift */,
-				232A8B331CAC6E690008E9D5 /* Main.storyboard */,
-				232A8B391CAC6E690008E9D5 /* Assets.xcassets */,
-				232A8B3B1CAC6E690008E9D5 /* LaunchScreen.storyboard */,
-				232A8B3E1CAC6E690008E9D5 /* Info.plist */,
-				232A8B361CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld */,
+				23B2D91F1CB1FE2C00344E7F /* Controllers */,
+				23B2D91E1CB1FE1C00344E7F /* View */,
+				F121A6C21CB18E920022E964 /* Model */,
+				23B2D9201CB1FE4600344E7F /* Other */,
 			);
 			path = WeatherBuddy;
 			sourceTree = "<group>";
@@ -140,6 +137,33 @@
 			path = WeatherBuddyUITests;
 			sourceTree = "<group>";
 		};
+		23B2D91E1CB1FE1C00344E7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				232A8B331CAC6E690008E9D5 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		23B2D91F1CB1FE2C00344E7F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		23B2D9201CB1FE4600344E7F /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				232A8B2F1CAC6E690008E9D5 /* AppDelegate.swift */,
+				232A8B3E1CAC6E690008E9D5 /* Info.plist */,
+				232A8B3B1CAC6E690008E9D5 /* LaunchScreen.storyboard */,
+				232A8B391CAC6E690008E9D5 /* Assets.xcassets */,
+				232A8B361CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
 		F121A6C21CB18E920022E964 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +176,7 @@
 				F121A6C91CB18FF30022E964 /* Theme.swift */,
 			);
 			name = Model;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
