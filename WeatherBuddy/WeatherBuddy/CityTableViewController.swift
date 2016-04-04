@@ -33,6 +33,9 @@ class CityTableViewController: UITableViewController {
         //print("before: \(city1.name)")
         //city1.setCurrentLocation()
         //print("After: \(city1.name)")
+        
+        
+        
         cities.append(city1)
         cities.append(city1)
         cities.append(city1)

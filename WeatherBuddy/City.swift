@@ -55,7 +55,9 @@ class City {
     
     func setCurrentLocation() {
         let locationManager = CLLocationManager()
+        //locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()
         let currentLocation = locationManager.location
         let coord = currentLocation?.coordinate
