@@ -7,32 +7,23 @@
 //
 
 import UIKit
+import CoreLocation
 
-class CityTableViewController: UITableViewController {
+
+class CityTableViewController: UITableViewController, CLLocationManagerDelegate {
 
     var cities = [City]()
     var city1 = City()
-    var city = "didnt work"
-
-    let gms = GoogleMapsService()
+    let locationManager = CLLocationManager()
+    
     
     override func viewDidLoad() {
-        
-        print("before: \(city1.name)")
-        city1.setCurrentLocation()
-        print("After: \(city1.name)")
         super.viewDidLoad()
-        /*
-        gms.getCurrentCity {
-            (city) in
-            self.city = city
-            self.tableView.reloadData()
-            print("should reload data")
-        }
-        city1.name = city*/
-        //print("before: \(city1.name)")
-        //city1.setCurrentLocation()
-        //print("After: \(city1.name)")
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        let currentLocation = locationManager.location
+        print("current Loction: \(currentLocation)")
         
         
         
@@ -40,7 +31,6 @@ class CityTableViewController: UITableViewController {
         cities.append(city1)
         cities.append(city1)
         
-        //print(city)
 
     }
 

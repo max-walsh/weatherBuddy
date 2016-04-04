@@ -52,13 +52,13 @@ class City {
         self.gms = GoogleMapsService()
         
     }
-    
+    /*
     func setCurrentLocation() {
         let locationManager = CLLocationManager()
         //locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        locationManager.startMonitoringSignificantLocationChanges()
+        //locationManager.startMonitoringSignificantLocationChanges()
         let currentLocation = locationManager.location
         let coord = currentLocation?.coordinate
         print(currentLocation)
@@ -97,7 +97,7 @@ class City {
         func getCurrentCity() {
             
         }
-        
-    }
+
+    }*/
     
 }
