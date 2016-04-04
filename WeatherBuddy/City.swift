@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreLocation
+import SwiftyJSON
 
 
 class City {
@@ -46,6 +48,21 @@ class City {
         self.barometricPressure = 0
         self.coordinates = Coordinates()
         self.ows = OpenWeatherService()
+        
+    }
+    
+    func setCurrentLocation() {
+        let locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startMonitoringSignificantLocationChanges()
+        print("after")
+        let currentLocation = locationManager.location
+        let coord = currentLocation?.coordinate
+        let lat = coord?.latitude
+        let long = coord?.longitude
+        
+        self.coordinates.latitude = lat!
+        self.coordinates.longitude = long!
         
     }
     

@@ -15,10 +15,11 @@ class CityTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        city1.setCurrentLocation()
+        cities.append(city1)
+        cities.append(city1)
+        cities.append(city1)
         
-        cities.append(city1)
-        cities.append(city1)
-        cities.append(city1)
 
     }
 

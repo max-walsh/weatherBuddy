@@ -29,6 +29,8 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+		<string>NSLocationWheninUseUsageDescription</string>
+		<string></string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
