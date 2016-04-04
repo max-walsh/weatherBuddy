@@ -12,7 +12,7 @@ import SwiftyJSON
 class GoogleMapsService {
     var url:String
     var apiKey:String
-    var city:String?
+    var city:City?
     
     init() {
         //let HomeURL:String = "South Bend,IN" //// TEMP
@@ -33,7 +33,7 @@ class GoogleMapsService {
         return cityName
     }
     
-    func getCurrentCity(callback: (String)->Void) {
+    func getCurrentCity(callback: (City)->Void) {
         var name = ""
         let lat = "40.714224"
         let long = "-73.961452"

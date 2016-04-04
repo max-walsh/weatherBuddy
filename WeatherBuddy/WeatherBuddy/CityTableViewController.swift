@@ -13,9 +13,18 @@ class CityTableViewController: UITableViewController {
     var cities = [City]()
     var city1 = City()
 
+    let gms = GoogleMapsService()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        city1.setCurrentLocation()
+        /*
+        gms.getCurrentCity {
+            (city1) in
+            self.city1 = city1
+            self.tableView.reloadData()
+        }*/
+        //city1.setCurrentLocation()
         cities.append(city1)
         cities.append(city1)
         cities.append(city1)
