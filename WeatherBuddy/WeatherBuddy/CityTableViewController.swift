@@ -12,23 +12,32 @@ class CityTableViewController: UITableViewController {
 
     var cities = [City]()
     var city1 = City()
+    var city = "didnt work"
 
     let gms = GoogleMapsService()
-
     
     override func viewDidLoad() {
+        
+        print("before: \(city1.name)")
+        city1.setCurrentLocation()
+        print("After: \(city1.name)")
         super.viewDidLoad()
         /*
         gms.getCurrentCity {
-            (city1) in
-            self.city1 = city1
+            (city) in
+            self.city = city
             self.tableView.reloadData()
-        }*/
+            print("should reload data")
+        }
+        city1.name = city*/
+        //print("before: \(city1.name)")
         //city1.setCurrentLocation()
+        //print("After: \(city1.name)")
         cities.append(city1)
         cities.append(city1)
         cities.append(city1)
         
+        //print(city)
 
     }
 

@@ -12,12 +12,14 @@ import SwiftyJSON
 class GoogleMapsService {
     var url:String
     var apiKey:String
-    var city:City?
+    //var city = City()
+    var cityName = ""
     
     init() {
         //let HomeURL:String = "South Bend,IN" //// TEMP
         url = "https://maps.googleapis.com/maps/api/geocode/json?"//"https://maps.googleapis.com/maps/api/geocode/json?address=\(HomeURL)&key=AIzaSyDs1GjFH50vGnLv5yvjbCI-6bxOi-F1OFw"
         apiKey = "AIzaSyDs1GjFH50vGnLv5yvjbCI-6bxOi-F1OFw"
+        //city = City()
     }
     
     var resultJSON : String = "" {
@@ -32,13 +34,12 @@ class GoogleMapsService {
         print("City Name: \(cityName)")
         return cityName
     }
-    
-    func getCurrentCity(callback: (City)->Void) {
+    /*
+    func getCurrentCity(callback: (String)->Void) {
         var name = ""
-        let lat = "40.714224"
-        let long = "-73.961452"
+        
         //let apiKey = "AIzaSyDs1GjFH50vGnLv5yvjbCI-6bxOi-F1OFw"
-        let googleURL = url + "latlng=\(lat),\(long), <#T##Int32#>)&key=\(apiKey)"
+        let googleURL = url + "latlng=\(lat),\(long)&key=\(apiKey)"
         let URL = NSURL(string: googleURL)
         let request = NSMutableURLRequest(URL: URL!)
         
@@ -53,13 +54,13 @@ class GoogleMapsService {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.resultJSON = result
                     self.parseGetCityResponse(data!)
-                    callback(self.city!)
+                    callback(self.cityName)
                 })
             }
         }
         task.resume()
         //print("name: \(name)")
         //return name
-    }
+    }*/
     
 }
