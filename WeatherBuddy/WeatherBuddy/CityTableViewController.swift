@@ -14,16 +14,17 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
 
     var cities = [City]()
     var city1 = City()
-    let locationManager = CLLocationManager()
+    let locManager = CLLocationManager()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        let currentLocation = locationManager.location
-        print("current Loction: \(currentLocation)")
+        locManager.delegate = self
+        locManager.requestWhenInUseAuthorization()
+        locManager.startUpdatingLocation()
+        print("Before")
+
+        print("after")
         
         
         
@@ -64,6 +65,13 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         return cell
     }
 
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        //locationManager.startUpdatingLocation()
+        let currentLocation = locations.last as! CLLocation!
+        print("current Loction: \(currentLocation)")
+        locManager.stopUpdatingLocation() // stop looking at location
+    }
 
     /*
     // Override to support conditional editing of the table view.
