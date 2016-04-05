@@ -29,8 +29,6 @@ class City {
     var country:String
     var barometricPressure:Int
     var coordinates:CLLocation
-    var ows:OpenWeatherService
-    var gms:GoogleMapsService
     
     init() {
         self.currentTemp = 0.0
@@ -51,8 +49,6 @@ class City {
         let lat:CLLocationDegrees = 41.7056
         let long:CLLocationDegrees = 86.2353
         self.coordinates = CLLocation(latitude: lat, longitude: long)
-        self.ows = OpenWeatherService()
-        self.gms = GoogleMapsService()
     }
     
     
