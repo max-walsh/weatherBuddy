@@ -27,7 +27,7 @@ class City {
     var state:String
     var zipcode:String
     var country:String
-    var barometricPressure:Int
+    var barometricPressure:Double
     var coordinates:CLLocation
     
     init() {

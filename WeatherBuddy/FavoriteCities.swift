@@ -27,5 +27,18 @@ class FavoriteCities: NSObject {
         newCity.zipcode = zip
         cities.append(newCity)
     }
+    
+    func changeWeather(updatedCities: [City]) {
+        var index:Int = 0
+        for city in updatedCities {
+            cities[index].currentTemp = city.currentTemp
+            cities[index].maxTemp = city.maxTemp
+            index++
+        }
+        //print(index)
+        //print(cities.count)
+        //cities[index] = city///hopefully works???
+        
+    }
 
 }
