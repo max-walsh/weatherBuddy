@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aCa-LE-YmR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aCa-LE-YmR">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -47,9 +48,20 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgR-zV-tsM">
+                                            <rect key="frame" x="567" y="34" width="21" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="WgR-zV-tsM" secondAttribute="trailing" constant="4" id="R5z-lx-kAo"/>
+                                        <constraint firstItem="WgR-zV-tsM" firstAttribute="centerY" secondItem="U9C-11-uhp" secondAttribute="centerY" id="T1A-Yq-guC"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="degreesLabel" destination="WgR-zV-tsM" id="MER-2w-QY1"/>
                                     <outlet property="nameLabel" destination="YkD-ST-0IF" id="C41-iT-SfA"/>
                                     <segue destination="rky-pi-BCa" kind="show" identifier="detailSegue" id="U3L-Kf-L7N"/>
                                 </connections>
@@ -185,7 +197,7 @@
             </objects>
             <point key="canvasLocation" x="2141" y="-312"/>
         </scene>
-        <!--Item-->
+        <!--Map-->
         <scene sceneID="QUn-Rx-QLY">
             <objects>
                 <viewController id="PiL-yx-vQn" sceneMemberID="viewController">
@@ -206,13 +218,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="7Vb-3Z-NeT"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="Map Pin" id="7Vb-3Z-NeT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4YO-Fn-gPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="448" y="320"/>
         </scene>
-        <!--Item-->
+        <!--Table View Controller-->
         <scene sceneID="DoK-0b-1Dr">
             <objects>
                 <tableViewController id="DYt-jy-4ps" sceneMemberID="viewController">
@@ -235,13 +247,13 @@
                             <outlet property="delegate" destination="DYt-jy-4ps" id="1bU-3I-ueD"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="k64-hp-YU9"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="k64-hp-YU9"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yAh-np-BRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="448" y="1192"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="9NX-PU-ZdT">
             <objects>
                 <tableViewController id="flP-Ot-Qpu" sceneMemberID="viewController">
@@ -264,17 +276,17 @@
                             <outlet property="delegate" destination="flP-Ot-Qpu" id="0Nx-7g-Y6A"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="YN8-di-CgY"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings" selectedImage="Settings" id="YN8-di-CgY"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mrx-iK-8kQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-346" y="1268"/>
         </scene>
-        <!--Item-->
+        <!--Weather-->
         <scene sceneID="D9J-JR-ag2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lhv-Ln-5Ae" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="GZb-zu-BLO"/>
+                    <tabBarItem key="tabBarItem" title="Weather" image="Sun-1" selectedImage="Sun-1" id="GZb-zu-BLO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mNh-aJ-9Et">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -290,4 +302,9 @@
             <point key="canvasLocation" x="448" y="-415"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Map Pin" width="40" height="40"/>
+        <image name="Settings" width="30" height="30"/>
+        <image name="Sun-1" width="35" height="35"/>
+    </resources>
 </document>
