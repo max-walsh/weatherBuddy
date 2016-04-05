@@ -36,10 +36,8 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         while (i < cities.cityCount() ) {
             ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
                 (cities) in
-                //self.cities.changeWeather(cities, index: i)
-                self.city1.append(cities)// = cities
-                //print(self.city1.maxTemp)
-            
+                self.city1.append(cities)
+                print("name: \(cities.name)     temp: \(cities.currentTemp)")
                 self.tableView.reloadData()
             }
             i += 1
