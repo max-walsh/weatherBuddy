@@ -14,8 +14,9 @@ import CoreLocation
 
 class CityTableViewController: UITableViewController, CLLocationManagerDelegate {
 
-    var cities = [City]()
-    var city1 = City()
+    var cities = FavoriteCities()
+    
+    //var cities = [City]()
     let locManager = CLLocationManager()
     let ows = OpenWeatherService()
     
@@ -32,13 +33,17 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             self.tableView.reloadData()
         }
         */
-        cities.append(City())
-        cities.append(City())
-        cities.append(City())
-
+        cities.addCity("Notre Dame", state: "IN", zip: "46556")
+        cities.addCity("Notre Dame", state: "IN", zip: "46556")
+        cities.addCity("Notre Dame", state: "IN", zip: "46556")
         print("loaded")
         
-
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        // reload the tableview for when new students are added
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,7 +60,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return cities.count
+        return cities.cityCount()
     }
 
  
@@ -64,7 +69,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         let cell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath)
         
         if let cityCell = cell as? CityTableViewCell {
-            cityCell.nameLabel.text = cities[indexPath.row].name
+            cityCell.nameLabel.text = cities.cityAtIndex(indexPath.row).name
         }
 
 
@@ -75,7 +80,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         
         //locationManager.startUpdatingLocation()
         let currentLocation = locations.last
-        cities[0].updateUserLocation(currentLocation!)
+        cities.cityAtIndex(0).updateUserLocation(currentLocation!)
         self.tableView.reloadData()
         print("current Location: \(currentLocation)")
         
@@ -127,7 +132,12 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         if segue.identifier == "detailSegue" {
             if let detailVC = segue.destinationViewController as? CityDetailViewController,
                 indexPath = tableView.indexPathForSelectedRow {
-                    detailVC.city = cities[indexPath.row]
+                    detailVC.city = cities.cityAtIndex(indexPath.row)
+            }
+        }
+        if segue.identifier == "addSegue" {
+            if let addVC = segue.destinationViewController as? AddCityViewController {
+                addVC.cities = cities
             }
         }
     }

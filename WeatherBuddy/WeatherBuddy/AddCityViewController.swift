@@ -10,9 +10,11 @@ import UIKit
 
 class AddCityViewController: UIViewController {
 
-    @IBOutlet weak var zipTextField: UITextField!
-    @IBOutlet weak var cityTextField: UITextField!
+    var cities : FavoriteCities?
     
+    @IBOutlet weak var zipTextField: UITextField!
+    @IBOutlet weak var cityTextField: UITextField!    
+    @IBOutlet weak var stateTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -24,27 +26,20 @@ class AddCityViewController: UIViewController {
     @IBAction func cancelButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-
-    @IBAction func addZip(sender: AnyObject) {
-        if (zipTextField.text == "") {
-            let alert = UIAlertController(
-                title: "Empty Field", message: "You must enter a zip code.", preferredStyle: .Alert)
-            let action = UIAlertAction(
-                title: "OK", style: .Default, handler: nil)
-            alert.addAction(action)
-            presentViewController(alert, animated: true, completion: nil)
-        }
-    }
     
-    @IBAction func addCity(sender: AnyObject) {
-        if (cityTextField.text == "") {
+    @IBAction func addButton(sender: AnyObject) {
+        if (zipTextField.text == "" || cityTextField.text == "" || stateTextField.text == "") {
             let alert = UIAlertController(
-                title: "Empty Field", message: "You must enter a city and state.", preferredStyle: .Alert)
+                title: "Empty Field", message: "You must fill in all text fields.", preferredStyle: .Alert)
             let action = UIAlertAction(
                 title: "OK", style: .Default, handler: nil)
             alert.addAction(action)
             presentViewController(alert, animated: true, completion: nil)
         }
+        
+        cities?.addCity(cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!)
+        
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     /*

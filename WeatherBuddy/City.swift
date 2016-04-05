@@ -12,6 +12,7 @@ import SwiftyJSON
 
 
 class City {
+    
     var currentTemp:Double
     var humidity:Int
     var description:String
@@ -52,7 +53,6 @@ class City {
         self.coordinates = CLLocation(latitude: lat, longitude: long)
         self.ows = OpenWeatherService()
         self.gms = GoogleMapsService()
-        
     }
     
     

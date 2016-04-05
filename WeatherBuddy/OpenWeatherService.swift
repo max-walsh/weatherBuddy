@@ -11,6 +11,7 @@ import CoreLocation
 import SwiftyJSON
 
 class OpenWeatherService {
+    
     var baseURL:String = "http://api.openweathermap.org/data/2.5/weather?"
     var apiKey:String = "93d98c361bc0d24cb301adc549eea5c4"
     var cities = [City]()
@@ -23,7 +24,7 @@ class OpenWeatherService {
     */
     
     func citiesWeatherByCoordinates(callback: ([City])->Void) {
-        let i:Int = 0
+        //let i:Int = 0
         
         //let coordURL = "\(baseURL)lat=\(cities[i].coordinates.coordinate.latitude)&lon=\(cities[i].coordinates.coordinate.longitude)&APPID=\(apiKey)"
         

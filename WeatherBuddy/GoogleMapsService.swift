@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 
 class GoogleMapsService {
+    
     var url:String
     var apiKey:String
     //var city = City()
