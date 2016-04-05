@@ -27,5 +27,12 @@ class FavoriteCities: NSObject {
         newCity.zipcode = zip
         cities.append(newCity)
     }
+    
+    func changeWeather(city: City, index: Int) {
+        print(index)
+        print(cities.count)
+        cities[index].maxTemp = city.maxTemp ///hopefully works???
+        
+    }
 
 }
