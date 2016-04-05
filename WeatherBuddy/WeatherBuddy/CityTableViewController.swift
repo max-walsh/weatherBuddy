@@ -27,7 +27,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         locManager.requestWhenInUseAuthorization()
         locManager.startUpdatingLocation()
         
-        
+        cities.addCity("", state: "", zip: "")
         cities.addCity("New York City", state: "NY", zip: "10001")
         cities.addCity("Chicago", state: "IL", zip: "60290")
         cities.addCity("Los Angeles", state: "CA", zip: "90001")
@@ -42,11 +42,8 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             self.cities.changeWeather(self.city1)
             self.tableView.reloadData()
         }
-            print("i: \(i)")
-            i++
+            i += 1
         }
-        print(cities.cityAtIndex(0).maxTemp)
-        print("loaded")
         
     }
     
@@ -80,6 +77,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         
         if let cityCell = cell as? CityTableViewCell {
             cityCell.nameLabel.text = cities.cityAtIndex(indexPath.row).name
+            cityCell.degreesLabel.text = String(cities.cityAtIndex(indexPath.row).currentTemp)
         }
 
 

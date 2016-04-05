@@ -105,9 +105,9 @@ class OpenWeatherService {
     func parseJSONZipcodeResponse(data: NSData, city: City) -> City {
         let json = JSON(data: data)
         //let maxTemp = json["main"]["temp_max"]
-        city.currentTemp = json["main"]["temp"].doubleValue
-        city.maxTemp = json["main"]["temp_max"].doubleValue
-        city.minTemp = json["main"]["temp_min"].doubleValue
+        city.currentTemp = KtoF(json["main"]["temp"].doubleValue)
+        city.maxTemp = KtoF(json["main"]["temp_max"].doubleValue)
+        city.minTemp = KtoF(json["main"]["temp_min"].doubleValue)
         city.humidity = json["main"]["humidity"].intValue
         city.description = json["weather"]["description"].stringValue // or json[weather][main] for more general
         city.windSpeed = json["wind"]["speed"].doubleValue
@@ -123,5 +123,9 @@ class OpenWeatherService {
         //print(name)
         return city
         
+    }
+    
+    func KtoF(K_Temp: Double) -> Double {
+        return (((K_Temp - 273.15)*1.8000) + 32.00)
     }
 }

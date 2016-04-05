@@ -33,7 +33,9 @@ class FavoriteCities: NSObject {
         for city in updatedCities {
             cities[index].currentTemp = city.currentTemp
             cities[index].maxTemp = city.maxTemp
-            index++
+            print ("name: \(cities[index].name)")
+            print ("temp: \(cities[index].currentTemp)")
+            index += 1
         }
         //print(index)
         //print(cities.count)
