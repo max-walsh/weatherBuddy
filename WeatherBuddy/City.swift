@@ -27,7 +27,7 @@ class City {
     var zipcode:String
     var country:String
     var barometricPressure:Int
-    var coordinates:Coordinates
+    var coordinates:CLLocation
     var ows:OpenWeatherService
     var gms:GoogleMapsService
     
@@ -47,7 +47,9 @@ class City {
         self.zipcode = "46556"
         self.country = "United States of America"
         self.barometricPressure = 0
-        self.coordinates = Coordinates()
+        let lat:CLLocationDegrees = 41.7056
+        let long:CLLocationDegrees = 86.2353
+        self.coordinates = CLLocation(latitude: lat, longitude: long)
         self.ows = OpenWeatherService()
         self.gms = GoogleMapsService()
         
@@ -67,6 +69,7 @@ class City {
                 self.state = pm.administrativeArea!
                 self.zipcode = pm.postalCode!
                 self.country = pm.country!
+                self.coordinates = pm.location!
             }
             else {
                 print("Problem with data from geocoder")

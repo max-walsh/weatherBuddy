@@ -17,6 +17,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     var cities = [City]()
     var city1 = City()
     let locManager = CLLocationManager()
+    let ows = OpenWeatherService()
     
     
     override func viewDidLoad() {
@@ -24,10 +25,17 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         locManager.delegate = self
         locManager.requestWhenInUseAuthorization()
         locManager.startUpdatingLocation()
+        cities.append(City())
+        cities.append(City())
+        cities.append(City())
+        ows.citiesWeatherByCoordinates {
+            (cities) in
+            self.cities = cities
+            self.tableView.reloadData()
+        }
     
-        cities.append(City())
-        cities.append(City())
-        cities.append(City())
+
+        print("loaded")
         
 
     }
@@ -72,6 +80,8 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         
         //locManager.stopUpdatingLocation() // stop looking at location
     }
+    
+    
 
     /*
     // Override to support conditional editing of the table view.
