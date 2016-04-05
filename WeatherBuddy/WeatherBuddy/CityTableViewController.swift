@@ -33,9 +33,9 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             self.tableView.reloadData()
         }
         */
-        cities.addCity("Notre Dame", state: "IN", zip: "46556")
-        cities.addCity("Notre Dame", state: "IN", zip: "46556")
-        cities.addCity("Notre Dame", state: "IN", zip: "46556")
+        cities.addCity("New York City", state: "NY", zip: "10001")
+        cities.addCity("Chicago", state: "IL", zip: "60290")
+        cities.addCity("Los Angeles", state: "CA", zip: "90001")
         print("loaded")
         
     }

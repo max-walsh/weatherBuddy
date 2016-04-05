@@ -43,9 +43,9 @@ class City {
         self.rain = ""
         self.sunrise = 0
         self.sunset = 0
-        self.name = "Notre Dame"
-        self.state = "IN"
-        self.zipcode = "46556"
+        self.name = ""
+        self.state = ""
+        self.zipcode = ""
         self.country = "United States of America"
         self.barometricPressure = 0
         let lat:CLLocationDegrees = 41.7056

@@ -11,7 +11,6 @@ import Foundation
 class FavoriteCities: NSObject {
     
     private var cities:[City] = []
-    //let locManager = CLLocationManager()
     
     func cityCount() -> Int {
         return cities.count
