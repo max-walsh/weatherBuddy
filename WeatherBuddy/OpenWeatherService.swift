@@ -14,7 +14,7 @@ class OpenWeatherService {
     
     var baseURL:String = "http://api.openweathermap.org/data/2.5/weather?"
     var apiKey:String = "93d98c361bc0d24cb301adc549eea5c4"
-    //var cities = City()
+    var finalCity = City()
     
     /*
     init() {
@@ -83,8 +83,9 @@ class OpenWeatherService {
                 //dispatch_async(dispatch_get_main_queue(), {
                 dispatch_async(backgroundQueue, {
                     self.resultJSON = result
-                    self.parseJSONCoordResponse(data!)
-                    callback(cities)
+                    self.finalCity = self.parseJSONZipcodeResponse(data!, city: cities)
+                    //callback(cities)
+                    callback(self.finalCity)
                 })
             }
         }
@@ -101,8 +102,28 @@ class OpenWeatherService {
         }
     }
     
-    func parseJSONCoordResponse(data: NSData) -> Void {
-        //let json = JSON(data: data)
+    func parseJSONZipcodeResponse(data: NSData, city: City) -> City {
+        let json = JSON(data: data)
+        //let maxTemp = json["main"]["temp_max"]
+        city.currentTemp = json["main"]["temp"].doubleValue
+        city.maxTemp = json["main"]["temp_max"].doubleValue
+        city.minTemp = json["main"]["temp_min"].doubleValue
+        city.humidity = json["main"]["humidity"].intValue
+        city.description = json["weather"]["description"].stringValue // or json[weather][main] for more general
+        city.windSpeed = json["wind"]["speed"].doubleValue
+        city.windDirection = json["wind"]["direction"].doubleValue
+        city.rain = json["clouds"]["all"].stringValue
+        city.sunrise = json["sys"]["sunrise"].intValue
+        city.sunset = json["sys"]["sunset"].intValue
+        city.barometricPressure = json["main"]["pressure"].doubleValue
+        let long = json["coord"]["long"].doubleValue
+        let lat = json["coord"]["lat"].doubleValue
+        city.coordinates = CLLocation(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(long))
+        
+        
+        
+        //print(name)
+        return city
         
     }
 }

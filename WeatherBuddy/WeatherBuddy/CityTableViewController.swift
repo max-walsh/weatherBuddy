@@ -15,7 +15,7 @@ import CoreLocation
 class CityTableViewController: UITableViewController, CLLocationManagerDelegate {
 
     var cities = FavoriteCities()
-    
+    var city1=City()
     //var cities = [City]()
     let locManager = CLLocationManager()
     let ows = OpenWeatherService()
@@ -37,6 +37,8 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
             (cities) in
             //self.cities.changeWeather(cities, index: i)
+            self.city1 = cities
+            print(self.city1.maxTemp)
             self.tableView.reloadData()
         }
             print("i: \(i)")
