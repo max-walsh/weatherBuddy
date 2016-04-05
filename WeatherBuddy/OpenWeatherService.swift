@@ -120,8 +120,6 @@ class OpenWeatherService {
         let lat = json["coord"]["lat"].doubleValue
         city.coordinates = CLLocation(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(long))
         
-        
-        
         //print(name)
         return city
         

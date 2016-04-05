@@ -28,10 +28,16 @@ class FavoriteCities: NSObject {
         cities.append(newCity)
     }
     
-    func changeWeather(city: City, index: Int) {
-        print(index)
-        print(cities.count)
-        cities[index].maxTemp = city.maxTemp ///hopefully works???
+    func changeWeather(updatedCities: [City]) {
+        var index:Int = 0
+        for city in updatedCities {
+            cities[index].currentTemp = city.currentTemp
+            cities[index].maxTemp = city.maxTemp
+            index++
+        }
+        //print(index)
+        //print(cities.count)
+        //cities[index] = city///hopefully works???
         
     }
 
