@@ -25,15 +25,16 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         locManager.delegate = self
         locManager.requestWhenInUseAuthorization()
         locManager.startUpdatingLocation()
-        cities.append(City())
-        cities.append(City())
-        cities.append(City())
+        /*
         ows.citiesWeatherByCoordinates {
             (cities) in
             self.cities = cities
             self.tableView.reloadData()
         }
-    
+        */
+        cities.append(City())
+        cities.append(City())
+        cities.append(City())
 
         print("loaded")
         
