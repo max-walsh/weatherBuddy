@@ -289,6 +289,7 @@
 				TargetAttributes = {
 					232A8B2B1CAC6E680008E9D5 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = N4Z3R2L69T;
 					};
 					232A8B421CAC6E690008E9D5 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -556,10 +557,13 @@
 			baseConfigurationReference = DB4BBF4A3CB66921F24E0D47 /* Pods-WeatherBuddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WeatherBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.nd.WeatherBuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apps.mobicomWeatherBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -568,10 +572,13 @@
 			baseConfigurationReference = 59110C39406B24D321572ACC /* Pods-WeatherBuddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WeatherBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.nd.WeatherBuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apps.mobicomWeatherBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
