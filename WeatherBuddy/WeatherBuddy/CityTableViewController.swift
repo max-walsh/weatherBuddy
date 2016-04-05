@@ -34,16 +34,18 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         
         var i:Int = 0
         while (i < cities.cityCount() ) {
-        ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
-            (cities) in
-            //self.cities.changeWeather(cities, index: i)
-            self.city1.append(cities)// = cities
-            //print(self.city1.maxTemp)
-            self.cities.changeWeather(self.city1)
-            self.tableView.reloadData()
-        }
+            ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
+                (cities) in
+                //self.cities.changeWeather(cities, index: i)
+                self.city1.append(cities)// = cities
+                //print(self.city1.maxTemp)
+            
+                self.tableView.reloadData()
+            }
             i += 1
         }
+        
+        self.cities.changeWeather(self.city1)
         
     }
     
@@ -76,8 +78,9 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         let cell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath)
         
         if let cityCell = cell as? CityTableViewCell {
+            print("cell for row")
             cityCell.nameLabel.text = cities.cityAtIndex(indexPath.row).name
-            cityCell.degreesLabel.text = String(cities.cityAtIndex(indexPath.row).currentTemp)
+            cityCell.degreesLabel.text = String(Int(cities.cityAtIndex(indexPath.row).currentTemp))
         }
 
 

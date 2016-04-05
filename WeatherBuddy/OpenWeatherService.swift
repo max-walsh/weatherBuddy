@@ -106,6 +106,7 @@ class OpenWeatherService {
         let json = JSON(data: data)
         //let maxTemp = json["main"]["temp_max"]
         city.currentTemp = KtoF(json["main"]["temp"].doubleValue)
+        print("name: \(city.name)   temp: \(city.currentTemp)")
         city.maxTemp = KtoF(json["main"]["temp_max"].doubleValue)
         city.minTemp = KtoF(json["main"]["temp_min"].doubleValue)
         city.humidity = json["main"]["humidity"].intValue
@@ -126,6 +127,6 @@ class OpenWeatherService {
     }
     
     func KtoF(K_Temp: Double) -> Double {
-        return (((K_Temp - 273.15)*1.8000) + 32.00)
+        return round(((K_Temp - 273.15)*1.8000) + 32.00)
     }
 }
