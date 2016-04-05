@@ -10,6 +10,8 @@ import UIKit
 import CoreLocation
 
 
+// TODO: Get it to stop looking for location updates when the location has changed and not changed
+
 class CityTableViewController: UITableViewController, CLLocationManagerDelegate {
 
     var cities = [City]()
@@ -22,15 +24,10 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         locManager.delegate = self
         locManager.requestWhenInUseAuthorization()
         locManager.startUpdatingLocation()
-        print("Before")
-
-        print("after")
-        
-        
-        
-        cities.append(city1)
-        cities.append(city1)
-        cities.append(city1)
+    
+        cities.append(City())
+        cities.append(City())
+        cities.append(City())
         
 
     }
@@ -68,9 +65,12 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         //locationManager.startUpdatingLocation()
-        let currentLocation = locations.last as! CLLocation!
-        print("current Loction: \(currentLocation)")
-        locManager.stopUpdatingLocation() // stop looking at location
+        let currentLocation = locations.last
+        cities[0].updateUserLocation(currentLocation!)
+        self.tableView.reloadData()
+        print("current Location: \(currentLocation)")
+        
+        //locManager.stopUpdatingLocation() // stop looking at location
     }
 
     /*

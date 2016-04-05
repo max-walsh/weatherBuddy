@@ -52,52 +52,31 @@ class City {
         self.gms = GoogleMapsService()
         
     }
-    /*
-    func setCurrentLocation() {
-        let locationManager = CLLocationManager()
-        //locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        //locationManager.startMonitoringSignificantLocationChanges()
-        let currentLocation = locationManager.location
-        let coord = currentLocation?.coordinate
-        print(currentLocation)
-        //let lat = coord?.latitude
-        //let long = coord?.longitude
-        let lat:CLLocationDegrees = 40.714224
-        let long:CLLocationDegrees = -73.961452
-        var location = CLLocation(latitude: lat, longitude: long)
+    
+    
+    func updateUserLocation(location: CLLocation) {
+        
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
             if error != nil {
-                print("Reverse Geocoder failed with error" + error!.localizedDescription)
+                print("Reverse Geocoder failed with error: \(error!.localizedDescription)")
                 return
             }
-            //if placemarks!.count > 0 {
-            if  let pm = placemarks![0] as? CLPlacemark {
-                print("setCurrentLocation: \(pm.locality!)")
+            if let pm = placemarks![0] as? CLPlacemark {
+                print("locality: \(pm.locality)")
                 self.name = pm.locality!
-            } else {
-                print("problem with data from geocoder")
+                self.state = pm.administrativeArea!
+                self.zipcode = pm.postalCode!
+                self.country = pm.country!
             }
+            else {
+                print("Problem with data from geocoder")
+            }
+            
         })
         
-        
-        self.coordinates.latitude = 40.714224
-        self.coordinates.longitude = -73.961452
-        /*
-        gms.getCurrentCity {
-            (self.name) in
-                self = self
-                self.tableview.reloadData() ///??? maybe dont need
-        }
-        */
-        //let newCity = gms.getCurrentCity(self.coordinates)
-        //self.name = newCity
+    }
+    
+    
 
-        func getCurrentCity() {
-            
-        }
-
-    }*/
     
 }
