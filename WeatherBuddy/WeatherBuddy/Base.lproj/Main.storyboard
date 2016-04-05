@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aCa-LE-YmR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aCa-LE-YmR">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -51,6 +51,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="YkD-ST-0IF" id="C41-iT-SfA"/>
+                                    <segue destination="rky-pi-BCa" kind="show" identifier="detailSegue" id="U3L-Kf-L7N"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -59,11 +60,125 @@
                             <outlet property="delegate" destination="XTP-9x-os5" id="Alc-8c-PZm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="TqK-Dm-tZ1"/>
+                    <navigationItem key="navigationItem" id="TqK-Dm-tZ1">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="fMx-5J-STK"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="gEi-S6-se2">
+                            <connections>
+                                <segue destination="Obd-mt-4Yf" kind="presentation" identifier="addSegue" id="fp7-32-wAP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DIV-oR-p8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1260" y="-415"/>
+        </scene>
+        <!--Add City View Controller-->
+        <scene sceneID="YVB-ID-2TU">
+            <objects>
+                <viewController id="Obd-mt-4Yf" customClass="AddCityViewController" customModule="WeatherBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MsD-og-DGJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="I3p-Fr-Ind"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uck-Le-PaH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJF-tS-OW9">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Add New City" id="r8o-VR-mEQ"/>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0C-Sc-Upv">
+                                <rect key="frame" x="280" y="115" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addZip:" destination="Obd-mt-4Yf" eventType="touchUpInside" id="mfi-fn-zHn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add By Zip Code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pne-us-DSn">
+                                <rect key="frame" x="20" y="118" width="134" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add By City:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Fw-a4-BCC">
+                                <rect key="frame" x="20" y="230" width="94" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="123456" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QfK-HV-XDc">
+                                <rect key="frame" x="168" y="115" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="city, state" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xiq-6b-hgg">
+                                <rect key="frame" x="122" y="226" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpM-To-XqX">
+                                <rect key="frame" x="227" y="226" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addCity:" destination="Obd-mt-4Yf" eventType="touchUpInside" id="ua2-q9-Z0g"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9B3-kG-lr0">
+                                <rect key="frame" x="106" y="314" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButton:" destination="Obd-mt-4Yf" eventType="touchUpInside" id="DnA-Ji-Xkv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WJF-tS-OW9" firstAttribute="top" secondItem="MsD-og-DGJ" secondAttribute="bottom" constant="-20" id="SjB-pb-ey0"/>
+                            <constraint firstItem="WJF-tS-OW9" firstAttribute="width" secondItem="uck-Le-PaH" secondAttribute="width" id="r6a-6H-HdX"/>
+                            <constraint firstItem="WJF-tS-OW9" firstAttribute="centerX" secondItem="uck-Le-PaH" secondAttribute="centerX" id="sse-tp-Q1Q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cityTextField" destination="Xiq-6b-hgg" id="MNp-wD-HFw"/>
+                        <outlet property="zipTextField" destination="QfK-HV-XDc" id="AKt-Kj-Hmx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kMh-aS-azq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2080" y="-990"/>
+        </scene>
+        <!--City Detail View Controller-->
+        <scene sceneID="ung-R7-f7r">
+            <objects>
+                <viewController id="rky-pi-BCa" customClass="CityDetailViewController" customModule="WeatherBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3An-uY-PCo"/>
+                        <viewControllerLayoutGuide type="bottom" id="jQn-oc-5xx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="D3B-TU-cbk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CityName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkW-g5-Pch">
+                                <rect key="frame" x="20" y="72" width="171" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="kkW-g5-Pch" id="TsM-Kp-kah"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XZL-Cm-3Sr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2141" y="-312"/>
         </scene>
         <!--Item-->
         <scene sceneID="QUn-Rx-QLY">
