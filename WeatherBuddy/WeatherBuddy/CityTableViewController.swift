@@ -24,6 +24,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // https://www.andrewcbancroft.com/2015/03/17/basics-of-pull-to-refresh-for-swift-developers/#table-view-controller
         self.refreshControl?.addTarget(self, action: #selector(CityTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         locManager.delegate = self
@@ -85,7 +86,6 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         let cell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath)
         
         if let cityCell = cell as? CityTableViewCell {
-            print("cell for row")
             cityCell.nameLabel.text = cities.cityAtIndex(indexPath.row).name
             cityCell.degreesLabel.text = String(Int(cities.cityAtIndex(indexPath.row).currentTemp))
         }
