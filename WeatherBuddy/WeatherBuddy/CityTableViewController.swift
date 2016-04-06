@@ -25,7 +25,8 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         super.viewDidLoad()
         
         // https://www.andrewcbancroft.com/2015/03/17/basics-of-pull-to-refresh-for-swift-developers/#table-view-controller
-        self.refreshControl?.addTarget(self, action: #selector(CityTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        
+        self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
         
         locManager.delegate = self
         locManager.requestWhenInUseAuthorization()
