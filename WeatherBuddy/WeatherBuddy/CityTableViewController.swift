@@ -23,6 +23,9 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.refreshControl?.addTarget(self, action: #selector(CityTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        
         locManager.delegate = self
         locManager.requestWhenInUseAuthorization()
         locManager.startUpdatingLocation()
@@ -45,6 +48,12 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         
         self.cities.changeWeather(self.city1)
         
+    }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        print("refreshed!")
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     override func viewWillAppear(animated: Bool) {
