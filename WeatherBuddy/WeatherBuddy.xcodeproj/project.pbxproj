@@ -7,14 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		231671FD1CB375AF00CCA23D /* CityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231671FC1CB375AF00CCA23D /* CityDetailViewController.swift */; };
+		231671FF1CB379C400CCA23D /* AddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231671FE1CB379C400CCA23D /* AddCityViewController.swift */; };
+		231672011CB3FBC600CCA23D /* FavoriteCities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231672001CB3FBC600CCA23D /* FavoriteCities.swift */; };
 		232A8B301CAC6E690008E9D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A8B2F1CAC6E690008E9D5 /* AppDelegate.swift */; };
-		232A8B321CAC6E690008E9D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A8B311CAC6E690008E9D5 /* ViewController.swift */; };
 		232A8B351CAC6E690008E9D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232A8B331CAC6E690008E9D5 /* Main.storyboard */; };
 		232A8B381CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 232A8B361CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld */; };
 		232A8B3A1CAC6E690008E9D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232A8B391CAC6E690008E9D5 /* Assets.xcassets */; };
 		232A8B3D1CAC6E690008E9D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232A8B3B1CAC6E690008E9D5 /* LaunchScreen.storyboard */; };
 		232A8B481CAC6E690008E9D5 /* WeatherBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A8B471CAC6E690008E9D5 /* WeatherBuddyTests.swift */; };
 		232A8B531CAC6E690008E9D5 /* WeatherBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A8B521CAC6E690008E9D5 /* WeatherBuddyUITests.swift */; };
+		23B2D9221CB2003800344E7F /* CityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B2D9211CB2003800344E7F /* CityTableViewController.swift */; };
+		23B2D9241CB2012600344E7F /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B2D9231CB2012600344E7F /* CityTableViewCell.swift */; };
+		BC5F3E93EE80F8596530F60A /* Pods_WeatherBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E40392710CD8D618F0E8348 /* Pods_WeatherBuddy.framework */; };
+		F121A6BF1CB18DC80022E964 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121A6BE1CB18DC80022E964 /* Coordinates.swift */; };
+		F121A6C11CB18E4C0022E964 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121A6C01CB18E4C0022E964 /* Contact.swift */; };
+		F121A6C41CB18EEB0022E964 /* OpenWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121A6C31CB18EEB0022E964 /* OpenWeatherService.swift */; };
+		F121A6C61CB18F380022E964 /* GoogleMapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121A6C51CB18F380022E964 /* GoogleMapsService.swift */; };
+		F121A6C81CB18F8C0022E964 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121A6C71CB18F8C0022E964 /* Settings.swift */; };
+		F121A6CA1CB18FF30022E964 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121A6C91CB18FF30022E964 /* Theme.swift */; };
+		F13F20281CAC71CB00FC87AD /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13F20271CAC71CB00FC87AD /* City.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +47,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		231671FC1CB375AF00CCA23D /* CityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityDetailViewController.swift; sourceTree = "<group>"; };
+		231671FE1CB379C400CCA23D /* AddCityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCityViewController.swift; sourceTree = "<group>"; };
+		231672001CB3FBC600CCA23D /* FavoriteCities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCities.swift; sourceTree = "<group>"; };
 		232A8B2C1CAC6E690008E9D5 /* WeatherBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		232A8B2F1CAC6E690008E9D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		232A8B311CAC6E690008E9D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		232A8B341CAC6E690008E9D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		232A8B371CAC6E690008E9D5 /* WeatherBuddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherBuddy.xcdatamodel; sourceTree = "<group>"; };
 		232A8B391CAC6E690008E9D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +63,18 @@
 		232A8B4E1CAC6E690008E9D5 /* WeatherBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		232A8B521CAC6E690008E9D5 /* WeatherBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBuddyUITests.swift; sourceTree = "<group>"; };
 		232A8B541CAC6E690008E9D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23B2D9211CB2003800344E7F /* CityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityTableViewController.swift; sourceTree = "<group>"; };
+		23B2D9231CB2012600344E7F /* CityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
+		4E40392710CD8D618F0E8348 /* Pods_WeatherBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59110C39406B24D321572ACC /* Pods-WeatherBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherBuddy/Pods-WeatherBuddy.release.xcconfig"; sourceTree = "<group>"; };
+		DB4BBF4A3CB66921F24E0D47 /* Pods-WeatherBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherBuddy/Pods-WeatherBuddy.debug.xcconfig"; sourceTree = "<group>"; };
+		F121A6BE1CB18DC80022E964 /* Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		F121A6C01CB18E4C0022E964 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		F121A6C31CB18EEB0022E964 /* OpenWeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherService.swift; sourceTree = "<group>"; };
+		F121A6C51CB18F380022E964 /* GoogleMapsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsService.swift; sourceTree = "<group>"; };
+		F121A6C71CB18F8C0022E964 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		F121A6C91CB18FF30022E964 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		F13F20271CAC71CB00FC87AD /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC5F3E93EE80F8596530F60A /* Pods_WeatherBuddy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +103,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00860CF31D937A2100A3904B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DB4BBF4A3CB66921F24E0D47 /* Pods-WeatherBuddy.debug.xcconfig */,
+				59110C39406B24D321572ACC /* Pods-WeatherBuddy.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		232A8B231CAC6E680008E9D5 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +119,8 @@
 				232A8B461CAC6E690008E9D5 /* WeatherBuddyTests */,
 				232A8B511CAC6E690008E9D5 /* WeatherBuddyUITests */,
 				232A8B2D1CAC6E690008E9D5 /* Products */,
+				00860CF31D937A2100A3904B /* Pods */,
+				7FD9750F40AF6AD735FD9905 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +137,10 @@
 		232A8B2E1CAC6E690008E9D5 /* WeatherBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				232A8B2F1CAC6E690008E9D5 /* AppDelegate.swift */,
-				232A8B311CAC6E690008E9D5 /* ViewController.swift */,
-				232A8B331CAC6E690008E9D5 /* Main.storyboard */,
-				232A8B391CAC6E690008E9D5 /* Assets.xcassets */,
-				232A8B3B1CAC6E690008E9D5 /* LaunchScreen.storyboard */,
-				232A8B3E1CAC6E690008E9D5 /* Info.plist */,
-				232A8B361CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld */,
+				23B2D91E1CB1FE1C00344E7F /* View */,
+				23B2D91F1CB1FE2C00344E7F /* Controllers */,
+				F121A6C21CB18E920022E964 /* Model */,
+				23B2D9201CB1FE4600344E7F /* Other */,
 			);
 			path = WeatherBuddy;
 			sourceTree = "<group>";
@@ -128,6 +163,61 @@
 			path = WeatherBuddyUITests;
 			sourceTree = "<group>";
 		};
+		23B2D91E1CB1FE1C00344E7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				232A8B331CAC6E690008E9D5 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		23B2D91F1CB1FE2C00344E7F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				23B2D9211CB2003800344E7F /* CityTableViewController.swift */,
+				231671FC1CB375AF00CCA23D /* CityDetailViewController.swift */,
+				231671FE1CB379C400CCA23D /* AddCityViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		23B2D9201CB1FE4600344E7F /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				232A8B2F1CAC6E690008E9D5 /* AppDelegate.swift */,
+				232A8B3E1CAC6E690008E9D5 /* Info.plist */,
+				232A8B3B1CAC6E690008E9D5 /* LaunchScreen.storyboard */,
+				232A8B391CAC6E690008E9D5 /* Assets.xcassets */,
+				232A8B361CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		7FD9750F40AF6AD735FD9905 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4E40392710CD8D618F0E8348 /* Pods_WeatherBuddy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F121A6C21CB18E920022E964 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				23B2D9231CB2012600344E7F /* CityTableViewCell.swift */,
+				F13F20271CAC71CB00FC87AD /* City.swift */,
+				231672001CB3FBC600CCA23D /* FavoriteCities.swift */,
+				F121A6C01CB18E4C0022E964 /* Contact.swift */,
+				F121A6BE1CB18DC80022E964 /* Coordinates.swift */,
+				F121A6C31CB18EEB0022E964 /* OpenWeatherService.swift */,
+				F121A6C51CB18F380022E964 /* GoogleMapsService.swift */,
+				F121A6C71CB18F8C0022E964 /* Settings.swift */,
+				F121A6C91CB18FF30022E964 /* Theme.swift */,
+			);
+			name = Model;
+			path = ..;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +225,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 232A8B571CAC6E690008E9D5 /* Build configuration list for PBXNativeTarget "WeatherBuddy" */;
 			buildPhases = (
+				3E1108EEF282D24D69ED4492 /* Check Pods Manifest.lock */,
 				232A8B281CAC6E680008E9D5 /* Sources */,
 				232A8B291CAC6E680008E9D5 /* Frameworks */,
 				232A8B2A1CAC6E680008E9D5 /* Resources */,
+				740BE65D4202575E116C693D /* Embed Pods Frameworks */,
+				642E86D03528245BD13D2C19 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,6 +289,7 @@
 				TargetAttributes = {
 					232A8B2B1CAC6E680008E9D5 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = N4Z3R2L69T;
 					};
 					232A8B421CAC6E690008E9D5 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -254,14 +348,73 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3E1108EEF282D24D69ED4492 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		642E86D03528245BD13D2C19 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherBuddy/Pods-WeatherBuddy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		740BE65D4202575E116C693D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherBuddy/Pods-WeatherBuddy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		232A8B281CAC6E680008E9D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				232A8B321CAC6E690008E9D5 /* ViewController.swift in Sources */,
+				F121A6CA1CB18FF30022E964 /* Theme.swift in Sources */,
 				232A8B381CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld in Sources */,
+				231672011CB3FBC600CCA23D /* FavoriteCities.swift in Sources */,
+				23B2D9221CB2003800344E7F /* CityTableViewController.swift in Sources */,
 				232A8B301CAC6E690008E9D5 /* AppDelegate.swift in Sources */,
+				231671FD1CB375AF00CCA23D /* CityDetailViewController.swift in Sources */,
+				F121A6C81CB18F8C0022E964 /* Settings.swift in Sources */,
+				F121A6C41CB18EEB0022E964 /* OpenWeatherService.swift in Sources */,
+				F121A6C11CB18E4C0022E964 /* Contact.swift in Sources */,
+				F13F20281CAC71CB00FC87AD /* City.swift in Sources */,
+				231671FF1CB379C400CCA23D /* AddCityViewController.swift in Sources */,
+				F121A6C61CB18F380022E964 /* GoogleMapsService.swift in Sources */,
+				F121A6BF1CB18DC80022E964 /* Coordinates.swift in Sources */,
+				23B2D9241CB2012600344E7F /* CityTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,23 +554,31 @@
 		};
 		232A8B581CAC6E690008E9D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB4BBF4A3CB66921F24E0D47 /* Pods-WeatherBuddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WeatherBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.nd.WeatherBuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apps.mobicomWeatherBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		232A8B591CAC6E690008E9D5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59110C39406B24D321572ACC /* Pods-WeatherBuddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WeatherBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.nd.WeatherBuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apps.mobicomWeatherBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -488,6 +649,7 @@
 				232A8B591CAC6E690008E9D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		232A8B5A1CAC6E690008E9D5 /* Build configuration list for PBXNativeTarget "WeatherBuddyTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +658,7 @@
 				232A8B5C1CAC6E690008E9D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		232A8B5D1CAC6E690008E9D5 /* Build configuration list for PBXNativeTarget "WeatherBuddyUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +667,7 @@
 				232A8B5F1CAC6E690008E9D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
