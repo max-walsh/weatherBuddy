@@ -22,7 +22,6 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     let tbc = TabBarController()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
