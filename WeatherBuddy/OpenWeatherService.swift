@@ -14,7 +14,7 @@ class OpenWeatherService {
     
     var baseURL:String = "http://api.openweathermap.org/data/2.5/weather?"
     var apiKey:String = "93d98c361bc0d24cb301adc549eea5c4"
-    var finalCity = City()
+    var cityWeather = City()
     
     /*
     init() {
@@ -75,7 +75,10 @@ class OpenWeatherService {
                 print(error)
             } else {
                 let result = String(data: data!, encoding: NSASCIIStringEncoding)!
-        
+                print("data: \(data!)")
+                if (data == nil) {
+                    
+                }
                 // http://stackoverflow.com/questions/24056205/how-to-use-background-thread-in-swift
                 let qualityOfServiceClass = QOS_CLASS_BACKGROUND
                 let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
@@ -83,9 +86,15 @@ class OpenWeatherService {
                 //dispatch_async(dispatch_get_main_queue(), {
                 dispatch_async(backgroundQueue, {
                     self.resultJSON = result
-                    self.finalCity = self.parseJSONZipcodeResponse(data!, city: cities)
+                    self.cityWeather = self.parseJSONZipcodeResponse(data!, city: cities)
                     //callback(cities)
-                    callback(self.finalCity)
+                    callback(self.cityWeather)
+                    /*
+                    dispatch_async(dispatch_get_main_queue(), { ()->Void in
+                        print("What")
+                        
+                    })
+                    */
                 })
             }
         }

@@ -31,10 +31,24 @@ class FavoriteCities: NSObject {
     func changeWeather(updatedCities: [City]) {
         var index:Int = 0
         for city in updatedCities {
+            cities[index].barometricPressure = city.barometricPressure
+            cities[index].coordinates = city.coordinates
+            cities[index].country = city.country
             cities[index].currentTemp = city.currentTemp
+            cities[index].description = city.description
+            cities[index].humidity = city.humidity
             cities[index].maxTemp = city.maxTemp
-            print ("name: \(cities[index].name)")
-            print ("temp: \(cities[index].currentTemp)")
+            cities[index].minTemp = city.minTemp
+            cities[index].name = city.name
+            cities[index].rain = city.rain
+            cities[index].state = city.state
+            cities[index].sunrise = city.sunrise
+            cities[index].sunset = city.sunset
+            cities[index].windDirection = city.windDirection
+            cities[index].windSpeed = city.windSpeed
+            cities[index].zipcode = city.zipcode
+            
+            print ("name: \(cities[index].name)     temp: \(cities[index].currentTemp)")
             index += 1
         }
         //print(index)
