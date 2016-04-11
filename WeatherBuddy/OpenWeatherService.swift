@@ -67,7 +67,7 @@ class OpenWeatherService {
         
         let searchURL = NSURL(string: coordURL)
         let request = NSMutableURLRequest(URL: searchURL!)
-        
+        sleep(1)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) {
         (data, responseText, error) -> Void in
@@ -80,13 +80,15 @@ class OpenWeatherService {
                     
                 }
                 // http://stackoverflow.com/questions/24056205/how-to-use-background-thread-in-swift
-                let qualityOfServiceClass = QOS_CLASS_BACKGROUND
-                let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+                //`let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+                //let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
         
-                //dispatch_async(dispatch_get_main_queue(), {
-                dispatch_async(backgroundQueue, {
-                    self.resultJSON = result
-                    self.cityWeather = self.parseJSONZipcodeResponse(data!, city: cities)
+                self.resultJSON = result
+                self.cityWeather = self.parseJSONZipcodeResponse(data!, city: cities)
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                //dispatch_async(backgroundQueue, {
+                    
                     //callback(cities)
                     callback(self.cityWeather)
                     /*
