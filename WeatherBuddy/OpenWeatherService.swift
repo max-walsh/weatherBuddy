@@ -121,7 +121,7 @@ class OpenWeatherService {
         city.maxTemp = KtoF(json["main"]["temp_max"].doubleValue)
         city.minTemp = KtoF(json["main"]["temp_min"].doubleValue)
         city.humidity = json["main"]["humidity"].intValue
-        city.description = json["weather"]["description"].stringValue // or json[weather][main] for more general
+        city.description = json["weather"][1]["description"].stringValue // or json[weather][main] for more general
         city.windSpeed = json["wind"]["speed"].doubleValue
         city.windDirection = json["wind"]["direction"].doubleValue
         city.rain = json["clouds"]["all"].stringValue

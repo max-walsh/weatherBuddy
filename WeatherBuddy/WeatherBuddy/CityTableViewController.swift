@@ -63,7 +63,6 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     }
     
     override func viewWillAppear(animated: Bool) {
-        // reload the tableview for when new students are added
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
@@ -93,6 +92,37 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         if let cityCell = cell as? CityTableViewCell {
             cityCell.nameLabel.text = tbc.cities.cityAtIndex(indexPath.row).name
             cityCell.degreesLabel.text = String(Int(tbc.cities.cityAtIndex(indexPath.row).currentTemp))
+            if tbc.cities.cityAtIndex(indexPath.row).description == "mist" {
+                cityCell.iconImage.image = UIImage(named: "Mist")
+            }
+            else if tbc.cities.cityAtIndex(indexPath.row).description == "clear sky" {
+                cityCell.iconImage.image = UIImage(named: "Sun")
+            }
+            else if tbc.cities.cityAtIndex(indexPath.row).description == "scattered clouds" {
+                cityCell.iconImage.image = UIImage(named: "Cloud")
+            }
+            else if tbc.cities.cityAtIndex(indexPath.row).description == "few clouds" {
+                cityCell.iconImage.image = UIImage(named: "Cloud")
+            }
+            else if tbc.cities.cityAtIndex(indexPath.row).description == "broken clouds" {
+                cityCell.iconImage.image = UIImage(named: "Cloud")
+            }
+            else if tbc.cities.cityAtIndex(indexPath.row).description == "shower rain" {
+                cityCell.iconImage.image = UIImage(named: "Moderate Rain")
+            }
+            else if tbc.cities.cityAtIndex(indexPath.row).description == "rain" {
+                cityCell.iconImage.image = UIImage(named: "Torrential Rain")
+            }
+            else if tbc.cities.cityAtIndex(indexPath.row).description == "thunderstom" {
+                cityCell.iconImage.image = UIImage(named: "Storm")
+            }
+            else if tbc.cities.cityAtIndex(indexPath.row).description == "snow" {
+                cityCell.iconImage.image = UIImage(named: "Snow")
+            }
+            else {
+                cityCell.iconImage.image = UIImage(named: "Sun")
+            }
+            print ("description: \(tbc.cities.cityAtIndex(indexPath.row).description)")
         }
 
 
