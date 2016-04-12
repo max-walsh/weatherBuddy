@@ -58,7 +58,21 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     func handleRefresh(refreshControl: UIRefreshControl) {
         print("refreshed!")
-        self.tableView.reloadData()
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            var i:Int = 0
+            while (i < self.tbc.cities.cityCount() ) {
+                self.ows.cityWeatherByZipcode(self.tbc.cities.cityAtIndex(i)) {
+                    (cities) in
+                    self.city1.append(cities)
+                    print("name: \(cities.name)     temp: \(cities.currentTemp)")
+                    self.tableView.reloadData()
+                }
+                i += 1
+            }
+        }
+        
+        tbc.cities.changeWeather(self.city1)
         refreshControl.endRefreshing()
     }
     
