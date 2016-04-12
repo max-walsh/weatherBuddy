@@ -42,12 +42,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgR-zV-tsM">
-                                            <rect key="frame" x="567" y="34" width="21" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wZ4-0x-HBl">
                                             <rect key="frame" x="8" y="13" width="64" height="64"/>
                                             <constraints>
@@ -65,18 +59,37 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVe-WP-iCK">
+                                            <rect key="frame" x="340" y="34" width="198" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="YLl-7s-XTR"/>
+                                                <constraint firstAttribute="width" constant="198" id="Zy9-Jw-thJ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgR-zV-tsM">
+                                            <rect key="frame" x="552" y="25" width="40" height="40"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="WgR-zV-tsM" secondAttribute="trailing" constant="4" id="R5z-lx-kAo"/>
+                                        <constraint firstItem="WgR-zV-tsM" firstAttribute="leading" secondItem="yVe-WP-iCK" secondAttribute="trailing" constant="14" id="PQV-pC-MMx"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="WgR-zV-tsM" secondAttribute="trailing" id="R5z-lx-kAo"/>
                                         <constraint firstItem="WgR-zV-tsM" firstAttribute="centerY" secondItem="U9C-11-uhp" secondAttribute="centerY" id="T1A-Yq-guC"/>
                                         <constraint firstItem="YkD-ST-0IF" firstAttribute="leading" secondItem="wZ4-0x-HBl" secondAttribute="trailing" constant="8" id="bIl-Ma-xaF"/>
                                         <constraint firstItem="YkD-ST-0IF" firstAttribute="centerY" secondItem="wZ4-0x-HBl" secondAttribute="centerY" id="eBV-3D-p7l"/>
+                                        <constraint firstItem="yVe-WP-iCK" firstAttribute="centerY" secondItem="U9C-11-uhp" secondAttribute="centerY" id="gD5-wt-zad"/>
                                         <constraint firstItem="wZ4-0x-HBl" firstAttribute="leading" secondItem="U9C-11-uhp" secondAttribute="leadingMargin" id="nGB-Cp-851"/>
                                         <constraint firstItem="wZ4-0x-HBl" firstAttribute="centerY" secondItem="U9C-11-uhp" secondAttribute="centerY" id="o2N-1i-jKF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="degreesLabel" destination="WgR-zV-tsM" id="MER-2w-QY1"/>
+                                    <outlet property="detailLabel" destination="yVe-WP-iCK" id="3W0-Ag-LaI"/>
                                     <outlet property="iconImage" destination="wZ4-0x-HBl" id="Dwa-pd-N24"/>
                                     <outlet property="nameLabel" destination="YkD-ST-0IF" id="C41-iT-SfA"/>
                                     <segue destination="rky-pi-BCa" kind="show" identifier="detailSegue" id="U3L-Kf-L7N"/>

@@ -16,6 +16,7 @@ class City {
     var currentTemp:Double
     var humidity:Int
     var description:String
+    var detail:String
     var minTemp:Double
     var maxTemp:Double
     var windSpeed:Double
@@ -29,11 +30,13 @@ class City {
     var country:String
     var barometricPressure:Double
     var coordinates:CLLocation
+    var icon:UIImage
     
     init() {
         self.currentTemp = 0.0
         self.humidity = 0
         self.description = ""
+        self.detail = ""
         self.minTemp = 0.0
         self.maxTemp = 0.0
         self.windSpeed = 0.0
@@ -49,6 +52,7 @@ class City {
         let lat:CLLocationDegrees = 41.7056
         let long:CLLocationDegrees = 86.2353
         self.coordinates = CLLocation(latitude: lat, longitude: long)
+        self.icon = UIImage(named: "Sun")!
     }
     
     
