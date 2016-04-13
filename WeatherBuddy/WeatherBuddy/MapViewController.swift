@@ -14,12 +14,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    var i:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         // http://stackoverflow.com/questions/24467408/swift-add-mkannotationview-to-mkmapview
-        var i:Int = 0
+        //var i:Int = 0
         
         while i < cities.cityCount() {
             let city = cities.cityAtIndex(i)
@@ -27,10 +28,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             tempPin.coordinate = city.coordinates.coordinate
             tempPin.title = city.name
             self.mapView.addAnnotation(tempPin)
+            let annotationTestView = MKAnnotationView()
+            annotationTestView.annotation = tempPin
+            //annotationTestView.image = UIImage(named: "Sun")
+            annotationTestView.canShowCallout = true
+            annotationTestView.enabled = true
+            
             i += 1
             
+            
         }
-        
+        i = 0
         /*
         let tempPin = MKPointAnnotation()
         tempPin.coordinate = cities.cityAtIndex(1).coordinates.coordinate
@@ -69,14 +77,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         var anView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
         if anView == nil {
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            anView!.image = UIImage(named:"Snow")
+            //let imgName = cities.cityAtIndex(i).icon
+            //anView!.image = UIImage(named:imgName)
+            anView!.image = cities.cityAtIndex(i).icon
             anView!.canShowCallout = true
         }
         else {
             //we are re-using a view, update its annotation reference...
             anView!.annotation = annotation
         }
-        
+        print("finished viewforannotation")
+        i += 1
         return anView
    
     }
