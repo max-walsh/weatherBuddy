@@ -124,7 +124,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         let currentLocation = locations.last
         cities.cityAtIndex(0).updateUserLocation(currentLocation!)
         self.tableView.reloadData()
-        print("current Location: \(currentLocation)")
+        //print("current Location: \(currentLocation)")
         
         //locManager.stopUpdatingLocation() // stop looking at location
     }

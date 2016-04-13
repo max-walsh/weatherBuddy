@@ -30,7 +30,7 @@ class OpenWeatherService {
         //let coordURL = "\(baseURL)zip=\(zip),us&APPID=\(apiKey)"
         let coordURL = "\(baseURL)zip=\(cities.zipcode),us&APPID=\(apiKey)"
         let searchURL = NSURL(string: coordURL)
-        print("url: \(searchURL)")
+        //print("url: \(searchURL)")
         let request = NSMutableURLRequest(URL: searchURL!)
         sleep(1)
         let session = NSURLSession.sharedSession()
@@ -73,8 +73,8 @@ class OpenWeatherService {
     
     var resultJSON : String = "" {
         didSet {
-            print("setting output as \(resultJSON)")
-            print("\n")
+            //print("setting output as \(resultJSON)")
+            //print("\n")
         }
     }
     
@@ -82,13 +82,13 @@ class OpenWeatherService {
         let json = JSON(data: data)
         //let maxTemp = json["main"]["temp_max"]
         city.currentTemp = KtoF(json["main"]["temp"].doubleValue)
-        print("name: \(city.name)   temp: \(city.currentTemp)")
+        //print("name: \(city.name)   temp: \(city.currentTemp)")
         city.maxTemp = KtoF(json["main"]["temp_max"].doubleValue)
         city.minTemp = KtoF(json["main"]["temp_min"].doubleValue)
         city.humidity = json["main"]["humidity"].intValue
         city.description = json["weather"][0]["main"].stringValue // more general
         city.detail = json["weather"][0]["description"].stringValue // more specific
-        print("in json, description = \(city.description)")
+        //print("in json, description = \(city.description)")
         city.windSpeed = json["wind"]["speed"].doubleValue
         city.windDirection = json["wind"]["direction"].doubleValue
         city.rain = json["clouds"]["all"].stringValue
