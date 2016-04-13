@@ -12,6 +12,8 @@ import CoreLocation
 
 // TODO: Get it to stop looking for location updates when the location has changed and not changed
 
+//var cities = FavoriteCities()
+
 class CityTableViewController: UITableViewController, CLLocationManagerDelegate {
 
     //var cities = FavoriteCities()
@@ -33,6 +35,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         locManager.requestWhenInUseAuthorization()
         locManager.startUpdatingLocation()
         
+        //cities.addCity("", state: "", zip: "")
         tbc.cities.addCity("", state: "", zip: "")
         tbc.cities.addCity("New York City", state: "NY", zip: "10001")
         tbc.cities.addCity("Chicago", state: "IL", zip: "60290")
