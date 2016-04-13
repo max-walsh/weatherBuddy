@@ -17,6 +17,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let testPin = MKPointAnnotation()
+        testPin.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(33.97), longitude: CLLocationDegrees(-118.24))
+        testPin.title = "Test"
+        self.mapView.addAnnotation(testPin)
+        
     }
 
     override func didReceiveMemoryWarning() {
