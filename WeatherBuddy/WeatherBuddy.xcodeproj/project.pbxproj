@@ -10,6 +10,8 @@
 		231671FD1CB375AF00CCA23D /* CityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231671FC1CB375AF00CCA23D /* CityDetailViewController.swift */; };
 		231671FF1CB379C400CCA23D /* AddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231671FE1CB379C400CCA23D /* AddCityViewController.swift */; };
 		231672011CB3FBC600CCA23D /* FavoriteCities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231672001CB3FBC600CCA23D /* FavoriteCities.swift */; };
+		2319BA221CBEE30F004FF936 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2319BA211CBEE30F004FF936 /* ContactTableViewController.swift */; };
+		2319BA241CBEE542004FF936 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2319BA231CBEE542004FF936 /* ContactTableViewCell.swift */; };
 		232A8B301CAC6E690008E9D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A8B2F1CAC6E690008E9D5 /* AppDelegate.swift */; };
 		232A8B351CAC6E690008E9D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232A8B331CAC6E690008E9D5 /* Main.storyboard */; };
 		232A8B381CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 232A8B361CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld */; };
@@ -53,6 +55,8 @@
 		231671FC1CB375AF00CCA23D /* CityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityDetailViewController.swift; sourceTree = "<group>"; };
 		231671FE1CB379C400CCA23D /* AddCityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCityViewController.swift; sourceTree = "<group>"; };
 		231672001CB3FBC600CCA23D /* FavoriteCities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCities.swift; sourceTree = "<group>"; };
+		2319BA211CBEE30F004FF936 /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
+		2319BA231CBEE542004FF936 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		232A8B2C1CAC6E690008E9D5 /* WeatherBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		232A8B2F1CAC6E690008E9D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		232A8B341CAC6E690008E9D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 				231671FC1CB375AF00CCA23D /* CityDetailViewController.swift */,
 				231671FE1CB379C400CCA23D /* AddCityViewController.swift */,
 				F14C242C1CB5A3AC0049D363 /* MapViewController.swift */,
+				2319BA211CBEE30F004FF936 /* ContactTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 		F121A6C21CB18E920022E964 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2319BA231CBEE542004FF936 /* ContactTableViewCell.swift */,
 				23B2D9231CB2012600344E7F /* CityTableViewCell.swift */,
 				F13F20271CAC71CB00FC87AD /* City.swift */,
 				231672001CB3FBC600CCA23D /* FavoriteCities.swift */,
@@ -411,11 +417,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F121A6CA1CB18FF30022E964 /* Theme.swift in Sources */,
-				F1C0A62F1CBEE13500B7B0E6 /* CustomAnnotation.swift in Sources */,
+				2319BA221CBEE30F004FF936 /* ContactTableViewController.swift in Sources */,
 				2398F7451CB5A55A0039FA2B /* TabBarController.swift in Sources */,
 				232A8B381CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld in Sources */,
 				231672011CB3FBC600CCA23D /* FavoriteCities.swift in Sources */,
 				23B2D9221CB2003800344E7F /* CityTableViewController.swift in Sources */,
+				2319BA241CBEE542004FF936 /* ContactTableViewCell.swift in Sources */,
 				232A8B301CAC6E690008E9D5 /* AppDelegate.swift in Sources */,
 				231671FD1CB375AF00CCA23D /* CityDetailViewController.swift in Sources */,
 				F121A6C81CB18F8C0022E964 /* Settings.swift in Sources */,
