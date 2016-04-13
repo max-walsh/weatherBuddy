@@ -19,19 +19,33 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Do any additional setup after loading the view.
         
         // http://stackoverflow.com/questions/24467408/swift-add-mkannotationview-to-mkmapview
-        let testPin = MKPointAnnotation()
-        testPin.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(33.97), longitude: CLLocationDegrees(-118.24))
-        testPin.title = "Los Angeles"
-        self.mapView.addAnnotation(testPin)
+        var i:Int = 0
         
+        while i < cities.cityCount() {
+            let city = cities.cityAtIndex(i)
+            let tempPin = MKPointAnnotation()
+            tempPin.coordinate = city.coordinates.coordinate
+            tempPin.title = city.name
+            self.mapView.addAnnotation(tempPin)
+            i += 1
+            
+        }
         
+        /*
+        let tempPin = MKPointAnnotation()
+        tempPin.coordinate = cities.cityAtIndex(1).coordinates.coordinate
+        
+        tempPin.title = cities.cityAtIndex(1).name
+        self.mapView.addAnnotation(tempPin)
+        */
+        
+        /*
         let annotationTestView = MKAnnotationView()
         annotationTestView.annotation = testPin
-        annotationTestView.image = UIImage(named: "Sun")
+        //annotationTestView.image = UIImage(named: "Sun")
         annotationTestView.canShowCallout = true
         annotationTestView.enabled = true
-        
-        //cities.addCity("", state:"", zip:"")
+        */
         
     }
 
@@ -55,7 +69,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         var anView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
         if anView == nil {
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            anView!.image = UIImage(named:"Sun")
+            anView!.image = UIImage(named:"Snow")
             anView!.canShowCallout = true
         }
         else {

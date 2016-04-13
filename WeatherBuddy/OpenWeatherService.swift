@@ -95,7 +95,7 @@ class OpenWeatherService {
         city.sunrise = json["sys"]["sunrise"].intValue
         city.sunset = json["sys"]["sunset"].intValue
         city.barometricPressure = json["main"]["pressure"].doubleValue
-        let long = json["coord"]["long"].doubleValue
+        let long = json["coord"]["lon"].doubleValue
         let lat = json["coord"]["lat"].doubleValue
         city.coordinates = CLLocation(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(long))
         

@@ -12,7 +12,7 @@ import CoreLocation
 
 // TODO: Get it to stop looking for location updates when the location has changed and not changed
 
-//var cities = FavoriteCities()
+var cities = FavoriteCities()
 
 class CityTableViewController: UITableViewController, CLLocationManagerDelegate {
 
@@ -36,16 +36,16 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         locManager.startUpdatingLocation()
         
         //cities.addCity("", state: "", zip: "")
-        tbc.cities.addCity("", state: "", zip: "")
-        tbc.cities.addCity("New York City", state: "NY", zip: "10001")
-        tbc.cities.addCity("Chicago", state: "IL", zip: "60290")
-        tbc.cities.addCity("Los Angeles", state: "CA", zip: "90001")
+        cities.addCity("", state: "", zip: "")
+        cities.addCity("New York City", state: "NY", zip: "10001")
+        cities.addCity("Chicago", state: "IL", zip: "60290")
+        cities.addCity("Los Angeles", state: "CA", zip: "90001")
         
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             var i:Int = 0
-            while (i < self.tbc.cities.cityCount() ) {
-                self.ows.cityWeatherByZipcode(self.tbc.cities.cityAtIndex(i)) {
+            while (i < cities.cityCount() ) {
+                self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
                     (cities) in
                     self.city1.append(cities)
                     print("name: \(cities.name)     temp: \(cities.currentTemp)")
@@ -55,7 +55,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             }
         }
         
-        tbc.cities.changeWeather(self.city1)
+        cities.changeWeather(self.city1)
         
     }
     
@@ -64,8 +64,8 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             var i:Int = 0
-            while (i < self.tbc.cities.cityCount() ) {
-                self.ows.cityWeatherByZipcode(self.tbc.cities.cityAtIndex(i)) {
+            while (i < cities.cityCount() ) {
+                self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
                     (cities) in
                     self.city1.append(cities)
                     print("name: \(cities.name)     temp: \(cities.currentTemp)")
@@ -75,7 +75,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             }
         }
         
-        tbc.cities.changeWeather(self.city1)
+        cities.changeWeather(self.city1)
         refreshControl.endRefreshing()
     }
     
@@ -98,7 +98,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tbc.cities.cityCount()
+        return cities.cityCount()
     }
 
  
@@ -107,10 +107,10 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         let cell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath)
         
         if let cityCell = cell as? CityTableViewCell {
-            cityCell.nameLabel.text = tbc.cities.cityAtIndex(indexPath.row).name
-            cityCell.degreesLabel.text = String(Int(tbc.cities.cityAtIndex(indexPath.row).currentTemp))
-            cityCell.detailLabel.text = tbc.cities.cityAtIndex(indexPath.row).detail
-            cityCell.iconImage.image = tbc.cities.cityAtIndex(indexPath.row).icon
+            cityCell.nameLabel.text = cities.cityAtIndex(indexPath.row).name
+            cityCell.degreesLabel.text = String(Int(cities.cityAtIndex(indexPath.row).currentTemp))
+            cityCell.detailLabel.text = cities.cityAtIndex(indexPath.row).detail
+            cityCell.iconImage.image = cities.cityAtIndex(indexPath.row).icon
             
         }
 
@@ -122,7 +122,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         
         //locationManager.startUpdatingLocation()
         let currentLocation = locations.last
-        tbc.cities.cityAtIndex(0).updateUserLocation(currentLocation!)
+        cities.cityAtIndex(0).updateUserLocation(currentLocation!)
         self.tableView.reloadData()
         print("current Location: \(currentLocation)")
         
@@ -174,12 +174,12 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         if segue.identifier == "detailSegue" {
             if let detailVC = segue.destinationViewController as? CityDetailViewController,
                 indexPath = tableView.indexPathForSelectedRow {
-                    detailVC.city = tbc.cities.cityAtIndex(indexPath.row)
+                    detailVC.city = cities.cityAtIndex(indexPath.row)
             }
         }
         if segue.identifier == "addSegue" {
             if let addVC = segue.destinationViewController as? AddCityViewController {
-                addVC.cities = tbc.cities
+                addVC.cities = cities
             }
         }
     }

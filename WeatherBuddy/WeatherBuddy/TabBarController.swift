@@ -10,6 +10,6 @@ import UIKit
 
 class TabBarController: UITabBarController {
     
-    var cities = FavoriteCities()
+    //var cities = FavoriteCities()
     
 }
