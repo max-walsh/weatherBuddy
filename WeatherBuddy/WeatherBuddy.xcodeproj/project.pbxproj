@@ -29,6 +29,7 @@
 		F121A6CA1CB18FF30022E964 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121A6C91CB18FF30022E964 /* Theme.swift */; };
 		F13F20281CAC71CB00FC87AD /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13F20271CAC71CB00FC87AD /* City.swift */; };
 		F14C242D1CB5A3AC0049D363 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14C242C1CB5A3AC0049D363 /* MapViewController.swift */; };
+		F1C0A62F1CBEE13500B7B0E6 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C0A62E1CBEE13500B7B0E6 /* CustomAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		F121A6C91CB18FF30022E964 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F13F20271CAC71CB00FC87AD /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		F14C242C1CB5A3AC0049D363 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		F1C0A62E1CBEE13500B7B0E6 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 				F121A6C01CB18E4C0022E964 /* Contact.swift */,
 				F121A6BE1CB18DC80022E964 /* Coordinates.swift */,
 				F121A6C31CB18EEB0022E964 /* OpenWeatherService.swift */,
+				F1C0A62E1CBEE13500B7B0E6 /* CustomAnnotation.swift */,
 				F121A6C51CB18F380022E964 /* GoogleMapsService.swift */,
 				F121A6C71CB18F8C0022E964 /* Settings.swift */,
 				F121A6C91CB18FF30022E964 /* Theme.swift */,
@@ -408,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F121A6CA1CB18FF30022E964 /* Theme.swift in Sources */,
+				F1C0A62F1CBEE13500B7B0E6 /* CustomAnnotation.swift in Sources */,
 				2398F7451CB5A55A0039FA2B /* TabBarController.swift in Sources */,
 				232A8B381CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld in Sources */,
 				231672011CB3FBC600CCA23D /* FavoriteCities.swift in Sources */,

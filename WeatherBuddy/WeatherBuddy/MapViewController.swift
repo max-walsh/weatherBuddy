@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 
+
 class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
@@ -40,14 +41,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
         
         let reuseId = "test"
-        
+        annotation.title
         var anView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
         if anView == nil {
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             //let imgName = cities.cityAtIndex(i).icon
             //anView!.image = UIImage(named:imgName)
-            anView!.image = cities.cityAtIndex(j).icon
-            print("in anview, city: \(cities.cityAtIndex(j).name), j: \(j), icon: \(cities.cityAtIndex(j).description)")
+            //anView!.image = cities.cityAtIndex(j).icon
+            
+            anView!.image = cities.cityByName(annotation.title!!).icon
+            print("annotation title: \(annotation.title!!), cityName: \(cities.cityByName(annotation.title!!).name)")
+            //print("in anview, city: \(cities.cityAtIndex(j).name), j: \(j), icon: \(cities.cityAtIndex(j).description)")
             anView!.canShowCallout = true
         }
         else {
@@ -64,6 +68,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewWillAppear(animated)
         i = 0
         j = 0
+        print("\n\nfresh")
         while i < cities.cityCount() {
             print ("adding: \(cities.cityAtIndex(i).name), i = \(i)")
             let city = cities.cityAtIndex(i)
@@ -87,7 +92,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewWillDisappear(animated: Bool) {
         let annotationsToRemove = mapView.annotations
-        mapView.removeAnnotations(annotationsToRemove)
+        //print(annotationsToRemove)
+        //mapView.removeAnnotations(annotationsToRemove)
+        //mapView.rem
     }
     
     
