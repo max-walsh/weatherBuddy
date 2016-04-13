@@ -13,10 +13,16 @@ class CityDetailViewController: UIViewController {
     var city : City?
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var iconImage: UIImageView!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var zipLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = city?.name
+        nameLabel.text = "\(city!.name), \(city!.state)"
+        iconImage.image = city?.icon
+        detailLabel.text = city?.detail
+        zipLabel.text = city?.zipcode
         // Do any additional setup after loading the view.
     }
 

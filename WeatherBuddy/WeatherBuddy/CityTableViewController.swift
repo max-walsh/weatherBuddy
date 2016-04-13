@@ -12,43 +12,74 @@ import CoreLocation
 
 // TODO: Get it to stop looking for location updates when the location has changed and not changed
 
+var cities = FavoriteCities()
+
 class CityTableViewController: UITableViewController, CLLocationManagerDelegate {
 
-    var cities = FavoriteCities()
+    //var cities = FavoriteCities()
     var city1=[City]()
     //var cities = [City]()
     let locManager = CLLocationManager()
     let ows = OpenWeatherService()
     
+    let tbc = TabBarController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // https://www.andrewcbancroft.com/2015/03/17/basics-of-pull-to-refresh-for-swift-developers/#table-view-controller
+        
+        self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        
         locManager.delegate = self
         locManager.requestWhenInUseAuthorization()
         locManager.startUpdatingLocation()
         
+        //cities.addCity("", state: "", zip: "")
         cities.addCity("", state: "", zip: "")
         cities.addCity("New York City", state: "NY", zip: "10001")
         cities.addCity("Chicago", state: "IL", zip: "60290")
         cities.addCity("Los Angeles", state: "CA", zip: "90001")
         
-        var i:Int = 0
-        while (i < cities.cityCount() ) {
-            ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
-                (cities) in
-                self.city1.append(cities)
-                print("name: \(cities.name)     temp: \(cities.currentTemp)")
-                self.tableView.reloadData()
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            var i:Int = 0
+            while (i < cities.cityCount() ) {
+                self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
+                    (cities) in
+                    self.city1.append(cities)
+                    print("name: \(cities.name)     temp: \(cities.currentTemp)")
+                    self.tableView.reloadData()
+                }
+                i += 1
             }
-            i += 1
         }
         
-        self.cities.changeWeather(self.city1)
+        cities.changeWeather(self.city1)
         
     }
     
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        print("refreshed!")
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            var i:Int = 0
+            while (i < cities.cityCount() ) {
+                self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
+                    (cities) in
+                    self.city1.append(cities)
+                    print("name: \(cities.name)     temp: \(cities.currentTemp)")
+                    self.tableView.reloadData()
+                }
+                i += 1
+            }
+        }
+        
+        cities.changeWeather(self.city1)
+        refreshControl.endRefreshing()
+    }
+    
     override func viewWillAppear(animated: Bool) {
-        // reload the tableview for when new students are added
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
@@ -76,9 +107,11 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         let cell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath)
         
         if let cityCell = cell as? CityTableViewCell {
-            print("cell for row")
             cityCell.nameLabel.text = cities.cityAtIndex(indexPath.row).name
             cityCell.degreesLabel.text = String(Int(cities.cityAtIndex(indexPath.row).currentTemp))
+            cityCell.detailLabel.text = cities.cityAtIndex(indexPath.row).detail
+            cityCell.iconImage.image = cities.cityAtIndex(indexPath.row).icon
+            
         }
 
 
