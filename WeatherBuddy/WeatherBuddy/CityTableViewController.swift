@@ -40,6 +40,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         cities.addCity("New York City", state: "NY", zip: "10001")
         cities.addCity("Chicago", state: "IL", zip: "60290")
         cities.addCity("Los Angeles", state: "CA", zip: "90001")
+        cities.addCity("Gann Valley", state: "SD", zip: "57341")
         
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
