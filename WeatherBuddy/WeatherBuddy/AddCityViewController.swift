@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddCityViewController: UIViewController {
+class AddCityViewController: UIViewController, UITextFieldDelegate {
 
     var cities : FavoriteCities?
     
@@ -17,6 +17,9 @@ class AddCityViewController: UIViewController {
     @IBOutlet weak var stateTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        zipTextField.delegate = self
+        zipTextField.keyboardType = UIKeyboardType.NumberPad
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +39,14 @@ class AddCityViewController: UIViewController {
             alert.addAction(action)
             presentViewController(alert, animated: true, completion: nil)
         }
-        
+        let zip:String = zipTextField.text!
+        zip.characters.count
+        if (zipTextField.text!.characters.count != 5) {
+            let alert = UIAlertController(title: "Invalid Zipcode", message: "Please enter a 5 digit zipcode.", preferredStyle: .Alert)
+            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alert.addAction(action)
+            presentViewController(alert, animated: true, completion: nil)
+        }
         cities?.addCity(cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!)
         
         dismissViewControllerAnimated(true, completion: nil)

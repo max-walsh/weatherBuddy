@@ -7,15 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
 class Contact {
-    var firstName:String
-    var lastName:String
+    var name:String
     var city:City
+    var image:UIImage
     
-    init() {
-        firstName = ""
-        lastName = ""
-        city = City()
+    init(name: String, city: City) {
+        self.name = name
+        self.city = city
+        self.image = UIImage(named: "Contact")!
     }
 }

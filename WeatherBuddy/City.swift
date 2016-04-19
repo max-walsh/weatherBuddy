@@ -64,7 +64,7 @@ class City {
                 return
             }
             if let pm = placemarks![0] as? CLPlacemark {
-                print("locality: \(pm.locality)")
+                //print("locality: \(pm.locality)")
                 self.name = pm.locality!
                 self.state = pm.administrativeArea!
                 self.zipcode = pm.postalCode!

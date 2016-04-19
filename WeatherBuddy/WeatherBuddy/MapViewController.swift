@@ -10,50 +10,18 @@ import UIKit
 import MapKit
 
 
+
 class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
     var i:Int = 0
+    var j:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         // http://stackoverflow.com/questions/24467408/swift-add-mkannotationview-to-mkmapview
-        //var i:Int = 0
-        
-        while i < cities.cityCount() {
-            let city = cities.cityAtIndex(i)
-            let tempPin = MKPointAnnotation()
-            tempPin.coordinate = city.coordinates.coordinate
-            tempPin.title = city.name
-            self.mapView.addAnnotation(tempPin)
-            let annotationTestView = MKAnnotationView()
-            annotationTestView.annotation = tempPin
-            //annotationTestView.image = UIImage(named: "Sun")
-            annotationTestView.canShowCallout = true
-            annotationTestView.enabled = true
-            
-            i += 1
-            
-            
-        }
-        i = 0
-        /*
-        let tempPin = MKPointAnnotation()
-        tempPin.coordinate = cities.cityAtIndex(1).coordinates.coordinate
-        
-        tempPin.title = cities.cityAtIndex(1).name
-        self.mapView.addAnnotation(tempPin)
-        */
-        
-        /*
-        let annotationTestView = MKAnnotationView()
-        annotationTestView.annotation = testPin
-        //annotationTestView.image = UIImage(named: "Sun")
-        annotationTestView.canShowCallout = true
-        annotationTestView.enabled = true
-        */
         
     }
 
@@ -73,23 +41,60 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
         
         let reuseId = "test"
-        
+        annotation.title
         var anView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
         if anView == nil {
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             //let imgName = cities.cityAtIndex(i).icon
             //anView!.image = UIImage(named:imgName)
-            anView!.image = cities.cityAtIndex(i).icon
+            //anView!.image = cities.cityAtIndex(j).icon
+            
+            anView!.image = cities.cityByName(annotation.title!!).icon
+            print("annotation title: \(annotation.title!!), cityName: \(cities.cityByName(annotation.title!!).name)")
+            //print("in anview, city: \(cities.cityAtIndex(j).name), j: \(j), icon: \(cities.cityAtIndex(j).description)")
             anView!.canShowCallout = true
         }
         else {
             //we are re-using a view, update its annotation reference...
             anView!.annotation = annotation
         }
-        print("finished viewforannotation")
-        i += 1
+        //print("finished viewforannotation")
+        j += 1
         return anView
    
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        i = 0
+        j = 0
+        print("\n\nfresh")
+        while i < cities.cityCount() {
+            print ("adding: \(cities.cityAtIndex(i).name), i = \(i)")
+            let city = cities.cityAtIndex(i)
+            let tempPin = MKPointAnnotation()
+            tempPin.coordinate = city.coordinates.coordinate
+            tempPin.title = city.name
+            self.mapView.addAnnotation(tempPin)
+            let annotationTestView = MKAnnotationView()
+            annotationTestView.annotation = tempPin
+            //annotationTestView.image = UIImage(named: "Sun")
+            annotationTestView.canShowCallout = true
+            annotationTestView.enabled = true
+            
+            i += 1
+            
+            
+        }
+        i = 0
+        j = 0
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        let annotationsToRemove = mapView.annotations
+        //print(annotationsToRemove)
+        //mapView.removeAnnotations(annotationsToRemove)
+        //mapView.rem
     }
     
     
