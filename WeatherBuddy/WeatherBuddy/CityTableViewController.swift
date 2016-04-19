@@ -57,7 +57,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         }
         
         cities.changeWeather(self.city1)
-        
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
@@ -121,51 +121,72 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        //locationManager.startUpdatingLocation()
         let currentLocation = locations.last
         cities.cityAtIndex(0).updateUserLocation(currentLocation!)
+        // Update weather at new current location
+        var tempCity = [City]()
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            self.ows.cityWeatherByZipcode(cities.cityAtIndex(0)) {
+                (cities) in
+                tempCity.append(cities)
+                print("name: \(cities.name)     temp: \(cities.currentTemp)")
+                self.tableView.reloadData()
+            }
+        }
+        
+        cities.changeWeather(tempCity)
         self.tableView.reloadData()
-        //print("current Location: \(currentLocation)")
         
         //locManager.stopUpdatingLocation() // stop looking at location
     }
     
     
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        if indexPath.item != 0 {
+            return true
+        } else {
+            return false
+        }
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            print("delete")
+            cities.removeCityAtIndex(indexPath.item)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
-    /*
+    
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+        print("rearrange")
     }
-    */
+    
 
-    /*
+    
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
-        return true
+        if indexPath.item != 0 {
+            return true
+        } else {
+            return false
+        }
     }
-    */
+
 
 
     // MARK: - Navigation

@@ -20,6 +20,10 @@ class FavoriteCities: NSObject {
         return cities[index]
     }
     
+    func removeCityAtIndex(index: Int) -> Void {
+        cities.removeAtIndex(index)
+    }
+    
     func cityByName(cityName: String) -> City {
         for city in cities {
             if city.name == cityName {
