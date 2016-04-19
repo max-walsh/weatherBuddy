@@ -9,13 +9,11 @@
 import Foundation
 
 class Contact {
-    var firstName:String
-    var lastName:String
+    var name:String
     var city:City
     
-    init() {
-        firstName = ""
-        lastName = ""
-        city = City()
+    init(name: String, city: City) {
+        self.name = name
+        self.city = city
     }
 }

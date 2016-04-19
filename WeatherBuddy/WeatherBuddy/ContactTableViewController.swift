@@ -38,8 +38,8 @@ class ContactTableViewController: UITableViewController {
             
             let containerId = CNContactStore().defaultContainerIdentifier()
             let predicate: NSPredicate = CNContact.predicateForContactsInContainerWithIdentifier(containerId)
-            //let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactEmailAddressesKey]
             let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactEmailAddressesKey, CNContactPostalAddressesKey, CNContactImageDataKey, CNContactImageDataAvailableKey]
+            
             self.contacts = try store.unifiedContactsMatchingPredicate(predicate, keysToFetch: keysToFetch)
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -53,18 +53,18 @@ class ContactTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getContacts()
-        /*for contact in contacts {
-            var address = ""
+        for contact in contacts {
             if contact.isKeyAvailable(CNContactPostalAddressesKey) {
-                if let postalAddress = contact.postalAddresses.first?.value as? CNPostalAddress {
-                    address = CNPostalAddressFormatter().stringFromPostalAddress(postalAddress)
-                } else {
-                    address = "No Address"
+                if let addr = contact.postalAddresses.first?.value as? CNPostalAddress {
+                    let city = City()
+                    city.zipcode = addr.postalCode
+                    city.country = addr.country
+                    city.state = addr.state
+                    our_contacts.append(Contact(name: CNContactFormatter().stringFromContact(contact)!, city: city))
                 }
+                
             }
-            
-        }*/
-
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -74,41 +74,28 @@ class ContactTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return contacts.count
+        return our_contacts.count
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath: indexPath)
         
-        let contact = self.contacts[indexPath.row]
-        let formatter = CNContactFormatter()
+        let contact = self.our_contacts[indexPath.row]
         
         if let contactCell = cell as? ContactTableViewCell {
-            contactCell.nameLabel.text = formatter.stringFromContact(contact)
-            
-            if contact.isKeyAvailable(CNContactPostalAddressesKey) {
-                if let postalAddress = contact.postalAddresses.first?.value as? CNPostalAddress {
-                    contactCell.addressLabel.text = CNPostalAddressFormatter().stringFromPostalAddress(postalAddress)
-                } else {
-                    contactCell.addressLabel.text = "No Address"
-                }
-            }
-
+            contactCell.nameLabel.text = contact.name
+            contactCell.addressLabel.text = contact.city.zipcode
         }
-        
         
         return cell
     }
