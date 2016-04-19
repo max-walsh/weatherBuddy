@@ -6,6 +6,10 @@
 //  Copyright © 2016 Katie Kuenster. All rights reserved.
 //
 
+// http://code.tutsplus.com/tutorials/ios-9-an-introduction-to-the-contacts-framework--cms-25599
+// http://stackoverflow.com/questions/32669612/how-to-fetch-all-contacts-record-in-ios-9-using-contacts-framework
+
+
 import UIKit
 import Contacts
 import ContactsUI
@@ -13,9 +17,53 @@ import ContactsUI
 class ContactTableViewController: UITableViewController {
     
     var contacts = [CNContact]()
+    var our_contacts = [Contact]()
+    
+    func getContacts() {
+        let store = CNContactStore()
+        
+        if CNContactStore.authorizationStatusForEntityType(.Contacts) == .NotDetermined {
+            store.requestAccessForEntityType(.Contacts, completionHandler: { (authorized: Bool, error: NSError?) -> Void in
+                if authorized {
+                    self.retrieveContactsWithStore(store)
+                }
+            })
+        } else if CNContactStore.authorizationStatusForEntityType(.Contacts) == .Authorized {
+            self.retrieveContactsWithStore(store)
+        }
+    }
+    
+    func retrieveContactsWithStore(store: CNContactStore) {
+        do {
+            
+            let containerId = CNContactStore().defaultContainerIdentifier()
+            let predicate: NSPredicate = CNContact.predicateForContactsInContainerWithIdentifier(containerId)
+            //let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactEmailAddressesKey]
+            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactEmailAddressesKey, CNContactPostalAddressesKey, CNContactImageDataKey, CNContactImageDataAvailableKey]
+            self.contacts = try store.unifiedContactsMatchingPredicate(predicate, keysToFetch: keysToFetch)
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        } catch {
+            print(error)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getContacts()
+        /*for contact in contacts {
+            var address = ""
+            if contact.isKeyAvailable(CNContactPostalAddressesKey) {
+                if let postalAddress = contact.postalAddresses.first?.value as? CNPostalAddress {
+                    address = CNPostalAddressFormatter().stringFromPostalAddress(postalAddress)
+                } else {
+                    address = "No Address"
+                }
+            }
+            
+        }*/
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -38,16 +86,27 @@ class ContactTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
-        //return contacts.count
+        return contacts.count
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath: indexPath)
         
+        let contact = self.contacts[indexPath.row]
+        let formatter = CNContactFormatter()
+        
         if let contactCell = cell as? ContactTableViewCell {
-            //contactCell.nameLabel.text = contacts(indexPath.row)
+            contactCell.nameLabel.text = formatter.stringFromContact(contact)
+            
+            if contact.isKeyAvailable(CNContactPostalAddressesKey) {
+                if let postalAddress = contact.postalAddresses.first?.value as? CNPostalAddress {
+                    contactCell.addressLabel.text = CNPostalAddressFormatter().stringFromPostalAddress(postalAddress)
+                } else {
+                    contactCell.addressLabel.text = "No Address"
+                }
+            }
+
         }
         
         

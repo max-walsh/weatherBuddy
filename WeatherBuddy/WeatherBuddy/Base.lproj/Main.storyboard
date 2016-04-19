@@ -18,7 +18,7 @@
                     <connections>
                         <segue destination="Lhv-Ln-5Ae" kind="relationship" relationship="viewControllers" id="5i3-vW-9Bx"/>
                         <segue destination="PiL-yx-vQn" kind="relationship" relationship="viewControllers" id="v5R-jq-1l6"/>
-                        <segue destination="DYt-jy-4ps" kind="relationship" relationship="viewControllers" id="iNK-wg-msc"/>
+                        <segue destination="t6W-za-YaE" kind="relationship" relationship="viewControllers" id="iNK-wg-msc"/>
                         <segue destination="flP-Ot-Qpu" kind="relationship" relationship="viewControllers" id="4U0-LJ-iXO"/>
                     </connections>
                 </tabBarController>
@@ -61,7 +61,7 @@
                                                 <constraint firstAttribute="height" constant="21" id="YLl-7s-XTR"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkD-ST-0IF">
@@ -233,7 +233,7 @@
                                     <constraint firstAttribute="height" constant="21" id="BS1-N1-46J"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12345" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsR-JQ-9XB">
@@ -242,7 +242,7 @@
                                     <constraint firstAttribute="height" constant="21" id="5QW-o9-wza"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -315,31 +315,50 @@
             </objects>
             <point key="canvasLocation" x="448" y="320"/>
         </scene>
-        <!--Contact Table View Controller-->
+        <!--Contacts-->
         <scene sceneID="DoK-0b-1Dr">
             <objects>
                 <tableViewController id="DYt-jy-4ps" customClass="ContactTableViewController" customModule="WeatherBuddy" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6Cx-mF-boU">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="6Cx-mF-boU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" id="Pd2-ib-k9x" customClass="ContactTableViewCell" customModule="WeatherBuddy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" rowHeight="80" id="Pd2-ib-k9x" customClass="ContactTableViewCell" customModule="WeatherBuddy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pd2-ib-k9x" id="7fI-GJ-Yrb">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZx-lK-RQU">
-                                            <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZx-lK-RQU">
+                                            <rect key="frame" x="8" y="29" width="45" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="oQx-OC-69r"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rD-ou-x3J">
+                                            <rect key="frame" x="529" y="29" width="63" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="TYf-b2-cdB"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="iZx-lK-RQU" firstAttribute="centerY" secondItem="7fI-GJ-Yrb" secondAttribute="centerY" id="1DF-F3-M8j"/>
+                                        <constraint firstItem="8rD-ou-x3J" firstAttribute="centerY" secondItem="7fI-GJ-Yrb" secondAttribute="centerY" id="8MU-N8-vY9"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="iZx-lK-RQU" secondAttribute="leading" id="QkW-GU-OcB"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="8rD-ou-x3J" secondAttribute="trailing" id="UuZ-Qg-4aP"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addressLabel" destination="8rD-ou-x3J" id="Svz-pS-sY8"/>
                                     <outlet property="nameLabel" destination="iZx-lK-RQU" id="gO2-Jq-Dul"/>
                                 </connections>
                             </tableViewCell>
@@ -349,11 +368,11 @@
                             <outlet property="delegate" destination="DYt-jy-4ps" id="1bU-3I-ueD"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="k64-hp-YU9"/>
+                    <navigationItem key="navigationItem" title="Contacts" id="BPL-F1-9Mf"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yAh-np-BRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="448" y="1192"/>
+            <point key="canvasLocation" x="1260" y="1192"/>
         </scene>
         <!--Settings-->
         <scene sceneID="9NX-PU-ZdT">
@@ -402,6 +421,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cff-vC-GSN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="448" y="-415"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Tha-wp-xon">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t6W-za-YaE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="k64-hp-YU9"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VWi-LQ-0C3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DYt-jy-4ps" kind="relationship" relationship="rootViewController" id="AMy-6f-TR0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iWF-4G-Ojg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="448" y="1192"/>
         </scene>
     </scenes>
     <resources>
