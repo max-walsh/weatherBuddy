@@ -12,6 +12,10 @@ class ContactTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var contactImage: UIImageView!
+    @IBOutlet weak var iconImage: UIImageView!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var degreeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
