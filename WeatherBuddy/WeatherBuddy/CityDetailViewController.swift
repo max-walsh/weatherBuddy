@@ -23,6 +23,7 @@ class CityDetailViewController: UIViewController {
     @IBOutlet weak var sunriseLabel: UILabel!
     @IBOutlet weak var sunsetLabel: UILabel!
     @IBOutlet weak var barometricLabel: UILabel!
+    @IBOutlet weak var rainLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class CityDetailViewController: UIViewController {
         sunriseLabel.text = "Sunrise: \(city!.sunrise)"
         sunsetLabel.text = "Sunset: \(city!.sunset)"
         barometricLabel.text = "Pressure: \(city!.barometricPressure)"
+        rainLabel.text = "Rain: \(city!.rain)"
 
         // Do any additional setup after loading the view.
     }

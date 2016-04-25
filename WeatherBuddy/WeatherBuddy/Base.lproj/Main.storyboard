@@ -308,6 +308,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rain:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prF-kg-Ezx">
+                                <rect key="frame" x="45" y="450" width="38" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="6EX-mP-cId"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -322,6 +331,8 @@
                             <constraint firstItem="0XY-ka-T7a" firstAttribute="top" secondItem="Y8U-Ew-iOD" secondAttribute="bottom" constant="78" id="M6R-vs-jNu"/>
                             <constraint firstItem="kkW-g5-Pch" firstAttribute="top" secondItem="3An-uY-PCo" secondAttribute="bottom" constant="25" id="Nj2-cF-Xxk"/>
                             <constraint firstItem="PH8-UD-4yK" firstAttribute="leading" secondItem="D3B-TU-cbk" secondAttribute="leadingMargin" constant="25" id="PNy-8r-hEJ"/>
+                            <constraint firstItem="prF-kg-Ezx" firstAttribute="top" secondItem="PH8-UD-4yK" secondAttribute="bottom" constant="3" id="VSa-8B-oLG"/>
+                            <constraint firstItem="prF-kg-Ezx" firstAttribute="leading" secondItem="D3B-TU-cbk" secondAttribute="leadingMargin" constant="25" id="WlN-AR-kHF"/>
                             <constraint firstItem="75e-8s-YiU" firstAttribute="top" secondItem="Y8U-Ew-iOD" secondAttribute="bottom" constant="8" id="dQi-5s-ZaU"/>
                             <constraint firstItem="PH8-UD-4yK" firstAttribute="top" secondItem="Y8U-Ew-iOD" secondAttribute="bottom" constant="102" id="hrK-AO-Hsd"/>
                             <constraint firstItem="QSx-o2-dQ8" firstAttribute="top" secondItem="Y8U-Ew-iOD" secondAttribute="top" id="iyQ-F4-whl"/>
@@ -343,6 +354,7 @@
                         <outlet property="maxLabel" destination="2u7-gh-S6V" id="nF4-z2-uVt"/>
                         <outlet property="minLabel" destination="FUH-NJ-oXk" id="DDr-hS-dPg"/>
                         <outlet property="nameLabel" destination="kkW-g5-Pch" id="TsM-Kp-kah"/>
+                        <outlet property="rainLabel" destination="prF-kg-Ezx" id="IGl-mY-m19"/>
                         <outlet property="sunriseLabel" destination="LLd-YD-XiT" id="5K1-Er-uv6"/>
                         <outlet property="sunsetLabel" destination="0XY-ka-T7a" id="6sZ-Ih-A64"/>
                         <outlet property="windLabel" destination="K1f-Sa-6ws" id="jeB-0A-Jjg"/>
