@@ -92,8 +92,15 @@ class OpenWeatherService {
         city.windSpeed = json["wind"]["speed"].doubleValue
         city.windDirection = json["wind"]["direction"].doubleValue
         city.rain = json["clouds"]["all"].stringValue
-        city.sunrise = json["sys"]["sunrise"].intValue
-        city.sunset = json["sys"]["sunset"].intValue
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "hh:mm"
+        let srise = NSDate(timeIntervalSince1970: json["sys"]["sunrise"].doubleValue)
+        city.sunrise = dateFormatter.stringFromDate(srise)
+        city.sunrise = city.sunrise.stringByAppendingString(" AM")
+        let sset = NSDate(timeIntervalSince1970: json["sys"]["sunset"].doubleValue)
+        city.sunset = dateFormatter.stringFromDate(sset)
+        city.sunset = city.sunset.stringByAppendingString(" PM")
         city.barometricPressure = json["main"]["pressure"].doubleValue
         let long = json["coord"]["lon"].doubleValue
         let lat = json["coord"]["lat"].doubleValue

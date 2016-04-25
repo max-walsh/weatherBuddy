@@ -22,8 +22,8 @@ class City {
     var windSpeed:Double
     var windDirection:Double
     var rain:String
-    var sunrise:Int
-    var sunset:Int
+    var sunrise:String
+    var sunset:String
     var name:String
     var state:String
     var zipcode:String
@@ -31,6 +31,7 @@ class City {
     var barometricPressure:Double
     var coordinates:CLLocation
     var icon:UIImage
+    var timeZone:NSTimeZone
     
     init() {
         self.currentTemp = 0.0
@@ -42,8 +43,8 @@ class City {
         self.windSpeed = 0.0
         self.windDirection = 0.0
         self.rain = ""
-        self.sunrise = 0
-        self.sunset = 0
+        self.sunrise = ""
+        self.sunset = ""
         self.name = ""
         self.state = ""
         self.zipcode = ""
@@ -53,6 +54,7 @@ class City {
         let long:CLLocationDegrees = 86.2353
         self.coordinates = CLLocation(latitude: lat, longitude: long)
         self.icon = UIImage(named: "Sun")!
+        self.timeZone = NSTimeZone()
     }
     
     
@@ -64,12 +66,12 @@ class City {
                 return
             }
             if let pm = placemarks![0] as? CLPlacemark {
-                //print("locality: \(pm.locality)")
                 self.name = pm.locality!
                 self.state = pm.administrativeArea!
                 self.zipcode = pm.postalCode!
                 self.country = pm.country!
                 self.coordinates = pm.location!
+                self.timeZone = pm.timeZone!
             }
             else {
                 print("Problem with data from geocoder")
