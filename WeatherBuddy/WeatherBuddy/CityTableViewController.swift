@@ -112,7 +112,9 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             cityCell.degreesLabel.text = String(Int(cities.cityAtIndex(indexPath.row).currentTemp))
             cityCell.detailLabel.text = cities.cityAtIndex(indexPath.row).detail
             cityCell.iconImage.image = cities.cityAtIndex(indexPath.row).icon
-            
+            if (indexPath.row == 0) {
+                cityCell.locationImage.image = UIImage(named: "Location")
+            }
         }
 
 

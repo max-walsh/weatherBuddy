@@ -152,10 +152,10 @@ class ContactTableViewController: UITableViewController {
             contactCell.nameLabel.text = contact.name
             contactCell.addressLabel.text = "\(contact.city.name), \(contact.city.state)"
             contactCell.contactImage.image = contact.image
-            contactCell.contactImage.contentMode = .ScaleAspectFit
-            contactCell.degreeLabel.text = String(contact.city.currentTemp)
+            contactCell.degreeLabel.text = String(Int(contact.city.currentTemp))
             contactCell.iconImage.image = contact.city.icon
             contactCell.detailLabel.text = contact.city.detail
+            contactCell.selectionStyle = UITableViewCellSelectionStyle.None
         }
         
         return cell
