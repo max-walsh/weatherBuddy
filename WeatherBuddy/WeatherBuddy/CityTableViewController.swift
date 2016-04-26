@@ -109,7 +109,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         
         if let cityCell = cell as? CityTableViewCell {
             cityCell.nameLabel.text = cities.cityAtIndex(indexPath.row).name
-            cityCell.degreesLabel.text = String(Int(cities.cityAtIndex(indexPath.row).currentTemp))
+            cityCell.degreesLabel.text = "\(Int(cities.cityAtIndex(indexPath.row).currentTemp))\u{00B0}"
             cityCell.detailLabel.text = cities.cityAtIndex(indexPath.row).detail
             cityCell.iconImage.image = cities.cityAtIndex(indexPath.row).icon
             if (indexPath.row == 0) {

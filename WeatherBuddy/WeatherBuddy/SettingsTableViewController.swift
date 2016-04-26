@@ -34,17 +34,9 @@ class SettingsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("settingCell", forIndexPath: indexPath)
-        if indexPath.row == 0 {
-            cell.textLabel!.text = "Change Units"
-        }
-        if indexPath.row == 1 {
-            cell.textLabel!.text = "Theme"
-        }
-        if indexPath.row == 2 {
-            cell.textLabel!.text = "setting 3"
-        }
-        
+        cell.textLabel?.text = "Row \(indexPath.row)"
         return cell
+
     }
     
     /*

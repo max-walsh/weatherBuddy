@@ -15,6 +15,7 @@ class OpenWeatherService {
     var baseURL:String = "http://api.openweathermap.org/data/2.5/weather?"
     var apiKey:String = "93d98c361bc0d24cb301adc549eea5c4"
     var cityWeather = City()
+    // http://api.openweathermap.org/data/2.5/forecast?q=London,us&APPID=93d98c361bc0d24cb301adc549eea5c4
     
     /*
     init() {
@@ -124,6 +125,9 @@ class OpenWeatherService {
         }
         else if (city.description == "Snow") {
             city.icon = UIImage(named: "Snow")!
+        }
+        else if (city.description == "Mist") {
+            city.icon = UIImage(named: "FogDay")!
         }
         
         return city
