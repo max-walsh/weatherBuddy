@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class OpenWeatherService {
     
-    var baseURL:String = "http://api.openweathermap.org/data/2.5/weather?"
+    var baseURL:String = "http://api.openweathermap.org/data/2.5/"
     var apiKey:String = "93d98c361bc0d24cb301adc549eea5c4"
     var cityWeather = City()
     
@@ -28,7 +28,7 @@ class OpenWeatherService {
         //let zip = "46556"
         //let test = self.cities.zipcode
         //let coordURL = "\(baseURL)zip=\(zip),us&APPID=\(apiKey)"
-        let coordURL = "\(baseURL)zip=\(cities.zipcode),us&APPID=\(apiKey)"
+        let coordURL = "\(baseURL)weather?zip=\(cities.zipcode),us&APPID=\(apiKey)"
         let searchURL = NSURL(string: coordURL)
         //print("url: \(searchURL)")
         let request = NSMutableURLRequest(URL: searchURL!)
@@ -68,13 +68,37 @@ class OpenWeatherService {
         task.resume()
     }
     
-    
+    func cityWeatherForecast(city: City, callback: (City)->Void) {
+        let coordURL = "\(baseURL)forecast?id=\(city.id),&APPID=\(apiKey)"
+        let searchURL = NSURL(string: coordURL)
+        let request = NSMutableURLRequest(URL: searchURL!)
+        //sleep(1)
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) {
+            (data, response, error) -> Void in
+            if error != nil {
+                print(error)
+            } else {
+                let result = String(data: data!, encoding:NSASCIIStringEncoding)!
+                if (data == nil) {
+                    print("something went wrong in cityWeatherForecast")
+                }
+                self.resultJSON = result
+                //// add forcast to each city
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    callback(city)
+                })
+            }
+        }
+        task.resume()
+    }
     
     
     var resultJSON : String = "" {
         didSet {
-            //print("setting output as \(resultJSON)")
-            //print("\n")
+            print("setting output as \(resultJSON)")
+            print("\n")
         }
     }
     
@@ -92,19 +116,26 @@ class OpenWeatherService {
         city.windSpeed = json["wind"]["speed"].doubleValue
         city.windDirection = json["wind"]["direction"].doubleValue
         city.rain = json["clouds"]["all"].stringValue
-        
+        /*
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "hh:mm"
+        */
+        city.sunrise1970 = json["sys"]["sunrise"].doubleValue
+        city.sunset1970 = json["sys"]["sunset"].doubleValue
+        /*
         let srise = NSDate(timeIntervalSince1970: json["sys"]["sunrise"].doubleValue)
         city.sunrise = dateFormatter.stringFromDate(srise)
         city.sunrise = city.sunrise.stringByAppendingString(" AM")
         let sset = NSDate(timeIntervalSince1970: json["sys"]["sunset"].doubleValue)
         city.sunset = dateFormatter.stringFromDate(sset)
         city.sunset = city.sunset.stringByAppendingString(" PM")
+        */
         city.barometricPressure = json["main"]["pressure"].doubleValue
         let long = json["coord"]["lon"].doubleValue
         let lat = json["coord"]["lat"].doubleValue
         city.coordinates = CLLocation(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(long))
+        city.id = json["id"].stringValue
+        print("\(city.id)\n\n\n\n\n\n\n\n\n\n")
         
         // settting icon image
         if (city.description == "Clear") {
@@ -125,6 +156,8 @@ class OpenWeatherService {
         else if (city.description == "Snow") {
             city.icon = UIImage(named: "Snow")!
         }
+        
+        city.updateUserLocation(city.coordinates)
         
         return city
         

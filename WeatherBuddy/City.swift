@@ -32,6 +32,9 @@ class City {
     var coordinates:CLLocation
     var icon:UIImage
     var timeZone:NSTimeZone
+    var sunrise1970:Double
+    var sunset1970:Double
+    var id:String
     
     init() {
         self.currentTemp = 0.0
@@ -55,6 +58,9 @@ class City {
         self.coordinates = CLLocation(latitude: lat, longitude: long)
         self.icon = UIImage(named: "Sun")!
         self.timeZone = NSTimeZone()
+        self.sunrise1970 = 0.0 //NSDate().timeIntervalSince1970
+        self.sunset1970 = 0.0 //NSDate().timeIntervalSince1970
+        self.id = ""
     }
     
     
@@ -72,6 +78,18 @@ class City {
                 self.country = pm.country!
                 self.coordinates = pm.location!
                 self.timeZone = pm.timeZone!
+                print(self.timeZone.secondsFromGMT)
+                self.sunrise1970 += (Double(self.timeZone.secondsFromGMT) + 14400) // openWeather actually gives sunrise in only east coast time
+                self.sunset1970 += (Double(self.timeZone.secondsFromGMT) + 14400)
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "HH:mm"
+                let srise = NSDate(timeIntervalSince1970: self.sunrise1970)
+                self.sunrise = dateFormatter.stringFromDate(srise)
+                self.sunrise = self.sunrise.stringByAppendingString(" AM")
+                let sset = NSDate(timeIntervalSince1970: self.sunset1970)
+                self.sunset = dateFormatter.stringFromDate(sset)
+                self.sunset = self.sunset.stringByAppendingString(" PM")
+                
             }
             else {
                 print("Problem with data from geocoder")

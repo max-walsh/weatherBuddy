@@ -25,8 +25,13 @@ class CityDetailViewController: UIViewController {
     @IBOutlet weak var barometricLabel: UILabel!
     @IBOutlet weak var rainLabel: UILabel!
     
+    
+    let ows = OpenWeatherService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         nameLabel.text = "\(city!.name), \(city!.state)"
         iconImage.image = city?.icon
         detailLabel.text = city?.detail
@@ -41,6 +46,20 @@ class CityDetailViewController: UIViewController {
         rainLabel.text = "Rain: \(city!.rain)"
 
         // Do any additional setup after loading the view.
+        /*
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_async(priority, 0)) {
+        
+        }
+        */
+        self.ows.cityWeatherForecast(city!) {
+            (city) in
+            self.city = city
+            //print("should have been called")
+            //self. MUST REFRESH THE DATA
+        }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
