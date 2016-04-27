@@ -32,6 +32,9 @@ class City {
     var coordinates:CLLocation
     var icon:UIImage
     var timeZone:NSTimeZone
+    var id:Int
+    var sunrise_date:Int?
+    var sunset_date:Int?
     
     init() {
         self.currentTemp = 0.0
@@ -55,6 +58,7 @@ class City {
         self.coordinates = CLLocation(latitude: lat, longitude: long)
         self.icon = UIImage(named: "Sun")!
         self.timeZone = NSTimeZone()
+        self.id = 0
     }
     
     

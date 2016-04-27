@@ -21,6 +21,7 @@ class SettingsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    /*
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -33,12 +34,11 @@ class SettingsTableViewController: UITableViewController {
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("settingCell", forIndexPath: indexPath)
-        cell.textLabel?.text = "Row \(indexPath.row)"
+        let cell = tableView.dequeueReusableCellWithIdentifier("settingCell", forIndexPath: indexPath) as! UITableViewCell
+        cell.textLabel!.text = "hello"
         return cell
-
     }
-    
+    */
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
