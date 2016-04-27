@@ -11,6 +11,5 @@ import Foundation
 enum Theme {
     case Classic
     case Puppies
-    case Cats
-    case Custom
+    case BlackWhite
 }

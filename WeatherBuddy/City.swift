@@ -35,6 +35,9 @@ class City {
     var sunrise1970:Double
     var sunset1970:Double
     var id:String
+    //var id:Int
+    var sunrise_date:Int?
+    var sunset_date:Int?
     
     init() {
         self.currentTemp = 0.0
@@ -58,9 +61,15 @@ class City {
         self.coordinates = CLLocation(latitude: lat, longitude: long)
         self.icon = UIImage(named: "Sun")!
         self.timeZone = NSTimeZone()
+//<<<<<<< HEAD
         self.sunrise1970 = 0.0 //NSDate().timeIntervalSince1970
         self.sunset1970 = 0.0 //NSDate().timeIntervalSince1970
         self.id = ""
+//=======
+        //self.id = 0
+        self.sunrise_date = 0
+        self.sunset_date = 0
+//>>>>>>> e9667ea56a08bdf7fa0f5c27bd9bfd14cd3642eb
     }
     
     
@@ -80,7 +89,9 @@ class City {
                 self.timeZone = pm.timeZone!
                 print(self.timeZone.secondsFromGMT)
                 self.sunrise1970 += (Double(self.timeZone.secondsFromGMT) + 14400) // openWeather actually gives sunrise in only east coast time
+                self.sunrise_date = Int(self.sunrise1970)
                 self.sunset1970 += (Double(self.timeZone.secondsFromGMT) + 14400)
+                self.sunset_date = Int(self.sunset1970)
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "HH:mm"
                 let srise = NSDate(timeIntervalSince1970: self.sunrise1970)

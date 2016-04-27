@@ -15,22 +15,17 @@ class OpenWeatherService {
     var baseURL:String = "http://api.openweathermap.org/data/2.5/"
     var apiKey:String = "93d98c361bc0d24cb301adc549eea5c4"
     var cityWeather = City()
-    
-    /*
-    init() {
-        url = ""
-        apiKey = ""
-    }
-    */
+    // http://api.openweathermap.org/data/2.5/forecast?q=London,us&APPID=93d98c361bc0d24cb301adc549eea5c4
     
     func cityWeatherByZipcode(cities: City, callback: (City)->Void) {
+
         //print("call back zipcode: \(cities.zipcode)")
         //let zip = "46556"
         //let test = self.cities.zipcode
         //let coordURL = "\(baseURL)zip=\(zip),us&APPID=\(apiKey)"
         let coordURL = "\(baseURL)weather?zip=\(cities.zipcode),us&APPID=\(apiKey)"
+
         let searchURL = NSURL(string: coordURL)
-        //print("url: \(searchURL)")
         let request = NSMutableURLRequest(URL: searchURL!)
         sleep(1)
         let session = NSURLSession.sharedSession()
@@ -40,7 +35,6 @@ class OpenWeatherService {
                 print(error)
             } else {
                 let result = String(data: data!, encoding: NSASCIIStringEncoding)!
-                //print("data: \(data!)")
                 if (data == nil) {
                     
                 }
@@ -104,19 +98,18 @@ class OpenWeatherService {
     
     func parseJSONZipcodeResponse(data: NSData, city: City) -> City {
         let json = JSON(data: data)
-        //let maxTemp = json["main"]["temp_max"]
         city.currentTemp = KtoF(json["main"]["temp"].doubleValue)
-        //print("name: \(city.name)   temp: \(city.currentTemp)")
         city.maxTemp = KtoF(json["main"]["temp_max"].doubleValue)
         city.minTemp = KtoF(json["main"]["temp_min"].doubleValue)
         city.humidity = json["main"]["humidity"].intValue
         city.description = json["weather"][0]["main"].stringValue // more general
         city.detail = json["weather"][0]["description"].stringValue // more specific
-        //print("in json, description = \(city.description)")
         city.windSpeed = json["wind"]["speed"].doubleValue
-        city.windDirection = json["wind"]["direction"].doubleValue
+        city.windDirection = json["wind"]["deg"].doubleValue
         city.rain = json["clouds"]["all"].stringValue
         /*
+
+        //city.id = json["id"].intValue
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "hh:mm"
         */
@@ -124,9 +117,11 @@ class OpenWeatherService {
         city.sunset1970 = json["sys"]["sunset"].doubleValue
         /*
         let srise = NSDate(timeIntervalSince1970: json["sys"]["sunrise"].doubleValue)
+        city.sunrise_date = json["sys"]["sunrise"].intValue
         city.sunrise = dateFormatter.stringFromDate(srise)
         city.sunrise = city.sunrise.stringByAppendingString(" AM")
         let sset = NSDate(timeIntervalSince1970: json["sys"]["sunset"].doubleValue)
+        city.sunset_date = json["sys"]["sunset"].intValue
         city.sunset = dateFormatter.stringFromDate(sset)
         city.sunset = city.sunset.stringByAppendingString(" PM")
         */
@@ -155,6 +150,9 @@ class OpenWeatherService {
         }
         else if (city.description == "Snow") {
             city.icon = UIImage(named: "Snow")!
+        }
+        else if (city.description == "Mist") {
+            city.icon = UIImage(named: "FogDay")!
         }
         
         city.updateUserLocation(city.coordinates)
