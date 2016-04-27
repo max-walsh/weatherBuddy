@@ -10,6 +10,7 @@ import UIKit
 
 class CityTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var locationImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var degreesLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!

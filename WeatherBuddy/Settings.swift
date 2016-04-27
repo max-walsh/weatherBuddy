@@ -10,14 +10,12 @@ import Foundation
 
 class Settings {
     var theme:Theme
-    var accessContacts:Bool
-    var notifications:Bool
+    var map:Bool
     var units:Bool
     
     init() {
         theme = Theme.Classic
-        accessContacts = false
-        notifications = false
         units = true
+        map = true
     }
 }

@@ -13,6 +13,7 @@ import CoreLocation
 // TODO: Get it to stop looking for location updates when the location has changed and not changed
 
 var cities = FavoriteCities()
+var settings = Settings()
 
 class CityTableViewController: UITableViewController, CLLocationManagerDelegate {
 
@@ -35,7 +36,6 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         locManager.requestWhenInUseAuthorization()
         locManager.startUpdatingLocation()
         
-        //cities.addCity("", state: "", zip: "")
         cities.addCity("", state: "", zip: "")
         cities.addCity("New York City", state: "NY", zip: "10001")
         cities.addCity("Chicago", state: "IL", zip: "60290")
@@ -109,10 +109,12 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         
         if let cityCell = cell as? CityTableViewCell {
             cityCell.nameLabel.text = cities.cityAtIndex(indexPath.row).name
-            cityCell.degreesLabel.text = String(Int(cities.cityAtIndex(indexPath.row).currentTemp))
+            cityCell.degreesLabel.text = "\(Int(cities.cityAtIndex(indexPath.row).currentTemp))\u{00B0}"
             cityCell.detailLabel.text = cities.cityAtIndex(indexPath.row).detail
             cityCell.iconImage.image = cities.cityAtIndex(indexPath.row).icon
-            
+            if (indexPath.row == 0) {
+                cityCell.locationImage.image = UIImage(named: "Location")
+            }
         }
 
 
