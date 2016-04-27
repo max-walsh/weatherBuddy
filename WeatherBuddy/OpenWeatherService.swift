@@ -37,12 +37,12 @@ class OpenWeatherService {
             } else {
                 let result = String(data: data!, encoding: NSASCIIStringEncoding)!
                 if (data == nil) {
-                    
+                    print("data is nil")
                 }
                 // http://stackoverflow.com/questions/24056205/how-to-use-background-thread-in-swift
                 //`let qualityOfServiceClass = QOS_CLASS_BACKGROUND
                 //let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
-        
+                print("in apicall")
                 self.resultJSON = result
                 self.cityWeather = self.parseJSONZipcodeResponse(data!, city: cities)
                 
@@ -176,12 +176,12 @@ class OpenWeatherService {
             let date = day["dt_txt"].stringValue
             let dateComp = date.componentsSeparatedByString(" ")
             if (dateComp[0] != currentDate) {
-            let min = day["main"]["temp_min"].doubleValue
-            let max = day["main"]["temp_max"].doubleValue
-            let desc = day["weather"]["main"].stringValue
-            print("not Today: \(dateComp[0])")
-            currentDate = dateComp[0]
-            forecast.addDay(ForecastDay(minTemp: min, maxTemp: max, desc: desc))
+                let min = day["main"]["temp_min"].doubleValue
+                let max = day["main"]["temp_max"].doubleValue
+                let desc = day["weather"]["main"].stringValue
+                print("not Today: \(dateComp[0])")
+                currentDate = dateComp[0]
+                forecast.addDay(ForecastDay(minTemp: min, maxTemp: max, desc: desc))
             } else {
                 print("today")
             }
