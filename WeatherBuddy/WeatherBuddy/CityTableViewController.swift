@@ -15,8 +15,9 @@ import CoreLocation
 var cities = FavoriteCities()
 var settings = Settings()
 
-class CityTableViewController: UITableViewController, CLLocationManagerDelegate {
 
+class CityTableViewController: UITableViewController, CLLocationManagerDelegate {
+    let defaults = NSUserDefaults.standardUserDefaults()
     //var cities = FavoriteCities()
     var city1=[City]()
     //var cities = [City]()
@@ -36,11 +37,38 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         locManager.requestWhenInUseAuthorization()
         locManager.startUpdatingLocation()
         
-        cities.addCity("", state: "", zip: "")
-        cities.addCity("New York City", state: "NY", zip: "10001")
-        cities.addCity("Chicago", state: "IL", zip: "60290")
-        cities.addCity("Los Angeles", state: "CA", zip: "90001")
-        cities.addCity("Gann Valley", state: "SD", zip: "57341")
+        
+        
+        
+        if (defaults.objectForKey("savedCityNames") == nil) {
+            cities.addCity("", state: "", zip: "")
+            cities.addCity("New York City", state: "NY", zip: "10001")
+            cities.addCity("Chicago", state: "IL", zip: "60290")
+            cities.addCity("Los Angeles", state: "CA", zip: "90001")
+            cities.addCity("Gann Valley", state: "SD", zip: "57341")
+            print("no cities")
+        } else {
+            //cities = defaults.objectForKey("savedCities")! as! FavoriteCities
+            let cityNames = defaults.objectForKey("savedCityNames") as! [String]
+            let cityStates = defaults.objectForKey("savedCityStates") as! [String]
+            let cityZips = defaults.objectForKey("savedCityZips") as! [String]
+            
+            var i:Int = 0
+            while (i < cityNames.count) {
+                cities.addCity(cityNames[i], state: cityStates[i], zip: cityZips[i])
+                i += 1
+            }
+            
+            print("already cities")
+        }
+        
+        /*
+        var i:Int = 0
+        while (i < cities.cityCount()) {
+            print("\(cities.cityAtIndex(i).name)")
+            i += 1
+        }
+        */
         
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
@@ -49,7 +77,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
                 self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
                     (cities) in
                     self.city1.append(cities)
-                    print("name: \(cities.name)     temp: \(cities.currentTemp)")
+                    //print("name: \(cities.name)     temp: \(cities.currentTemp)")
                     self.tableView.reloadData()
                 }
                 i += 1
@@ -57,6 +85,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         }
         
         cities.changeWeather(self.city1)
+        //defaults.setObject(cities, forKey: "savedCities")
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
     
@@ -69,7 +98,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
                 self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
                     (cities) in
                     self.city1.append(cities)
-                    print("name: \(cities.name)     temp: \(cities.currentTemp)")
+                    //print("name: \(cities.name)     temp: \(cities.currentTemp)")
                     self.tableView.reloadData()
                 }
                 i += 1

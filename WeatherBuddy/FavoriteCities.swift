@@ -12,6 +12,8 @@ class FavoriteCities: NSObject {
     
     private var cities:[City] = []
     
+
+    
     func cityCount() -> Int {
         return cities.count
     }
@@ -39,6 +41,7 @@ class FavoriteCities: NSObject {
         newCity.state = state
         newCity.zipcode = zip
         cities.append(newCity)
+        
     }
     
     func changeWeather(updatedCities: [City]) {
