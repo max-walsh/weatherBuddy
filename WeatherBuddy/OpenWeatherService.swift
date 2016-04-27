@@ -155,8 +155,7 @@ class OpenWeatherService {
         else if (city.description == "Mist" || city.description == "Haze" ) {
             city.icon = UIImage(named: "FogDay")!
         }
-        
-        // setting the wind direciton
+
         if (degree >= 337.5 || degree < 22.5) {
             city.windDirection = "N"
         }
@@ -185,10 +184,8 @@ class OpenWeatherService {
             city.windDirection = "N"
         }
         
-        
-        
+        city.updateSun(city.coordinates)
 
-        city.updateUserLocation(city.coordinates)
         
         return city
         
