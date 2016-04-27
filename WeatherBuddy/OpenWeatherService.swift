@@ -106,7 +106,7 @@ class OpenWeatherService {
         city.description = json["weather"][0]["main"].stringValue // more general
         city.detail = json["weather"][0]["description"].stringValue // more specific
         city.windSpeed = json["wind"]["speed"].doubleValue
-        city.windDirection = json["wind"]["deg"].doubleValue
+        let degree = json["wind"]["deg"].doubleValue
         city.rain = json["clouds"]["all"].stringValue
         /*
 
@@ -156,6 +156,38 @@ class OpenWeatherService {
             city.icon = UIImage(named: "FogDay")!
         }
         
+        // setting the wind direciton
+        if (degree >= 337.5 || degree < 22.5) {
+            city.windDirection = "N"
+        }
+        else if (degree >= 22.5 && degree < 67.5) {
+            city.windDirection = "NE"
+        }
+        else if (degree >= 67.5 && degree < 112.5) {
+            city.windDirection = "E"
+        }
+        else if (degree >= 112.5 && degree < 157.5) {
+            city.windDirection = "SE"
+        }
+        else if (degree >= 157.5 && degree < 202.5) {
+            city.windDirection = "S"
+        }
+        else if (degree >= 202.5 && degree < 247.5) {
+            city.windDirection = "SW"
+        }
+        else if (degree >= 247.5 && degree < 292.5) {
+            city.windDirection = "W"
+        }
+        else if (degree >= 292.5 && degree < 337.5) {
+            city.windDirection = "NW"
+        }
+        else {
+            city.windDirection = "N"
+        }
+        
+        
+        
+
         city.updateUserLocation(city.coordinates)
         
         return city

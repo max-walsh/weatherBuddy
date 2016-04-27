@@ -20,7 +20,7 @@ class City {
     var minTemp:Double
     var maxTemp:Double
     var windSpeed:Double
-    var windDirection:Double
+    var windDirection:String
     var rain:String
     var sunrise:String
     var sunset:String
@@ -47,7 +47,7 @@ class City {
         self.minTemp = 0.0
         self.maxTemp = 0.0
         self.windSpeed = 0.0
-        self.windDirection = 0.0
+        self.windDirection = ""
         self.rain = ""
         self.sunrise = ""
         self.sunset = ""
