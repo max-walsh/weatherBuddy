@@ -133,27 +133,39 @@ class OpenWeatherService {
         city.id = json["id"].stringValue
         print("\(city.id)\n\n\n\n\n\n\n\n\n\n")
         
-        // settting icon image
+        // settting icon image and background image
         if (city.description == "Clear") {
             city.icon = UIImage(named: "Sun")!
+            city.backgroundImage = UIImage(named: "Clear_big")!
         }
         else if (city.description == "Clouds") {
             city.icon = UIImage(named: "Cloud")!
+            city.backgroundImage = UIImage(named: "Cloud_big")!
         }
         else if (city.description == "Drizzle") {
             city.icon = UIImage(named: "Drizzle")!
+            city.backgroundImage = UIImage(named: "Rain_big")!
         }
         else if (city.description == "Rain") {
             city.icon = UIImage(named: "Rain")!
+            city.backgroundImage = UIImage(named: "Rain_big")!
         }
         else if (city.description == "Thunderstorm") {
             city.icon = UIImage(named: "Storm")!
+            city.backgroundImage = UIImage(named: "Storm_big")!
         }
         else if (city.description == "Snow") {
             city.icon = UIImage(named: "Snow")!
+            city.backgroundImage = UIImage(named: "Snow_big")!
         }
         else if (city.description == "Mist" || city.description == "Haze" ) {
             city.icon = UIImage(named: "FogDay")!
+            city.backgroundImage = UIImage(named: "Clear_big")!
+        }
+        else {
+            print("Description: \(city.description)")
+            city.backgroundImage = UIImage(named: "Clear_big")!
+            city.icon = UIImage(named: "Sun")!
         }
 
         if (degree >= 337.5 || degree < 22.5) {
@@ -205,12 +217,31 @@ class OpenWeatherService {
             let date = day["dt_txt"].stringValue
             let dateComp = date.componentsSeparatedByString(" ")
             if (dateComp[0] != currentDate) {
-            let min = day["main"]["temp_min"].doubleValue
-            let max = day["main"]["temp_max"].doubleValue
-            let desc = day["weather"]["main"].stringValue
-            print("not Today: \(dateComp[0])")
-            currentDate = dateComp[0]
-            forecast.addDay(ForecastDay(minTemp: min, maxTemp: max, desc: desc))
+                let min = day["main"]["temp_min"].doubleValue
+                let max = day["main"]["temp_max"].doubleValue
+                let desc = day["weather"]["main"].stringValue
+                var icon = UIImage(named: "Sun")
+                if (desc == "Rain" ) {
+                    icon = UIImage(named: "Rain")
+                }
+                else if (desc == "Snow" ) {
+                    icon = UIImage(named: "Snow")
+                }
+                else if (desc == "Clouds" ) {
+                    icon = UIImage(named: "Cloud")
+                }
+                else if (desc == "Mist" || desc == "Haze" ) {
+                    icon = UIImage(named: "FogDay")
+                }
+                else if (desc == "Thunderstorm" ) {
+                    icon = UIImage(named: "Storm")
+                }
+                else if (desc == "Drizzle" ) {
+                    icon = UIImage(named: "Drizzle")
+                }
+                print("not Today: \(dateComp[0])")
+                currentDate = dateComp[0]
+                forecast.addDay(ForecastDay(minTemp: min, maxTemp: max, desc: desc, icon: icon!))
             } else {
                 print("today")
             }

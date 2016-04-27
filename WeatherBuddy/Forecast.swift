@@ -15,4 +15,8 @@ class Forecast {
         days.append(day)
     }
     
+    func dayAtIndex(index: Int) -> ForecastDay {
+        return days[index]
+    }
+    
 }

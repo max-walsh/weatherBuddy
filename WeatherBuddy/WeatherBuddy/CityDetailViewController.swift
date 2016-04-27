@@ -29,6 +29,19 @@ class CityDetailViewController: UIViewController {
     @IBOutlet weak var sunriseImage: UIImageView!
     @IBOutlet weak var backgroundImage: UIImageView!
     
+    // 5 Day Forecast Labels
+    @IBOutlet weak var day1Label: UILabel!
+    @IBOutlet weak var day2Label: UILabel!
+    @IBOutlet weak var day3Label: UILabel!
+    @IBOutlet weak var day4Label: UILabel!
+    @IBOutlet weak var day5Label: UILabel!
+    @IBOutlet weak var day1Image: UIImageView!
+    @IBOutlet weak var day2Image: UIImageView!
+    @IBOutlet weak var day3Image: UIImageView!
+    @IBOutlet weak var day4Image: UIImageView!
+    @IBOutlet weak var day5Image: UIImageView!
+    
+    
     
     let ows = OpenWeatherService()
     
@@ -69,32 +82,14 @@ class CityDetailViewController: UIViewController {
 
         sunriseImage.image = UIImage(named: "Sunrise")
         sunsetImage.image = UIImage(named: "Sunset")
+        backgroundImage.image = city?.backgroundImage
         
-        if (city?.description == "Clouds") {
-            backgroundImage.image = UIImage(named: "Cloud_big")
-        }
-        else if (city?.description == "Clear") {
-            backgroundImage.image = UIImage(named: "Clear_big")
-        }
-        else if (city?.description == "Rain") {
-            backgroundImage.image = UIImage(named: "Rain_big")
-        }
-        else if (city?.description == "Mist" || city?.description == "Haze") {
-            backgroundImage.image = UIImage(named: "Clear_big")
-        }
-        else if (city?.description == "Drizzle") {
-            backgroundImage.image = UIImage(named: "Rain_big")
-        }
-        else if (city?.description == "Thunderstorm") {
-            backgroundImage.image = UIImage(named: "Storm_big")
-        }
-        else if (city?.description == "Snow") {
-            backgroundImage.image = UIImage(named: "Snow_big")
-        }
-        else {
-            backgroundImage.image = UIImage(named: "Clear_big")
-            print(city!.description)
-        }
+        //day1Image.image = forecast?.dayAtIndex(0).icon
+        day2Image.image = UIImage(named: "Cloud")
+        //day2Image.image = forecast!.dayAtIndex(1).icon
+        //day3Image.image = forecast!.dayAtIndex(2).icon
+        //day4Image.image = forecast!.dayAtIndex(3).icon
+        //day5Image.image = forecast!.dayAtIndex(4).icon
 
     }
 

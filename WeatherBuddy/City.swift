@@ -38,6 +38,7 @@ class City {
     //var id:Int
     var sunrise_date:Int?
     var sunset_date:Int?
+    var backgroundImage:UIImage
     
     init() {
         self.currentTemp = 0.0
@@ -60,16 +61,14 @@ class City {
         let long:CLLocationDegrees = 86.2353
         self.coordinates = CLLocation(latitude: lat, longitude: long)
         self.icon = UIImage(named: "Sun")!
+        self.backgroundImage = UIImage(named: "Clear_big")!
         self.timeZone = NSTimeZone()
-
         self.sunrise1970 = 0.0 //NSDate().timeIntervalSince1970
         self.sunset1970 = 0.0 //NSDate().timeIntervalSince1970
         self.id = ""
-//=======
-        //self.id = 0
         self.sunrise_date = 0
         self.sunset_date = 0
-//>>>>>>> e9667ea56a08bdf7fa0f5c27bd9bfd14cd3642eb
+
     }
     
     
