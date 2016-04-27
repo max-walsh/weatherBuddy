@@ -86,6 +86,7 @@ class City {
                 self.zipcode = pm.postalCode!
                 self.country = pm.country!
                 self.coordinates = pm.location!
+                /*
                 self.timeZone = pm.timeZone!
                 print(self.timeZone.secondsFromGMT)
                 self.sunrise1970 += (Double(self.timeZone.secondsFromGMT) + 14400) // openWeather actually gives sunrise in only east coast time
@@ -100,6 +101,7 @@ class City {
                 let sset = NSDate(timeIntervalSince1970: self.sunset1970)
                 self.sunset = dateFormatter.stringFromDate(sset)
                 self.sunset = self.sunset.stringByAppendingString(" PM")
+                */
                 
             }
             else {
@@ -110,7 +112,36 @@ class City {
         
     }
     
-    
+    func updateSun(location: CLLocation) {
+        
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+            if error != nil {
+                print("Reverse Geocoder failed with error: \(error!.localizedDescription)")
+                return
+            }
+            if let pm = placemarks![0] as? CLPlacemark {
+            
+                self.timeZone = pm.timeZone!
+                print(self.timeZone.secondsFromGMT)
+                self.sunrise1970 += (Double(self.timeZone.secondsFromGMT) + 14400) // openWeather actually gives sunrise in only east coast time
+                self.sunrise_date = Int(self.sunrise1970)
+                self.sunset1970 += (Double(self.timeZone.secondsFromGMT) + 14400)
+                self.sunset_date = Int(self.sunset1970)
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "HH:mm"
+                let srise = NSDate(timeIntervalSince1970: self.sunrise1970)
+                self.sunrise = dateFormatter.stringFromDate(srise)
+                self.sunrise = self.sunrise.stringByAppendingString(" AM")
+                let sset = NSDate(timeIntervalSince1970: self.sunset1970)
+                self.sunset = dateFormatter.stringFromDate(sset)
+                self.sunset = self.sunset.stringByAppendingString(" PM")
 
+            }
+            else {
+                print("Problem with data from geocoder")
+            }
+        })
+    }
+    
     
 }

@@ -156,7 +156,7 @@ class OpenWeatherService {
             city.icon = UIImage(named: "FogDay")!
         }
         
-        city.updateUserLocation(city.coordinates)
+        city.updateSun(city.coordinates)
         
         return city
         
