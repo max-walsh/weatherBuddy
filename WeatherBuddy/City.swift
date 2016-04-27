@@ -61,7 +61,7 @@ class City {
         self.coordinates = CLLocation(latitude: lat, longitude: long)
         self.icon = UIImage(named: "Sun")!
         self.timeZone = NSTimeZone()
-//<<<<<<< HEAD
+
         self.sunrise1970 = 0.0 //NSDate().timeIntervalSince1970
         self.sunset1970 = 0.0 //NSDate().timeIntervalSince1970
         self.id = ""

@@ -11,6 +11,7 @@ import UIKit
 class CityDetailViewController: UIViewController {
 
     var city : City?
+    var forecast : Forecast?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var sunView: SunView!
@@ -57,8 +58,9 @@ class CityDetailViewController: UIViewController {
         }
         */
         self.ows.cityWeatherForecast(city!) {
-            (city) in
-            self.city = city
+            (forecast) in
+            self.forecast = forecast
+            print(self.forecast)
             //print("should have been called")
             //self. MUST REFRESH THE DATA
         }

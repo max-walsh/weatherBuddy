@@ -15,6 +15,7 @@ class OpenWeatherService {
     var baseURL:String = "http://api.openweathermap.org/data/2.5/"
     var apiKey:String = "93d98c361bc0d24cb301adc549eea5c4"
     var cityWeather = City()
+    var cityForecast = Forecast()
     // http://api.openweathermap.org/data/2.5/forecast?q=London,us&APPID=93d98c361bc0d24cb301adc549eea5c4
     
     func cityWeatherByZipcode(cities: City, callback: (City)->Void) {
@@ -62,7 +63,7 @@ class OpenWeatherService {
         task.resume()
     }
     
-    func cityWeatherForecast(city: City, callback: (City)->Void) {
+    func cityWeatherForecast(city: City, callback: (Forecast)->Void) {
         let coordURL = "\(baseURL)forecast?id=\(city.id),&APPID=\(apiKey)"
         let searchURL = NSURL(string: coordURL)
         let request = NSMutableURLRequest(URL: searchURL!)
@@ -77,11 +78,11 @@ class OpenWeatherService {
                 if (data == nil) {
                     print("something went wrong in cityWeatherForecast")
                 }
-                self.resultJSON = result
-                //// add forcast to each city
-                
+                //self.resultJSON = result
+                //// add forcast to each city not done called in CityDetailViewController
+                self.cityForecast = self.parseJSONForecastResponse(data!)
                 dispatch_async(dispatch_get_main_queue(), {
-                    callback(city)
+                    callback(self.cityForecast)
                 })
             }
         }
@@ -159,6 +160,34 @@ class OpenWeatherService {
         
         return city
         
+    }
+    
+    func parseJSONForecastResponse(data: NSData) -> Forecast {
+        let json = JSON(data: data)
+        let forecast = Forecast()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        var currentDate = dateFormatter.stringFromDate(NSDate())
+        
+        print("currentDate: \(currentDate)")
+        // http://stackoverflow.com/questions/28365939/how-to-loop-through-json-with-swiftyjson
+        //for (key, day) in json["list"] {
+        for (_, day) in json["list"] {
+            let date = day["dt_txt"].stringValue
+            let dateComp = date.componentsSeparatedByString(" ")
+            if (dateComp[0] != currentDate) {
+            let min = day["main"]["temp_min"].doubleValue
+            let max = day["main"]["temp_max"].doubleValue
+            let desc = day["weather"]["main"].stringValue
+            print("not Today: \(dateComp[0])")
+            currentDate = dateComp[0]
+            forecast.addDay(ForecastDay(minTemp: min, maxTemp: max, desc: desc))
+            } else {
+                print("today")
+            }
+        }
+        
+        return forecast
     }
     
     func KtoF(K_Temp: Double) -> Double {
