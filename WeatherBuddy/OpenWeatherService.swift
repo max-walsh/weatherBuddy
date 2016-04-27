@@ -112,7 +112,7 @@ class OpenWeatherService {
         else if (city.description == "Snow") {
             city.icon = UIImage(named: "Snow")!
         }
-        else if (city.description == "Mist") {
+        else if (city.description == "Mist" || city.description == "Haze" ) {
             city.icon = UIImage(named: "FogDay")!
         }
         

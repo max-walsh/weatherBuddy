@@ -55,7 +55,7 @@ class CityDetailViewController: UIViewController {
         else if (city?.description == "Rain") {
             backgroundImage.image = UIImage(named: "Rain_big")
         }
-        else if (city?.description == "Mist") {
+        else if (city?.description == "Mist" || city?.description == "Haze") {
             backgroundImage.image = UIImage(named: "Clear_big")
         }
         else if (city?.description == "Drizzle") {
@@ -68,6 +68,7 @@ class CityDetailViewController: UIViewController {
             backgroundImage.image = UIImage(named: "Snow_big")
         }
         else {
+            backgroundImage.image = UIImage(named: "Clear_big")
             print(city!.description)
         }
     }
