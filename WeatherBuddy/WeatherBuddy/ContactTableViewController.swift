@@ -56,6 +56,8 @@ class ContactTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.separatorStyle = .None
+        self.tableView.backgroundColor = UIColor.init(red: 214/255, green: 238/255, blue: 255/255, alpha: 1.0)
         getContacts()
         for contact in contacts {
             if contact.isKeyAvailable(CNContactPostalAddressesKey) {
@@ -170,6 +172,7 @@ class ContactTableViewController: UITableViewController {
             contactCell.iconImage.image = contact.city.icon
             contactCell.detailLabel.text = contact.city.detail
             contactCell.selectionStyle = UITableViewCellSelectionStyle.None
+            contactCell.gradientView.leftToRight = (indexPath.row)%2
         }
         
         return cell

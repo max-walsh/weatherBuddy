@@ -38,8 +38,9 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         locManager.requestWhenInUseAuthorization()
         locManager.startUpdatingLocation()
         
-        
-        
+        tableView.separatorStyle = .None
+        self.tableView.backgroundColor = UIColor.whiteColor()
+        self.tableView.backgroundColor = UIColor.init(red: 214/255, green: 238/255, blue: 255/255, alpha: 1.0)
         
         if (defaults.objectForKey("savedCityNames") == nil) {
             cities.addCity("", state: "", zip: "")
@@ -165,6 +166,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             if (indexPath.row == 0) {
                 cityCell.locationImage.image = UIImage(named: "Location")
             }
+            cityCell.gradientView.leftToRight = (indexPath.row)%2
         }
         return cell
     }
