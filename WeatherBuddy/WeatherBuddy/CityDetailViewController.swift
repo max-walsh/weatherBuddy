@@ -82,7 +82,12 @@ class CityDetailViewController: UIViewController {
 
         sunriseImage.image = UIImage(named: "Sunrise")
         sunsetImage.image = UIImage(named: "Sunset")
-        backgroundImage.image = city?.backgroundImage
+        if (settings.theme == .NotreDame) {
+            backgroundImage.image = city?.backgroundImage_nd
+        }
+        else {
+            backgroundImage.image = city?.backgroundImage_c
+        }
         
         //day1Image.image = forecast?.dayAtIndex(0).icon
         day2Image.image = UIImage(named: "Cloud")

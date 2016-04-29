@@ -99,7 +99,16 @@ class OpenWeatherService {
     
     func parseJSONZipcodeResponse(data: NSData, city: City) -> City {
         let json = JSON(data: data)
-        city.currentTemp = KtoF(json["main"]["temp"].doubleValue)
+        if (settings.units == .Fahrenheit) {
+            city.currentTemp = KtoF(json["main"]["temp"].doubleValue)
+        }
+        else if (settings.units == .Celsius) {
+            city.currentTemp = KtoC(json["main"]["temp"].doubleValue)
+        }
+        else {
+            city.currentTemp = round(json["main"]["temp"].doubleValue)
+        }
+
         city.maxTemp = KtoF(json["main"]["temp_max"].doubleValue)
         city.minTemp = KtoF(json["main"]["temp_min"].doubleValue)
         city.humidity = json["main"]["humidity"].intValue
@@ -136,36 +145,44 @@ class OpenWeatherService {
         // settting icon image and background image
         if (city.description == "Clear") {
             city.icon = UIImage(named: "Sun")!
-            city.backgroundImage = UIImage(named: "Clear_big")!
+            city.backgroundImage_c = UIImage(named: "Clear_big")!
+            city.backgroundImage_nd = UIImage(named: "nd_Clear")!
         }
         else if (city.description == "Clouds") {
             city.icon = UIImage(named: "Cloud")!
-            city.backgroundImage = UIImage(named: "Cloud_big")!
+            city.backgroundImage_c = UIImage(named: "Cloud_big")!
+            city.backgroundImage_nd = UIImage(named: "nd_Cloud")!
         }
         else if (city.description == "Drizzle") {
             city.icon = UIImage(named: "Drizzle")!
-            city.backgroundImage = UIImage(named: "Rain_big")!
+            city.backgroundImage_c = UIImage(named: "Rain_big")!
+            city.backgroundImage_nd = UIImage(named: "nd_Rain")!
         }
         else if (city.description == "Rain") {
             city.icon = UIImage(named: "Rain")!
-            city.backgroundImage = UIImage(named: "Rain_big")!
+            city.backgroundImage_c = UIImage(named: "Rain_big")!
+            city.backgroundImage_nd = UIImage(named: "nd_Rain")!
         }
         else if (city.description == "Thunderstorm") {
             city.icon = UIImage(named: "Storm")!
-            city.backgroundImage = UIImage(named: "Storm_big")!
+            city.backgroundImage_c = UIImage(named: "Storm_big")!
+            city.backgroundImage_nd = UIImage(named: "nd_Storm")!
         }
         else if (city.description == "Snow") {
             city.icon = UIImage(named: "Snow")!
-            city.backgroundImage = UIImage(named: "Snow_big")!
+            city.backgroundImage_c = UIImage(named: "Snow_big")!
+            city.backgroundImage_nd = UIImage(named: "nd_Snow")!
         }
         else if (city.description == "Mist" || city.description == "Haze" ) {
             city.icon = UIImage(named: "FogDay")!
-            city.backgroundImage = UIImage(named: "Clear_big")!
+            city.backgroundImage_c = UIImage(named: "Clear_big")!
+            city.backgroundImage_nd = UIImage(named: "nd_Fog")!
         }
         else {
             print("Description: \(city.description)")
-            city.backgroundImage = UIImage(named: "Clear_big")!
+            city.backgroundImage_c = UIImage(named: "Clear_big")!
             city.icon = UIImage(named: "Sun")!
+            city.backgroundImage_nd = UIImage(named: "nd_Clear")!
         }
 
         if (degree >= 337.5 || degree < 22.5) {
@@ -260,5 +277,8 @@ class OpenWeatherService {
     
     func KtoF(K_Temp: Double) -> Double {
         return round(((K_Temp - 273.15)*1.8000) + 32.00)
+    }
+    func KtoC(K_Temp: Double) -> Double {
+        return round(K_Temp - 273.15)
     }
 }

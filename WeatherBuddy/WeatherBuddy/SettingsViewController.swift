@@ -59,23 +59,29 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         if (pickerView == themePickerView) {
             if(row == 0) {
                 print("Classic")
+                settings.theme = .Classic
             }
             else if(row == 1) {
                 print("Dogs")
+                settings.theme = .Dogs
             }
-            else if(row == 3) {
-                print("Cats")
+            else if(row == 2) {
+                print("NotreDame")
+                settings.theme = .NotreDame
             }
         }
         else {
             if(row == 0) {
                 print("F")
+                settings.units = .Fahrenheit
             }
             else if(row == 1) {
                 print("C")
+                settings.units = .Celsius
             }
             else if(row == 3) {
                 print("K")
+                settings.units = .Kelvin
             }
         }
 
