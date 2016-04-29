@@ -35,12 +35,24 @@ class CityDetailViewController: UIViewController {
     @IBOutlet weak var day3Label: UILabel!
     @IBOutlet weak var day4Label: UILabel!
     @IBOutlet weak var day5Label: UILabel!
+    // icons
     @IBOutlet weak var day1Image: UIImageView!
     @IBOutlet weak var day2Image: UIImageView!
     @IBOutlet weak var day3Image: UIImageView!
     @IBOutlet weak var day4Image: UIImageView!
     @IBOutlet weak var day5Image: UIImageView!
-    
+    // max
+    @IBOutlet weak var day1MaxLabel: UILabel!
+    @IBOutlet weak var day2MaxLabel: UILabel!
+    @IBOutlet weak var day3MaxLabel: UILabel!
+    @IBOutlet weak var day4MaxLabel: UILabel!
+    @IBOutlet weak var day5MaxLabel: UILabel!
+    // min
+    @IBOutlet weak var day1MinLabel: UILabel!
+    @IBOutlet weak var day2MinLabel: UILabel!
+    @IBOutlet weak var day3MinLabel: UILabel!
+    @IBOutlet weak var day4MinLabel: UILabel!
+    @IBOutlet weak var day5MinLabel: UILabel!
     
     
     let ows = OpenWeatherService()
@@ -90,6 +102,16 @@ class CityDetailViewController: UIViewController {
             self.day3Image.image = self.forecast!.dayAtIndex(2).icon
             self.day4Image.image = self.forecast!.dayAtIndex(3).icon
             self.day5Image.image = self.forecast!.dayAtIndex(4).icon
+            self.day1MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).maxTemp_F)))
+            self.day2MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).maxTemp_F)))
+            self.day3MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).maxTemp_F)))
+            self.day4MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).maxTemp_F)))
+            self.day5MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).maxTemp_F)))
+            self.day1MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).minTemp_F)))
+            self.day2MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).minTemp_F)))
+            self.day3MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).minTemp_F)))
+            self.day4MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).minTemp_F)))
+            self.day5MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).minTemp_F)))
             //print("should have been called")
             //self. MUST REFRESH THE DATA
         }
