@@ -87,7 +87,7 @@ class ContactTableViewController: UITableViewController {
                 self.ows.cityWeatherByZipcode(self.our_contacts[i].city) {
                     (city) in
                         self.city1.append(city)
-                        print("name: \(city.name)     temp: \(city.currentTemp)")
+                        print("name: \(city.name)     temp: \(city.currentTemp_F)")
                         self.tableView.reloadData()
                 }
                 i += 1
@@ -108,13 +108,19 @@ class ContactTableViewController: UITableViewController {
             our_contacts[index].city.barometricPressure = city.barometricPressure
             our_contacts[index].city.coordinates = city.coordinates
             our_contacts[index].city.country = city.country
-            our_contacts[index].city.currentTemp = city.currentTemp
+            our_contacts[index].city.currentTemp_F = city.currentTemp_F
+            our_contacts[index].city.currentTemp_C = city.currentTemp_C
+            our_contacts[index].city.currentTemp_K = city.currentTemp_K
             our_contacts[index].city.description = city.description
             our_contacts[index].city.humidity = city.humidity
-            our_contacts[index].city.maxTemp = city.maxTemp
-            our_contacts[index].city.minTemp = city.minTemp
+            our_contacts[index].city.maxTemp_F = city.maxTemp_F
+            our_contacts[index].city.minTemp_F = city.minTemp_F
+            our_contacts[index].city.maxTemp_C = city.maxTemp_C
+            our_contacts[index].city.minTemp_C = city.minTemp_C
+            our_contacts[index].city.maxTemp_K = city.maxTemp_K
+            our_contacts[index].city.minTemp_K = city.minTemp_K
             our_contacts[index].city.name = city.name
-            our_contacts[index].city.rain = city.rain
+            our_contacts[index].city.clouds = city.clouds
             our_contacts[index].city.state = city.state
             our_contacts[index].city.sunrise = city.sunrise
             our_contacts[index].city.sunset = city.sunset
@@ -122,7 +128,7 @@ class ContactTableViewController: UITableViewController {
             our_contacts[index].city.windSpeed = city.windSpeed
             our_contacts[index].city.zipcode = city.zipcode
             
-            print ("name: \(our_contacts[index].city.name)     temp: \(our_contacts[index].city.currentTemp)")
+            print ("name: \(our_contacts[index].city.name)     temp: \(our_contacts[index].city.currentTemp_F)")
             index += 1
         }
         
@@ -152,7 +158,15 @@ class ContactTableViewController: UITableViewController {
             contactCell.nameLabel.text = contact.name
             contactCell.addressLabel.text = "\(contact.city.name), \(contact.city.state)"
             contactCell.contactImage.image = contact.image
-            contactCell.degreeLabel.text = "\(Int(contact.city.currentTemp))\u{00B0}"
+            if (settings.units == .Kelvin) {
+                contactCell.degreeLabel.text = "\(Int(contact.city.currentTemp_K))\u{00B0}"
+            }
+            else if (settings.units == .Celsius) {
+                contactCell.degreeLabel.text = "\(Int(contact.city.currentTemp_C))\u{00B0}"
+            }
+            else {
+                contactCell.degreeLabel.text = "\(Int(contact.city.currentTemp_F))\u{00B0}"
+            }
             contactCell.iconImage.image = contact.city.icon
             contactCell.detailLabel.text = contact.city.detail
             contactCell.selectionStyle = UITableViewCellSelectionStyle.None

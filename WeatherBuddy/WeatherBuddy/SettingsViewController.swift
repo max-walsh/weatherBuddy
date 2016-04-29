@@ -79,7 +79,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
                 print("C")
                 settings.units = .Celsius
             }
-            else if(row == 3) {
+            else if(row == 2) {
                 print("K")
                 settings.units = .Kelvin
             }

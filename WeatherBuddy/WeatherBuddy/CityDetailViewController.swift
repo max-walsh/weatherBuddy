@@ -24,7 +24,7 @@ class CityDetailViewController: UIViewController {
     @IBOutlet weak var sunriseLabel: UILabel!
     @IBOutlet weak var sunsetLabel: UILabel!
     @IBOutlet weak var barometricLabel: UILabel!
-    @IBOutlet weak var rainLabel: UILabel!
+    @IBOutlet weak var cloudLabel: UILabel!
     @IBOutlet weak var sunsetImage: UIImageView!
     @IBOutlet weak var sunriseImage: UIImageView!
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -48,20 +48,31 @@ class CityDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         nameLabel.text = "\(city!.name), \(city!.state)"
         detailLabel.text = city?.detail
-        tempLabel.text = "\(Int(city!.currentTemp))\u{00B0}"
-        maxLabel.text = String(Int(city!.maxTemp))
-        minLabel.text = String(Int(city!.minTemp))
-        humidityLabel.text = "Humidity: \(city!.humidity)"
-        windLabel.text = "Wind: \(city!.windSpeed) \(city!.windDirection)"
+        if (settings.units == .Kelvin) {
+            tempLabel.text = "\(Int(city!.currentTemp_K))\u{00B0}"
+            maxLabel.text = String(Int(city!.maxTemp_K))
+            minLabel.text = String(Int(city!.minTemp_K))
+        }
+        else if (settings.units == .Celsius) {
+            tempLabel.text = "\(Int(city!.currentTemp_C))\u{00B0}"
+            maxLabel.text = String(Int(city!.maxTemp_C))
+            minLabel.text = String(Int(city!.minTemp_C))
+        }
+        else {
+            tempLabel.text = "\(Int(city!.currentTemp_F))\u{00B0}"
+            maxLabel.text = String(Int(city!.maxTemp_F))
+            minLabel.text = String(Int(city!.minTemp_F))
+        }
+        humidityLabel.text = "Humidity: \(city!.humidity)%"
+        windLabel.text = "Wind: \(city!.windSpeed) mph \(city!.windDirection)"
         sunriseLabel.text = "\(city!.sunrise)"
         sunView.rise = city!.sunrise_date
         sunView.set = city!.sunset_date
         sunsetLabel.text = "\(city!.sunset)"
-        barometricLabel.text = "Pressure: \(city!.barometricPressure)"
-        rainLabel.text = "Rain: \(city!.rain)"
+        barometricLabel.text = "Pressure: \(city!.barometricPressure) psi"
+        cloudLabel.text = "Clouds: \(city!.clouds)%"
 
         // Do any additional setup after loading the view.
         /*
@@ -82,11 +93,14 @@ class CityDetailViewController: UIViewController {
 
         sunriseImage.image = UIImage(named: "Sunrise")
         sunsetImage.image = UIImage(named: "Sunset")
-        if (settings.theme == .NotreDame) {
+        if (settings.theme == .Classic) {
+            backgroundImage.image = city?.backgroundImage_c
+        }
+        else if (settings.theme == .NotreDame) {
             backgroundImage.image = city?.backgroundImage_nd
         }
-        else {
-            backgroundImage.image = city?.backgroundImage_c
+        else if (settings.theme == .Dogs) {
+            backgroundImage.image = city?.backgroundImage_dog
         }
         
         //day1Image.image = forecast?.dayAtIndex(0).icon

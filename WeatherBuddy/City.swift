@@ -13,15 +13,21 @@ import SwiftyJSON
 
 class City {
     
-    var currentTemp:Double
+    var currentTemp_F:Double
+    var currentTemp_C:Double
+    var currentTemp_K:Double
     var humidity:Int
     var description:String
     var detail:String
-    var minTemp:Double
-    var maxTemp:Double
+    var minTemp_F:Double
+    var maxTemp_F:Double
+    var minTemp_C:Double
+    var maxTemp_C:Double
+    var minTemp_K:Double
+    var maxTemp_K:Double
     var windSpeed:Double
     var windDirection:String
-    var rain:String
+    var clouds:String
     var sunrise:String
     var sunset:String
     var name:String
@@ -40,18 +46,25 @@ class City {
     var sunset_date:Int?
     var backgroundImage_c:UIImage
     var backgroundImage_nd:UIImage
+    var backgroundImage_dog:UIImage
     //var backgroundImage_d:UIImage
     
     init() {
-        self.currentTemp = 0.0
+        self.currentTemp_F = 0.0
+        self.currentTemp_C = 0.0
+        self.currentTemp_K = 0.0
         self.humidity = 0
         self.description = ""
         self.detail = ""
-        self.minTemp = 0.0
-        self.maxTemp = 0.0
+        self.minTemp_F = 0.0
+        self.maxTemp_F = 0.0
+        self.minTemp_C = 0.0
+        self.maxTemp_C = 0.0
+        self.minTemp_K = 0.0
+        self.maxTemp_K = 0.0
         self.windSpeed = 0.0
         self.windDirection = ""
-        self.rain = ""
+        self.clouds = ""
         self.sunrise = ""
         self.sunset = ""
         self.name = ""
@@ -65,6 +78,7 @@ class City {
         self.icon = UIImage(named: "Sun")!
         self.backgroundImage_c = UIImage(named: "Clear_big")!
         self.backgroundImage_nd = UIImage(named: "nd_Clear")!
+        self.backgroundImage_dog = UIImage(named: "Clear_dog")!
         self.timeZone = NSTimeZone()
         self.sunrise1970 = 0.0 //NSDate().timeIntervalSince1970
         self.sunset1970 = 0.0 //NSDate().timeIntervalSince1970

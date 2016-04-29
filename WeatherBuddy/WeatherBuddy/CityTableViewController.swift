@@ -23,8 +23,9 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     //var cities = [City]()
     let locManager = CLLocationManager()
     let ows = OpenWeatherService()
-    
     let tbc = TabBarController()
+    
+    var canRefresh = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +72,9 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         */
         
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        self.canRefresh = false
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            self.canRefresh = false
             var i:Int = 0
             while (i < cities.cityCount() ) {
                 self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
@@ -82,31 +85,40 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
                 }
                 i += 1
             }
+            self.canRefresh = true
         }
         
         cities.changeWeather(self.city1)
+        canRefresh = true
         //defaults.setObject(cities, forKey: "savedCities")
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        print("refreshed!")
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            var i:Int = 0
-            while (i < cities.cityCount() ) {
-                self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
-                    (cities) in
-                    self.city1.append(cities)
-                    //print("name: \(cities.name)     temp: \(cities.currentTemp)")
-                    self.tableView.reloadData()
+        if (canRefresh) {
+            canRefresh = false
+            print("refreshed!")
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                var i:Int = 0
+                while (i < cities.cityCount() ) {
+                    self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
+                        (cities) in
+                        self.city1.append(cities)
+                        //print("name: \(cities.name)     temp: \(cities.currentTemp)")
+                        //self.tableView.reloadData()
+                    }
+                    i += 1
                 }
-                i += 1
             }
+            cities.changeWeather(self.city1)
+            canRefresh = true
+            self.tableView.reloadData()
+            refreshControl.endRefreshing()
         }
-        
-        cities.changeWeather(self.city1)
-        refreshControl.endRefreshing()
+        else {
+            refreshControl.endRefreshing()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -135,18 +147,25 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
        
         let cell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath)
-        
+
         if let cityCell = cell as? CityTableViewCell {
             cityCell.nameLabel.text = cities.cityAtIndex(indexPath.row).name
-            cityCell.degreesLabel.text = "\(Int(cities.cityAtIndex(indexPath.row).currentTemp))\u{00B0}"
+            if (settings.units == .Kelvin) {
+                cityCell.degreesLabel.text = "\(Int(cities.cityAtIndex(indexPath.row).currentTemp_K))\u{00B0}"
+            }
+            else if (settings.units == .Celsius) {
+                cityCell.degreesLabel.text = "\(Int(cities.cityAtIndex(indexPath.row).currentTemp_C))\u{00B0}"
+            }
+            else {
+                cityCell.degreesLabel.text = "\(Int(cities.cityAtIndex(indexPath.row).currentTemp_F))\u{00B0}"
+            }
+            
             cityCell.detailLabel.text = cities.cityAtIndex(indexPath.row).detail
             cityCell.iconImage.image = cities.cityAtIndex(indexPath.row).icon
             if (indexPath.row == 0) {
                 cityCell.locationImage.image = UIImage(named: "Location")
             }
         }
-
-
         return cell
     }
 
@@ -161,8 +180,8 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             self.ows.cityWeatherByZipcode(cities.cityAtIndex(0)) {
                 (cities) in
                 tempCity.append(cities)
-                print("name: \(cities.name)     temp: \(cities.currentTemp)")
-                self.tableView.reloadData()
+                print("name: \(cities.name)     temp: \(cities.currentTemp_F)")
+                //self.tableView.reloadData()
             }
         }
         

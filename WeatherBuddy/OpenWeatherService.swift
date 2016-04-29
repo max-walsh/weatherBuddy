@@ -99,24 +99,21 @@ class OpenWeatherService {
     
     func parseJSONZipcodeResponse(data: NSData, city: City) -> City {
         let json = JSON(data: data)
-        if (settings.units == .Fahrenheit) {
-            city.currentTemp = KtoF(json["main"]["temp"].doubleValue)
-        }
-        else if (settings.units == .Celsius) {
-            city.currentTemp = KtoC(json["main"]["temp"].doubleValue)
-        }
-        else {
-            city.currentTemp = round(json["main"]["temp"].doubleValue)
-        }
-
-        city.maxTemp = KtoF(json["main"]["temp_max"].doubleValue)
-        city.minTemp = KtoF(json["main"]["temp_min"].doubleValue)
+        city.currentTemp_F = KtoF(json["main"]["temp"].doubleValue)
+        city.currentTemp_C = KtoC(json["main"]["temp"].doubleValue)
+        city.currentTemp_K = round(json["main"]["temp"].doubleValue)
+        city.maxTemp_F = KtoF(json["main"]["temp_max"].doubleValue)
+        city.minTemp_F = KtoF(json["main"]["temp_min"].doubleValue)
+        city.maxTemp_C = KtoC(json["main"]["temp_max"].doubleValue)
+        city.minTemp_C = KtoC(json["main"]["temp_min"].doubleValue)
+        city.maxTemp_K = round(json["main"]["temp_max"].doubleValue)
+        city.minTemp_K = round(json["main"]["temp_min"].doubleValue)
         city.humidity = json["main"]["humidity"].intValue
         city.description = json["weather"][0]["main"].stringValue // more general
         city.detail = json["weather"][0]["description"].stringValue // more specific
-        city.windSpeed = json["wind"]["speed"].doubleValue
+        city.windSpeed = round((json["wind"]["speed"].doubleValue) * 2.23694 * 10) / 10
         let degree = json["wind"]["deg"].doubleValue
-        city.rain = json["clouds"]["all"].stringValue
+        city.clouds = json["clouds"]["all"].stringValue
         /*
 
         //city.id = json["id"].intValue
@@ -135,7 +132,7 @@ class OpenWeatherService {
         city.sunset = dateFormatter.stringFromDate(sset)
         city.sunset = city.sunset.stringByAppendingString(" PM")
         */
-        city.barometricPressure = json["main"]["pressure"].doubleValue
+        city.barometricPressure = round((json["main"]["pressure"].doubleValue)*100*0.014503773773022)/100
         let long = json["coord"]["lon"].doubleValue
         let lat = json["coord"]["lat"].doubleValue
         city.coordinates = CLLocation(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(long))
@@ -147,42 +144,50 @@ class OpenWeatherService {
             city.icon = UIImage(named: "Sun")!
             city.backgroundImage_c = UIImage(named: "Clear_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Clear")!
+            city.backgroundImage_dog = UIImage(named: "Clear_dog")!
         }
         else if (city.description == "Clouds") {
             city.icon = UIImage(named: "Cloud")!
             city.backgroundImage_c = UIImage(named: "Cloud_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Cloud")!
+            city.backgroundImage_dog = UIImage(named: "Cloud_dog")!
         }
         else if (city.description == "Drizzle") {
             city.icon = UIImage(named: "Drizzle")!
             city.backgroundImage_c = UIImage(named: "Rain_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Rain")!
+            city.backgroundImage_dog = UIImage(named: "Rain_dog")!
         }
         else if (city.description == "Rain") {
             city.icon = UIImage(named: "Rain")!
             city.backgroundImage_c = UIImage(named: "Rain_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Rain")!
+            city.backgroundImage_dog = UIImage(named: "Rain_dog")!
         }
         else if (city.description == "Thunderstorm") {
             city.icon = UIImage(named: "Storm")!
             city.backgroundImage_c = UIImage(named: "Storm_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Storm")!
+            city.backgroundImage_dog = UIImage(named: "Storm_dog")!
         }
         else if (city.description == "Snow") {
             city.icon = UIImage(named: "Snow")!
             city.backgroundImage_c = UIImage(named: "Snow_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Snow")!
+            city.backgroundImage_dog = UIImage(named: "Snow_dog")!
         }
         else if (city.description == "Mist" || city.description == "Haze" ) {
             city.icon = UIImage(named: "FogDay")!
             city.backgroundImage_c = UIImage(named: "Clear_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Fog")!
+            city.backgroundImage_dog = UIImage(named: "Fog_dog")!
         }
         else {
             print("Description: \(city.description)")
             city.backgroundImage_c = UIImage(named: "Clear_big")!
             city.icon = UIImage(named: "Sun")!
             city.backgroundImage_nd = UIImage(named: "nd_Clear")!
+            city.backgroundImage_dog = UIImage(named: "Clear_dog")!
         }
 
         if (degree >= 337.5 || degree < 22.5) {

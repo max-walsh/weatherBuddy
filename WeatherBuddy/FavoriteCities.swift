@@ -50,13 +50,19 @@ class FavoriteCities: NSObject {
             cities[index].barometricPressure = city.barometricPressure
             cities[index].coordinates = city.coordinates
             cities[index].country = city.country
-            cities[index].currentTemp = city.currentTemp
+            cities[index].currentTemp_F = city.currentTemp_F
+            cities[index].currentTemp_C = city.currentTemp_C
+            cities[index].currentTemp_K = city.currentTemp_K
             cities[index].description = city.description
             cities[index].humidity = city.humidity
-            cities[index].maxTemp = city.maxTemp
-            cities[index].minTemp = city.minTemp
+            cities[index].maxTemp_F = city.maxTemp_F
+            cities[index].minTemp_F = city.minTemp_F
+            cities[index].maxTemp_K = city.maxTemp_K
+            cities[index].minTemp_K = city.minTemp_K
+            cities[index].maxTemp_C = city.maxTemp_C
+            cities[index].minTemp_C = city.minTemp_C
             cities[index].name = city.name
-            cities[index].rain = city.rain
+            cities[index].clouds = city.clouds
             cities[index].state = city.state
             cities[index].sunrise = city.sunrise
             cities[index].sunset = city.sunset
@@ -64,7 +70,7 @@ class FavoriteCities: NSObject {
             cities[index].windSpeed = city.windSpeed
             cities[index].zipcode = city.zipcode
             
-            print ("name: \(cities[index].name)     temp: \(cities[index].currentTemp)")
+            print ("name: \(cities[index].name)     temp: \(cities[index].currentTemp_F)")
             index += 1
         }
         //print(index)
