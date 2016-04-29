@@ -85,6 +85,11 @@ class CityDetailViewController: UIViewController {
             (forecast) in
             self.forecast = forecast
             print(self.forecast)
+            self.day1Image.image = self.forecast!.dayAtIndex(0).icon
+            self.day2Image.image = self.forecast!.dayAtIndex(1).icon
+            self.day3Image.image = self.forecast!.dayAtIndex(2).icon
+            self.day4Image.image = self.forecast!.dayAtIndex(3).icon
+            self.day5Image.image = self.forecast!.dayAtIndex(4).icon
             //print("should have been called")
             //self. MUST REFRESH THE DATA
         }
@@ -102,14 +107,6 @@ class CityDetailViewController: UIViewController {
         else if (settings.theme == .Dogs) {
             backgroundImage.image = city?.backgroundImage_dog
         }
-        
-        //day1Image.image = forecast?.dayAtIndex(0).icon
-        day2Image.image = UIImage(named: "Cloud")
-        //day2Image.image = forecast!.dayAtIndex(1).icon
-        //day3Image.image = forecast!.dayAtIndex(2).icon
-        //day4Image.image = forecast!.dayAtIndex(3).icon
-        //day5Image.image = forecast!.dayAtIndex(4).icon
-
     }
 
     override func didReceiveMemoryWarning() {

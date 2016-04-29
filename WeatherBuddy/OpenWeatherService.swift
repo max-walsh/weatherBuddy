@@ -241,8 +241,8 @@ class OpenWeatherService {
             if (dateComp[0] != currentDate) {
                 let min = day["main"]["temp_min"].doubleValue
                 let max = day["main"]["temp_max"].doubleValue
-                let desc = day["weather"]["main"].stringValue
-//<<<<<<< HEAD
+                let desc = day["weather"][0]["main"].stringValue
+
                 var icon = UIImage(named: "Sun")
                 if (desc == "Rain" ) {
                     icon = UIImage(named: "Rain")
@@ -265,13 +265,7 @@ class OpenWeatherService {
                 print("not Today: \(dateComp[0])")
                 currentDate = dateComp[0]
                 forecast.addDay(ForecastDay(minTemp: min, maxTemp: max, desc: desc, icon: icon!))
-/*
-=======
-                print("not Today: \(dateComp[0])")
-                currentDate = dateComp[0]
-                forecast.addDay(ForecastDay(minTemp: min, maxTemp: max, desc: desc))
->>>>>>> persistence
-*/
+
             } else {
                 print("today")
             }
