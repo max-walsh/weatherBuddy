@@ -12,6 +12,7 @@ class AddCityViewController: UIViewController, UITextFieldDelegate {
 
     var cities : FavoriteCities?
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!    
     @IBOutlet weak var stateTextField: UITextField!
@@ -20,6 +21,7 @@ class AddCityViewController: UIViewController, UITextFieldDelegate {
         
         zipTextField.delegate = self
         zipTextField.keyboardType = UIKeyboardType.NumberPad
+        imageView.image = UIImage(named: "City")
     }
 
     override func didReceiveMemoryWarning() {

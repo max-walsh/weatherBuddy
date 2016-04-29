@@ -10,12 +10,22 @@ import Foundation
 
 class Settings {
     var theme:Theme
-    var map:Bool
-    var units:Bool
+    var units:Unit
     
     init() {
         theme = Theme.Classic
-        units = true
-        map = true
+        units = Unit.Fahrenheit
     }
+}
+
+enum Theme {
+    case Classic
+    case Dogs
+    case NotreDame
+}
+
+enum Unit {
+    case Fahrenheit
+    case Celsius
+    case Kelvin
 }
