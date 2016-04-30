@@ -18,13 +18,15 @@ class ForecastDay {
     var description:String
     var icon = UIImage(named: "Sun")!
     
-    init(minTemp_F: Double, maxTemp_F: Double, desc: String, icon:UIImage) {
+    init(minTemp_F: Double, maxTemp_F: Double,
+         minTemp_C: Double, maxTemp_C: Double,
+         minTemp_K: Double, maxTemp_K: Double, desc: String, icon:UIImage) {
         self.minTemp_F = minTemp_F
         self.maxTemp_F = maxTemp_F
-        self.minTemp_C = 0
-        self.maxTemp_C = 0
-        self.minTemp_K = 0
-        self.maxTemp_K =  0
+        self.minTemp_C = minTemp_C
+        self.maxTemp_C = maxTemp_C
+        self.minTemp_K = minTemp_K
+        self.maxTemp_K = maxTemp_K
         self.description = desc
         self.icon = icon
     }

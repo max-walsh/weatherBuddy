@@ -238,9 +238,25 @@ class OpenWeatherService {
         for (_, day) in json["list"] {
             let date = day["dt_txt"].stringValue
             let dateComp = date.componentsSeparatedByString(" ")
+            var min_K = 0.0
+            var max_K = 0.0
+            var min_F = 0.0
+            var max_F = 0.0
+            var min_C = 0.0
+            var max_C = 0.0
             if (dateComp[0] != currentDate) {
-                let min = KtoF(day["main"]["temp_min"].doubleValue)
-                let max = KtoF(day["main"]["temp_max"].doubleValue)
+                if (settings.units == .Kelvin) {
+                    min_K = round(day["main"]["temp_min"].doubleValue)
+                    max_K = round(day["main"]["temp_max"].doubleValue)
+                }
+                else if (settings.units == .Celsius) {
+                    min_C = KtoC(day["main"]["temp_min"].doubleValue)
+                    max_C = KtoC(day["main"]["temp_max"].doubleValue)
+                }
+                else {
+                    min_F = KtoF(day["main"]["temp_min"].doubleValue)
+                    max_F = KtoF(day["main"]["temp_max"].doubleValue)
+                }
                 let desc = day["weather"][0]["main"].stringValue
 
                 var icon = UIImage(named: "Sun")
@@ -264,7 +280,9 @@ class OpenWeatherService {
                 }
                 print("not Today: \(dateComp[0])")
                 currentDate = dateComp[0]
-                forecast.addDay(ForecastDay(minTemp_F: min, maxTemp_F: max, desc: desc, icon: icon!))
+                forecast.addDay(ForecastDay(minTemp_F: min_F, maxTemp_F: max_F,
+                                            minTemp_C: min_C, maxTemp_C: max_C,
+                                            minTemp_K: min_K, maxTemp_K: max_K, desc: desc, icon: icon!))
 
             } else {
                 print("today")

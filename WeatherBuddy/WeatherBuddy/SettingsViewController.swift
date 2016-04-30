@@ -10,8 +10,10 @@ import UIKit
 
 class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var themePickerView: UIPickerView!
     @IBOutlet weak var degreePickerView: UIPickerView!
+
     
     var themePickerDataSource = ["Classic", "Dogs", "Notre Dame"]
     var degreePickerDataSource = ["Fahrenheit", "Celsius", "Kelvin"]
@@ -22,6 +24,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         self.themePickerView.delegate = self
         self.degreePickerView.dataSource = self
         self.degreePickerView.delegate = self
+        self.backgroundImage.image = UIImage(named: "Theme_c")
 
         // Do any additional setup after loading the view.
     }
@@ -60,14 +63,17 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             if(row == 0) {
                 print("Classic")
                 settings.theme = .Classic
+                backgroundImage.image = UIImage(named: "Theme_c")
             }
             else if(row == 1) {
                 print("Dogs")
                 settings.theme = .Dogs
+                backgroundImage.image = UIImage(named: "Theme_dog")
             }
             else if(row == 2) {
                 print("NotreDame")
                 settings.theme = .NotreDame
+                backgroundImage.image = UIImage(named: "Theme_nd")
             }
         }
         else {
@@ -85,6 +91,26 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             }
         }
 
+    }
+    
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+        
+        var pickerLabel = view as? UILabel
+        
+        if (pickerLabel == nil) {
+            pickerLabel = UILabel()
+            pickerLabel?.font = UIFont(name: "Tamil Sangam MN", size: 20)
+            pickerLabel?.textAlignment = NSTextAlignment.Center
+        }
+        
+        if (pickerView == themePickerView) {
+            pickerLabel?.text = themePickerDataSource[row]
+        }
+        else {
+            pickerLabel?.text = degreePickerDataSource[row]
+        }
+        
+        return pickerLabel!
     }
 
 

@@ -102,16 +102,42 @@ class CityDetailViewController: UIViewController {
             self.day3Image.image = self.forecast!.dayAtIndex(2).icon
             self.day4Image.image = self.forecast!.dayAtIndex(3).icon
             self.day5Image.image = self.forecast!.dayAtIndex(4).icon
-            self.day1MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).maxTemp_F)))
-            self.day2MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).maxTemp_F)))
-            self.day3MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).maxTemp_F)))
-            self.day4MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).maxTemp_F)))
-            self.day5MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).maxTemp_F)))
-            self.day1MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).minTemp_F)))
-            self.day2MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).minTemp_F)))
-            self.day3MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).minTemp_F)))
-            self.day4MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).minTemp_F)))
-            self.day5MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).minTemp_F)))
+            if (settings.units == .Kelvin) {
+                self.day1MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).maxTemp_K)))
+                self.day2MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).maxTemp_K)))
+                self.day3MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).maxTemp_K)))
+                self.day4MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).maxTemp_K)))
+                self.day5MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).maxTemp_K)))
+                self.day1MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).minTemp_K)))
+                self.day2MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).minTemp_K)))
+                self.day3MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).minTemp_K)))
+                self.day4MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).minTemp_K)))
+                self.day5MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).minTemp_K)))
+            }
+            else if (settings.units == .Celsius) {
+                self.day1MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).maxTemp_C)))
+                self.day2MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).maxTemp_C)))
+                self.day3MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).maxTemp_C)))
+                self.day4MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).maxTemp_C)))
+                self.day5MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).maxTemp_C)))
+                self.day1MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).minTemp_C)))
+                self.day2MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).minTemp_C)))
+                self.day3MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).minTemp_C)))
+                self.day4MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).minTemp_C)))
+                self.day5MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).minTemp_C)))
+            }
+            else {
+                self.day1MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).maxTemp_F)))
+                self.day2MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).maxTemp_F)))
+                self.day3MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).maxTemp_F)))
+                self.day4MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).maxTemp_F)))
+                self.day5MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).maxTemp_F)))
+                self.day1MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).minTemp_F)))
+                self.day2MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).minTemp_F)))
+                self.day3MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).minTemp_F)))
+                self.day4MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).minTemp_F)))
+                self.day5MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).minTemp_F)))
+            }
             //print("should have been called")
             //self. MUST REFRESH THE DATA
         }

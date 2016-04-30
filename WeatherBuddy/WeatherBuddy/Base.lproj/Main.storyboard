@@ -340,33 +340,43 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Humidity:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75e-8s-YiU">
-                                <rect key="frame" x="194" y="232" width="215" height="21"/>
-                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wind:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1f-Sa-6ws">
-                                <rect key="frame" x="194" y="255" width="215" height="21"/>
-                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLd-YD-XiT">
-                                <rect key="frame" x="14" y="278" width="61" height="21"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iu1-TB-pWw" customClass="SunView" customModule="WeatherBuddy" customModuleProvider="target">
+                                <rect key="frame" x="32" y="206" width="110" height="110"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="2bh-xE-e6E"/>
+                                    <constraint firstAttribute="height" constant="110" id="lDd-N3-gJg"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Gi-5w-TnP">
+                                <rect key="frame" x="26" y="243" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="DaA-hE-Xh7"/>
+                                    <constraint firstAttribute="width" constant="35" id="XzJ-Pl-E1a"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yKW-3m-WGV">
+                                <rect key="frame" x="113" y="243" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="sU0-OI-vr6"/>
+                                    <constraint firstAttribute="width" constant="35" id="xZX-fl-Xm1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLd-YD-XiT">
+                                <rect key="frame" x="28" y="276" width="30" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="R9I-ID-PFv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pressure:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PH8-UD-4yK">
-                                <rect key="frame" x="194" y="277" width="181" height="21"/>
-                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Clouds:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prF-kg-Ezx">
-                                <rect key="frame" x="194" y="297" width="215" height="21"/>
-                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XY-ka-T7a">
+                                <rect key="frame" x="102" y="276" width="56" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="YY8-o8-l3E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -379,150 +389,299 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5 Day Forecast:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cvi-GB-8hQ">
-                                <rect key="frame" x="19" y="439" width="120" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 Day Forecast:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cvi-GB-8hQ">
+                                <rect key="frame" x="25" y="476" width="113" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="hsl-FZ-70T"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iu1-TB-pWw" customClass="SunView" customModule="WeatherBuddy" customModuleProvider="target">
-                                <rect key="frame" x="32" y="206" width="110" height="110"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yKW-3m-WGV">
-                                <rect key="frame" x="113" y="243" width="35" height="35"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Gi-5w-TnP">
-                                <rect key="frame" x="25" y="243" width="35" height="35"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XY-ka-T7a">
-                                <rect key="frame" x="102" y="278" width="56" height="21"/>
-                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqT-Wd-x9J">
-                                <rect key="frame" x="58" y="483" width="62" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqT-Wd-x9J">
+                                <rect key="frame" x="56" y="507" width="56" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="WKj-dQ-iwB"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tuesday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRT-u9-Yv3">
-                                <rect key="frame" x="59" y="517" width="65" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRT-u9-Yv3">
+                                <rect key="frame" x="56" y="540" width="60" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="g49-RQ-XdB"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wednesday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yN1-oD-mi8">
-                                <rect key="frame" x="58" y="546" width="90" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yN1-oD-mi8">
+                                <rect key="frame" x="56" y="573" width="84" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="N4p-9k-S6n"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thursday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLw-de-Hbg">
-                                <rect key="frame" x="59" y="578" width="72" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLw-de-Hbg">
+                                <rect key="frame" x="56" y="606" width="66" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="rK4-3d-VQw"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZD1-60-sgy">
-                                <rect key="frame" x="59" y="611" width="47" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZD1-60-sgy">
+                                <rect key="frame" x="56" y="639" width="44" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="h0N-qc-Sq2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ke0-UL-Hap">
-                                <rect key="frame" x="25" y="481" width="25" height="25"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ke0-UL-Hap">
+                                <rect key="frame" x="25" y="505" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="ChB-ih-KQ7"/>
+                                    <constraint firstAttribute="height" constant="25" id="stf-mq-iCg"/>
+                                </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1T-kF-DYz">
-                                <rect key="frame" x="25" y="515" width="25" height="25"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e1T-kF-DYz">
+                                <rect key="frame" x="25" y="538" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="3xu-Ca-wjh"/>
+                                    <constraint firstAttribute="height" constant="25" id="G8X-uF-T5y"/>
+                                </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4s1-rb-v1o">
-                                <rect key="frame" x="25" y="546" width="25" height="25"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4s1-rb-v1o">
+                                <rect key="frame" x="25" y="571" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="WG1-sl-Wlp"/>
+                                    <constraint firstAttribute="height" constant="25" id="nTO-K3-CFA"/>
+                                </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cv8-e5-FVg">
-                                <rect key="frame" x="25" y="578" width="25" height="25"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cv8-e5-FVg">
+                                <rect key="frame" x="25" y="604" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="V0h-s4-c6e"/>
+                                    <constraint firstAttribute="height" constant="25" id="k7R-oU-WyU"/>
+                                </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kSD-12-RE5">
-                                <rect key="frame" x="25" y="609" width="25" height="25"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kSD-12-RE5">
+                                <rect key="frame" x="25" y="637" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="hN0-xm-ABy"/>
+                                    <constraint firstAttribute="width" constant="25" id="lcU-me-ILr"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9U-fj-ANQ">
-                                <rect key="frame" x="121" y="483" width="49" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9U-fj-ANQ">
+                                <rect key="frame" x="117" y="505" width="22" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="pBW-9f-qfQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKh-Ou-63z">
-                                <rect key="frame" x="178" y="483" width="57" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKh-Ou-63z">
+                                <rect key="frame" x="141" y="507" width="16" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="THt-Qm-tIa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLP-QB-OVg">
+                                <rect key="frame" x="145" y="540" width="16" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="tdX-1A-j89"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCd-Kc-uSi">
+                                <rect key="frame" x="169" y="573" width="16" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="25b-fE-rJb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ila-Ud-wv7">
+                                <rect key="frame" x="121" y="538" width="22" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="2zT-oY-piS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLP-QB-OVg">
-                                <rect key="frame" x="156" y="517" width="21" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyE-mW-3OF">
+                                <rect key="frame" x="145" y="571" width="22" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="YMV-iS-3TS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCd-Kc-uSi">
-                                <rect key="frame" x="177" y="546" width="21" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppf-Dj-iD1">
+                                <rect key="frame" x="127" y="604" width="22" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Zfi-hM-KNf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ila-Ud-wv7">
-                                <rect key="frame" x="127" y="517" width="21" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nY7-e8-1sZ">
+                                <rect key="frame" x="151" y="606" width="16" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="z3b-gy-k2D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lye-9H-Jdf">
+                                <rect key="frame" x="105" y="636" width="22" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="Omc-6z-ofP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyE-mW-3OF">
-                                <rect key="frame" x="148" y="546" width="21" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJM-5A-sjb">
+                                <rect key="frame" x="129" y="639" width="16" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="3Hs-La-lTW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75e-8s-YiU">
+                                <rect key="frame" x="267" y="206" width="65" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="lPN-xI-YhU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppf-Dj-iD1">
-                                <rect key="frame" x="132" y="578" width="21" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1f-Sa-6ws">
+                                <rect key="frame" x="267" y="229" width="39" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="xeJ-7l-lGR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nY7-e8-1sZ">
-                                <rect key="frame" x="161" y="578" width="21" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PH8-UD-4yK">
+                                <rect key="frame" x="267" y="252" width="67" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Hwe-ll-ZCS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lye-9H-Jdf">
-                                <rect key="frame" x="110" y="611" width="21" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJM-5A-sjb">
-                                <rect key="frame" x="139" y="611" width="21" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clouds:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prF-kg-Ezx">
+                                <rect key="frame" x="267" y="275" width="53" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="RwE-7x-PSh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="yyE-mW-3OF" firstAttribute="centerY" secondItem="yN1-oD-mi8" secondAttribute="centerY" id="0BG-XV-Fql"/>
                             <constraint firstItem="qv9-h0-vVx" firstAttribute="centerY" secondItem="D3B-TU-cbk" secondAttribute="centerY" id="28f-cU-jiw"/>
                             <constraint firstItem="TeD-MU-P73" firstAttribute="centerX" secondItem="QSx-o2-dQ8" secondAttribute="centerX" id="2ei-Gv-FAq"/>
+                            <constraint firstItem="eRT-u9-Yv3" firstAttribute="leading" secondItem="e1T-kF-DYz" secondAttribute="trailing" constant="6" id="3hn-ye-WXF"/>
+                            <constraint firstItem="ke0-UL-Hap" firstAttribute="top" secondItem="Cvi-GB-8hQ" secondAttribute="bottom" constant="8" id="56O-KU-s2R"/>
+                            <constraint firstItem="0XY-ka-T7a" firstAttribute="centerX" secondItem="yKW-3m-WGV" secondAttribute="centerX" id="5H7-VW-PGK"/>
+                            <constraint firstItem="ke0-UL-Hap" firstAttribute="leading" secondItem="e1T-kF-DYz" secondAttribute="leading" id="7OO-xt-R0R"/>
+                            <constraint firstItem="Cv8-e5-FVg" firstAttribute="top" secondItem="4s1-rb-v1o" secondAttribute="bottom" constant="8" id="9tT-U2-NjY"/>
+                            <constraint firstItem="NCd-Kc-uSi" firstAttribute="centerY" secondItem="yyE-mW-3OF" secondAttribute="centerY" id="B4v-nD-Zi0"/>
+                            <constraint firstItem="yyE-mW-3OF" firstAttribute="leading" secondItem="yN1-oD-mi8" secondAttribute="trailing" constant="5" id="BEx-LB-whH"/>
                             <constraint firstItem="TeD-MU-P73" firstAttribute="top" secondItem="QSx-o2-dQ8" secondAttribute="bottom" constant="10" id="CGa-Mn-Vjt"/>
+                            <constraint firstItem="kSD-12-RE5" firstAttribute="leading" secondItem="D3B-TU-cbk" secondAttribute="leadingMargin" constant="5" id="CcL-Vv-CpB"/>
+                            <constraint firstItem="rLw-de-Hbg" firstAttribute="centerY" secondItem="Cv8-e5-FVg" secondAttribute="centerY" id="DIF-wY-Z8y"/>
+                            <constraint firstItem="PH8-UD-4yK" firstAttribute="leading" secondItem="75e-8s-YiU" secondAttribute="leading" id="De8-Ud-Sub"/>
                             <constraint firstItem="qv9-h0-vVx" firstAttribute="centerX" secondItem="D3B-TU-cbk" secondAttribute="centerX" id="EIj-aw-Gy6"/>
+                            <constraint firstItem="iu1-TB-pWw" firstAttribute="top" secondItem="yKW-3m-WGV" secondAttribute="bottom" constant="-72" id="EvX-Ng-TGi"/>
+                            <constraint firstItem="kSD-12-RE5" firstAttribute="top" secondItem="Cv8-e5-FVg" secondAttribute="bottom" constant="8" id="FJl-04-eey"/>
                             <constraint firstItem="kkW-g5-Pch" firstAttribute="centerX" secondItem="D3B-TU-cbk" secondAttribute="centerX" constant="1" id="FU3-8S-Duz"/>
+                            <constraint firstItem="ppf-Dj-iD1" firstAttribute="centerY" secondItem="rLw-de-Hbg" secondAttribute="centerY" id="GJu-hh-58v"/>
                             <constraint firstItem="2u7-gh-S6V" firstAttribute="baseline" secondItem="TeD-MU-P73" secondAttribute="baseline" constant="6" id="Ge2-Fo-BaM"/>
+                            <constraint firstItem="yN1-oD-mi8" firstAttribute="centerY" secondItem="4s1-rb-v1o" secondAttribute="centerY" id="IiV-2h-DiJ"/>
+                            <constraint firstItem="Cv8-e5-FVg" firstAttribute="leading" secondItem="kSD-12-RE5" secondAttribute="leading" id="IsO-R7-tn5"/>
                             <constraint firstItem="qv9-h0-vVx" firstAttribute="height" secondItem="D3B-TU-cbk" secondAttribute="height" id="IwX-Kv-iAc"/>
                             <constraint firstItem="kkW-g5-Pch" firstAttribute="top" secondItem="3An-uY-PCo" secondAttribute="bottom" constant="25" id="JQN-3r-sdl"/>
+                            <constraint firstItem="rLw-de-Hbg" firstAttribute="leading" secondItem="Cv8-e5-FVg" secondAttribute="trailing" constant="6" id="JVL-iU-P5S"/>
+                            <constraint firstItem="ppf-Dj-iD1" firstAttribute="leading" secondItem="rLw-de-Hbg" secondAttribute="trailing" constant="5" id="Jc2-2v-P3a"/>
                             <constraint firstItem="FUH-NJ-oXk" firstAttribute="baseline" secondItem="TeD-MU-P73" secondAttribute="baseline" constant="6" id="Jwm-q2-7FQ"/>
                             <constraint firstItem="QSx-o2-dQ8" firstAttribute="centerX" secondItem="kkW-g5-Pch" secondAttribute="centerX" constant="-1.5" id="KzR-2G-CHt"/>
+                            <constraint firstItem="0XY-ka-T7a" firstAttribute="top" secondItem="yKW-3m-WGV" secondAttribute="bottom" constant="-2" id="Ld2-Em-UMY"/>
+                            <constraint firstItem="nY7-e8-1sZ" firstAttribute="centerY" secondItem="ppf-Dj-iD1" secondAttribute="centerY" id="Lg2-I8-bFq"/>
+                            <constraint firstItem="e1T-kF-DYz" firstAttribute="top" secondItem="ke0-UL-Hap" secondAttribute="bottom" constant="8" id="LiR-1d-XN8"/>
                             <constraint firstItem="TeD-MU-P73" firstAttribute="leading" secondItem="FUH-NJ-oXk" secondAttribute="trailing" constant="10" id="LnR-dU-BWw"/>
                             <constraint firstItem="qv9-h0-vVx" firstAttribute="width" secondItem="D3B-TU-cbk" secondAttribute="width" id="M4y-Zj-FfK"/>
+                            <constraint firstItem="YLP-QB-OVg" firstAttribute="leading" secondItem="Ila-Ud-wv7" secondAttribute="trailing" constant="2" id="NDA-oq-JYZ"/>
+                            <constraint firstItem="K1f-Sa-6ws" firstAttribute="leading" secondItem="75e-8s-YiU" secondAttribute="leading" id="NOE-pW-hGx"/>
+                            <constraint firstItem="nY7-e8-1sZ" firstAttribute="leading" secondItem="ppf-Dj-iD1" secondAttribute="trailing" constant="2" id="Ncw-pk-sSj"/>
+                            <constraint firstItem="Ila-Ud-wv7" firstAttribute="leading" secondItem="eRT-u9-Yv3" secondAttribute="trailing" constant="5" id="PmN-PP-P6j"/>
+                            <constraint firstItem="NCd-Kc-uSi" firstAttribute="leading" secondItem="yyE-mW-3OF" secondAttribute="trailing" constant="2" id="Rov-iy-kCh"/>
+                            <constraint firstItem="YLP-QB-OVg" firstAttribute="centerY" secondItem="Ila-Ud-wv7" secondAttribute="centerY" id="SbK-zF-QrF"/>
+                            <constraint firstItem="eRT-u9-Yv3" firstAttribute="centerY" secondItem="e1T-kF-DYz" secondAttribute="centerY" id="Ss8-x9-zG5"/>
+                            <constraint firstItem="LLd-YD-XiT" firstAttribute="centerX" secondItem="0Gi-5w-TnP" secondAttribute="centerX" id="VZb-IL-iBc"/>
+                            <constraint firstItem="lye-9H-Jdf" firstAttribute="leading" secondItem="ZD1-60-sgy" secondAttribute="trailing" constant="5" id="Wfb-KA-PST"/>
+                            <constraint firstItem="Cvi-GB-8hQ" firstAttribute="leading" secondItem="ke0-UL-Hap" secondAttribute="leading" id="Xhq-Dc-Wlv"/>
+                            <constraint firstItem="4s1-rb-v1o" firstAttribute="top" secondItem="e1T-kF-DYz" secondAttribute="bottom" constant="8" id="Y5a-t3-Ai7"/>
+                            <constraint firstItem="prF-kg-Ezx" firstAttribute="top" secondItem="PH8-UD-4yK" secondAttribute="bottom" constant="2" id="Yhu-Q8-Adg"/>
+                            <constraint firstItem="e1T-kF-DYz" firstAttribute="leading" secondItem="4s1-rb-v1o" secondAttribute="leading" id="YsU-wm-AxG"/>
                             <constraint firstItem="QSx-o2-dQ8" firstAttribute="top" secondItem="kkW-g5-Pch" secondAttribute="bottom" constant="-1" id="aHw-dq-LY5"/>
+                            <constraint firstItem="mqT-Wd-x9J" firstAttribute="centerY" secondItem="ke0-UL-Hap" secondAttribute="centerY" id="bpm-Bq-FTi"/>
+                            <constraint firstItem="h9U-fj-ANQ" firstAttribute="leading" secondItem="mqT-Wd-x9J" secondAttribute="trailing" constant="5" id="cED-DJ-YeI"/>
+                            <constraint firstItem="iu1-TB-pWw" firstAttribute="leading" secondItem="D3B-TU-cbk" secondAttribute="leadingMargin" constant="12" id="ddg-Xo-3dW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="75e-8s-YiU" secondAttribute="trailing" constant="62" id="flX-hz-LAM"/>
+                            <constraint firstItem="mqT-Wd-x9J" firstAttribute="leading" secondItem="ke0-UL-Hap" secondAttribute="trailing" constant="6" id="gJF-eR-rCL"/>
+                            <constraint firstItem="ZD1-60-sgy" firstAttribute="leading" secondItem="kSD-12-RE5" secondAttribute="trailing" constant="6" id="gWb-5W-6qG"/>
+                            <constraint firstItem="75e-8s-YiU" firstAttribute="top" secondItem="iu1-TB-pWw" secondAttribute="top" id="gdB-dz-qVr"/>
+                            <constraint firstItem="iu1-TB-pWw" firstAttribute="top" secondItem="0Gi-5w-TnP" secondAttribute="bottom" constant="-72" id="h9t-S7-Wun"/>
+                            <constraint firstItem="lye-9H-Jdf" firstAttribute="centerY" secondItem="ZD1-60-sgy" secondAttribute="centerY" id="hO4-5R-aXP"/>
+                            <constraint firstItem="ZD1-60-sgy" firstAttribute="centerY" secondItem="kSD-12-RE5" secondAttribute="centerY" id="hYX-75-Uxj"/>
+                            <constraint firstItem="prF-kg-Ezx" firstAttribute="leading" secondItem="75e-8s-YiU" secondAttribute="leading" id="hqp-6m-6hU"/>
+                            <constraint firstItem="yKW-3m-WGV" firstAttribute="leading" secondItem="0XY-ka-T7a" secondAttribute="trailing" constant="-45" id="i4a-bW-ks5"/>
                             <constraint firstItem="2u7-gh-S6V" firstAttribute="leading" secondItem="TeD-MU-P73" secondAttribute="trailing" constant="1" id="i9N-Ae-0zu"/>
+                            <constraint firstItem="yKW-3m-WGV" firstAttribute="leading" secondItem="iu1-TB-pWw" secondAttribute="trailing" constant="-29" id="k68-XX-VFd"/>
+                            <constraint firstItem="iu1-TB-pWw" firstAttribute="leading" secondItem="0Gi-5w-TnP" secondAttribute="trailing" constant="-29" id="okq-JL-DeK"/>
+                            <constraint firstItem="K1f-Sa-6ws" firstAttribute="top" secondItem="75e-8s-YiU" secondAttribute="bottom" constant="2" id="orC-KU-hKP"/>
+                            <constraint firstItem="Ila-Ud-wv7" firstAttribute="centerY" secondItem="eRT-u9-Yv3" secondAttribute="centerY" id="oww-MV-nFl"/>
+                            <constraint firstItem="FKh-Ou-63z" firstAttribute="leading" secondItem="h9U-fj-ANQ" secondAttribute="trailing" constant="2" id="p5E-cO-5Mj"/>
+                            <constraint firstItem="cJM-5A-sjb" firstAttribute="centerY" secondItem="lye-9H-Jdf" secondAttribute="centerY" id="pjk-O2-Mn8"/>
+                            <constraint firstItem="FKh-Ou-63z" firstAttribute="centerY" secondItem="h9U-fj-ANQ" secondAttribute="centerY" id="sJX-eK-3Pd"/>
+                            <constraint firstItem="h9U-fj-ANQ" firstAttribute="centerY" secondItem="mqT-Wd-x9J" secondAttribute="centerY" id="sNV-fc-wkD"/>
+                            <constraint firstItem="cJM-5A-sjb" firstAttribute="leading" secondItem="lye-9H-Jdf" secondAttribute="trailing" constant="2" id="uZw-od-Tre"/>
+                            <constraint firstItem="iu1-TB-pWw" firstAttribute="top" secondItem="3An-uY-PCo" secondAttribute="bottom" constant="142" id="wa2-xa-g6X"/>
+                            <constraint firstItem="yN1-oD-mi8" firstAttribute="leading" secondItem="4s1-rb-v1o" secondAttribute="trailing" constant="6" id="xIi-iJ-Ft1"/>
+                            <constraint firstItem="4s1-rb-v1o" firstAttribute="leading" secondItem="Cv8-e5-FVg" secondAttribute="leading" id="xJe-Ra-a6h"/>
+                            <constraint firstItem="PH8-UD-4yK" firstAttribute="top" secondItem="K1f-Sa-6ws" secondAttribute="bottom" constant="2" id="y3V-mM-UJ1"/>
+                            <constraint firstItem="jQn-oc-5xx" firstAttribute="top" secondItem="kSD-12-RE5" secondAttribute="bottom" constant="25" id="zVC-md-57q"/>
+                            <constraint firstItem="LLd-YD-XiT" firstAttribute="top" secondItem="0Gi-5w-TnP" secondAttribute="bottom" constant="-2" id="zpb-D4-JBl"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -683,7 +842,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cN-p0-BIE">
-                                            <rect key="frame" x="530" y="27" width="23" height="21"/>
+                                            <rect key="frame" x="530" y="29" width="23" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="iaM-r3-8qN"/>
                                             </constraints>
@@ -723,7 +882,7 @@
                                         <constraint firstItem="gmA-eA-EwG" firstAttribute="centerX" secondItem="y6T-a7-tC4" secondAttribute="centerX" constant="2.5" id="Xt6-ac-Vv0"/>
                                         <constraint firstItem="iZx-lK-RQU" firstAttribute="leading" secondItem="IP4-4T-CWA" secondAttribute="trailing" constant="4" id="XwF-C1-QXV"/>
                                         <constraint firstItem="8rD-ou-x3J" firstAttribute="leading" secondItem="IP4-4T-CWA" secondAttribute="trailing" constant="4" id="YYX-Xn-eka"/>
-                                        <constraint firstItem="0cN-p0-BIE" firstAttribute="centerY" secondItem="y6T-a7-tC4" secondAttribute="centerY" id="ZSv-3M-GUL"/>
+                                        <constraint firstItem="0cN-p0-BIE" firstAttribute="centerY" secondItem="y6T-a7-tC4" secondAttribute="centerY" constant="2" id="ZSv-3M-GUL"/>
                                         <constraint firstItem="iZx-lK-RQU" firstAttribute="top" secondItem="IP4-4T-CWA" secondAttribute="top" constant="8" id="d6t-VA-cYV"/>
                                         <constraint firstItem="fdJ-ri-cYl" firstAttribute="centerY" secondItem="7fI-GJ-Yrb" secondAttribute="centerY" id="eW6-zJ-xTX"/>
                                         <constraint firstItem="fdJ-ri-cYl" firstAttribute="width" secondItem="7fI-GJ-Yrb" secondAttribute="width" id="ype-5l-SE6"/>
@@ -821,50 +980,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBl-12-L97">
-                                <rect key="frame" x="0.0" y="39" width="600" height="216"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="3eY-Ce-aU2" id="gOn-AN-QYV"/>
-                                </connections>
-                            </pickerView>
+                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Ra-3T-5bT">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick a theme:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pb-m6-Y76">
-                                <rect key="frame" x="20" y="92" width="104" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="jPK-PP-Tgr"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="92" width="113" height="20"/>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eG6-zP-liC">
-                                <rect key="frame" x="0.0" y="181" width="600" height="216"/>
+                                <rect key="frame" x="0.0" y="302" width="600" height="130"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="qnQ-cv-Mtw"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="3eY-Ce-aU2" id="YRX-mo-eT0"/>
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Degrees Unit:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4l-oY-DJC">
-                                <rect key="frame" x="20" y="234" width="105" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="274" width="114" height="20"/>
+                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBl-12-L97">
+                                <rect key="frame" x="0.0" y="116" width="600" height="130"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="0kC-LS-RqZ"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="3eY-Ce-aU2" id="gOn-AN-QYV"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qBl-12-L97" firstAttribute="width" secondItem="Rvs-sh-8zM" secondAttribute="width" id="Eks-Z0-XgA"/>
-                            <constraint firstItem="eG6-zP-liC" firstAttribute="centerX" secondItem="Rvs-sh-8zM" secondAttribute="centerX" id="FbE-cV-1tg"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="V4l-oY-DJC" secondAttribute="leading" id="LiQ-xZ-4Zg"/>
-                            <constraint firstItem="eG6-zP-liC" firstAttribute="top" secondItem="V4l-oY-DJC" secondAttribute="bottom" constant="-74" id="SsC-52-g18"/>
-                            <constraint firstItem="8pb-m6-Y76" firstAttribute="top" secondItem="j7h-JO-aJf" secondAttribute="bottom" constant="28" id="UGi-U8-RnE"/>
-                            <constraint firstItem="qBl-12-L97" firstAttribute="centerX" secondItem="Rvs-sh-8zM" secondAttribute="centerX" id="aMQ-U7-Kte"/>
-                            <constraint firstItem="eG6-zP-liC" firstAttribute="width" secondItem="Rvs-sh-8zM" secondAttribute="width" id="azk-Ak-lsv"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="8pb-m6-Y76" secondAttribute="leading" id="edK-AD-QaR"/>
-                            <constraint firstItem="qBl-12-L97" firstAttribute="top" secondItem="8pb-m6-Y76" secondAttribute="bottom" constant="-74" id="ko7-HC-Dhy"/>
-                            <constraint firstItem="V4l-oY-DJC" firstAttribute="top" secondItem="qBl-12-L97" secondAttribute="bottom" constant="-21" id="qMt-QD-Yke"/>
+                            <constraint firstItem="qBl-12-L97" firstAttribute="centerX" secondItem="Rvs-sh-8zM" secondAttribute="centerX" id="5p9-NF-Vdm"/>
+                            <constraint firstItem="8pb-m6-Y76" firstAttribute="top" secondItem="j7h-JO-aJf" secondAttribute="bottom" constant="28" id="615-Yw-EKd"/>
+                            <constraint firstItem="6Ra-3T-5bT" firstAttribute="centerX" secondItem="Rvs-sh-8zM" secondAttribute="centerX" id="F9t-Ju-eUH"/>
+                            <constraint firstItem="6Ra-3T-5bT" firstAttribute="centerY" secondItem="Rvs-sh-8zM" secondAttribute="centerY" id="SRs-iO-y7z"/>
+                            <constraint firstItem="qBl-12-L97" firstAttribute="top" secondItem="8pb-m6-Y76" secondAttribute="bottom" constant="4" id="WRG-mt-MRC"/>
+                            <constraint firstItem="6Ra-3T-5bT" firstAttribute="width" secondItem="Rvs-sh-8zM" secondAttribute="width" id="X0S-5M-dcu"/>
+                            <constraint firstItem="V4l-oY-DJC" firstAttribute="top" secondItem="qBl-12-L97" secondAttribute="bottom" constant="28" id="bfF-hD-816"/>
+                            <constraint firstItem="eG6-zP-liC" firstAttribute="width" secondItem="Rvs-sh-8zM" secondAttribute="width" id="hLM-Dx-QK3"/>
+                            <constraint firstItem="qBl-12-L97" firstAttribute="width" secondItem="Rvs-sh-8zM" secondAttribute="width" id="mNF-Np-gki"/>
+                            <constraint firstItem="6Ra-3T-5bT" firstAttribute="height" secondItem="Rvs-sh-8zM" secondAttribute="height" id="qKH-KG-y2X"/>
+                            <constraint firstItem="eG6-zP-liC" firstAttribute="centerX" secondItem="Rvs-sh-8zM" secondAttribute="centerX" id="qy1-9k-qwy"/>
+                            <constraint firstItem="V4l-oY-DJC" firstAttribute="leading" secondItem="Rvs-sh-8zM" secondAttribute="leadingMargin" id="sGn-Br-d9F"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="8pb-m6-Y76" secondAttribute="leading" id="uu5-kS-ub2"/>
+                            <constraint firstItem="eG6-zP-liC" firstAttribute="top" secondItem="V4l-oY-DJC" secondAttribute="bottom" constant="8" id="zAC-DW-GtM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="3hF-L3-T1q"/>
                     <connections>
+                        <outlet property="backgroundImage" destination="6Ra-3T-5bT" id="EIn-TD-BlQ"/>
                         <outlet property="degreePickerView" destination="eG6-zP-liC" id="Nxv-bg-Wf4"/>
                         <outlet property="themePickerView" destination="qBl-12-L97" id="VkK-68-fMW"/>
                     </connections>
