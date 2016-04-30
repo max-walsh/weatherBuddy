@@ -348,14 +348,14 @@
                                     <constraint firstAttribute="height" constant="110" id="lDd-N3-gJg"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Gi-5w-TnP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="0Gi-5w-TnP">
                                 <rect key="frame" x="26" y="243" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="DaA-hE-Xh7"/>
                                     <constraint firstAttribute="width" constant="35" id="XzJ-Pl-E1a"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yKW-3m-WGV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunset" translatesAutoresizingMaskIntoConstraints="NO" id="yKW-3m-WGV">
                                 <rect key="frame" x="113" y="243" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="sU0-OI-vr6"/>
@@ -980,7 +980,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Ra-3T-5bT">
+                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Ra-3T-5bT">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick a theme:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pb-m6-Y76">
@@ -1050,5 +1050,7 @@
         <image name="Map Pin" width="40" height="40"/>
         <image name="Settings" width="30" height="30"/>
         <image name="Sun-1" width="35" height="35"/>
+        <image name="Sunrise" width="48" height="48"/>
+        <image name="Sunset" width="48" height="48"/>
     </resources>
 </document>

@@ -9,9 +9,7 @@
 import UIKit
 import CoreLocation
 
-
-// TODO: Get it to stop looking for location updates when the location has changed and not changed
-
+// global variables to keep track of favorite cities and settings
 var cities = FavoriteCities()
 var settings = Settings()
 
@@ -135,12 +133,10 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return cities.cityCount()
     }
 

@@ -16,6 +16,7 @@ class AddCityViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!    
     @IBOutlet weak var stateTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,15 +54,5 @@ class AddCityViewController: UIViewController, UITextFieldDelegate {
         
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

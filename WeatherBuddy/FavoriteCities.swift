@@ -12,8 +12,6 @@ class FavoriteCities: NSObject {
     
     private var cities:[City] = []
     
-
-    
     func cityCount() -> Int {
         return cities.count
     }
