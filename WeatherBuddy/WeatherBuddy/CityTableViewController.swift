@@ -38,7 +38,10 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         
         tableView.separatorStyle = .None
         self.tableView.backgroundColor = UIColor.whiteColor()
-        self.tableView.backgroundColor = UIColor.init(red: 214/255, green: 238/255, blue: 255/255, alpha: 1.0)
+
+   
+            self.tableView.backgroundColor = UIColor.init(red: 214/255, green: 238/255, blue: 255/255, alpha: 1.0)
+    
         
         if (defaults.objectForKey("savedCityNames") == nil) {
             cities.addCity("", state: "", zip: "")
@@ -147,6 +150,10 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
 
         if let cityCell = cell as? CityTableViewCell {
             cityCell.nameLabel.text = cities.cityAtIndex(indexPath.row).name
+            if (cities.cityAtIndex(indexPath.row).description == "Clouds" || cities.cityAtIndex(indexPath.row).description == "Rain") {
+                cityCell.gradientView.clouds = 1
+                cityCell.gradientView.setNeedsDisplay()
+            }
             if (settings.units == .Kelvin) {
                 cityCell.degreesLabel.text = "\(Int(cities.cityAtIndex(indexPath.row).currentTemp_K))\u{00B0}"
             }
@@ -178,7 +185,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             self.ows.cityWeatherByZipcode(cities.cityAtIndex(0)) {
                 (cities) in
                 tempCity.append(cities)
-                print("name: \(cities.name)     temp: \(cities.currentTemp_F)")
+                //print("name: \(cities.name)     temp: \(cities.currentTemp_F)")
                 //self.tableView.reloadData()
             }
         }
