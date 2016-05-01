@@ -172,6 +172,14 @@ class ContactTableViewController: UITableViewController {
             contactCell.iconImage.image = contact.city.icon
             contactCell.detailLabel.text = contact.city.detail
             contactCell.selectionStyle = UITableViewCellSelectionStyle.None
+            if (contact.city.description == "Clouds" || contact.city.description == "Rain") {
+                contactCell.gradientView.clouds = 1
+                contactCell.gradientView.setNeedsDisplay()
+            }
+            else {
+                contactCell.gradientView.clouds = 0
+                contactCell.gradientView.setNeedsDisplay()
+            }
             contactCell.gradientView.leftToRight = (indexPath.row)%2
         }
         

@@ -92,8 +92,8 @@ class OpenWeatherService {
     
     var resultJSON : String = "" {
         didSet {
-            print("setting output as \(resultJSON)")
-            print("\n")
+           // print("setting output as \(resultJSON)")
+            //print("\n")
         }
     }
     
