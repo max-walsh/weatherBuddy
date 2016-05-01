@@ -42,8 +42,8 @@ class OpenWeatherService {
                 // http://stackoverflow.com/questions/24056205/how-to-use-background-thread-in-swift
                 //`let qualityOfServiceClass = QOS_CLASS_BACKGROUND
                 //let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
-                print("in apicall")
-                self.resultJSON = result
+                //print("in apicall")
+                //self.resultJSON = result
                 self.cityWeather = self.parseJSONZipcodeResponse(data!, city: cities)
                 
                 dispatch_async(dispatch_get_main_queue(), {
@@ -99,6 +99,7 @@ class OpenWeatherService {
     
     func parseJSONZipcodeResponse(data: NSData, city: City) -> City {
         let json = JSON(data: data)
+        //city.name = json["name"].stringValue
         city.currentTemp_F = KtoF(json["main"]["temp"].doubleValue)
         city.currentTemp_C = KtoC(json["main"]["temp"].doubleValue)
         city.currentTemp_K = round(json["main"]["temp"].doubleValue)
@@ -137,7 +138,7 @@ class OpenWeatherService {
         let lat = json["coord"]["lat"].doubleValue
         city.coordinates = CLLocation(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(long))
         city.id = json["id"].stringValue
-        print("\(city.id)\n\n\n\n\n\n\n\n\n\n")
+        //print("\(city.id)\n\n\n\n\n\n\n\n\n\n")
         
         // settting icon image and background image
         if (city.description == "Clear") {

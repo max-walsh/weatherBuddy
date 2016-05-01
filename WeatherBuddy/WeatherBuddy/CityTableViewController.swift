@@ -46,7 +46,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             cities.addCity("Chicago", state: "IL", zip: "60290")
             cities.addCity("Los Angeles", state: "CA", zip: "90001")
             cities.addCity("Gann Valley", state: "SD", zip: "57341")
-            print("no cities")
+            //print("no cities")
         } else {
             //cities = defaults.objectForKey("savedCities")! as! FavoriteCities
             let cityNames = defaults.objectForKey("savedCityNames") as! [String]
@@ -59,27 +59,21 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
                 i += 1
             }
             
-            print("already cities")
+            //print("already cities")
         }
         
-        /*
-        var i:Int = 0
-        while (i < cities.cityCount()) {
-            print("\(cities.cityAtIndex(i).name)")
-            i += 1
-        }
-        */
         
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         self.canRefresh = false
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             self.canRefresh = false
             var i:Int = 0
+            self.city1.removeAll()
             while (i < cities.cityCount() ) {
                 self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
                     (cities) in
                     self.city1.append(cities)
-                    //print("name: \(cities.name)     temp: \(cities.currentTemp)")
+                    //print("name: \(cities.name)     temp: \(cities.zipcode)")
                     self.tableView.reloadData()
                 }
                 i += 1
@@ -96,15 +90,22 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     func handleRefresh(refreshControl: UIRefreshControl) {
         if (canRefresh) {
             canRefresh = false
-            print("refreshed!")
+            print("refreshed:")
+            cities.printCities()
             let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
             dispatch_async(dispatch_get_global_queue(priority, 0)) {
                 var i:Int = 0
+                print("in dispatch_async:")
+                cities.printCities()
+                self.city1.removeAll()
                 while (i < cities.cityCount() ) {
+                    print("while:")
+                    cities.printCities()
+                    //print("callback: \(cities.cityAtIndex(i).name)")
                     self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
-                        (cities) in
-                        self.city1.append(cities)
-                        //print("name: \(cities.name)     temp: \(cities.currentTemp)")
+                        (city) in
+                        self.city1.append(city)
+                        //print("name: \(city.name)     temp: \(city.zipcode)")
                         //self.tableView.reloadData()
                     }
                     i += 1
@@ -113,11 +114,14 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             cities.changeWeather(self.city1)
             canRefresh = true
             self.tableView.reloadData()
+            print("end of refresh")
+            cities.printCities()
             refreshControl.endRefreshing()
         }
         else {
             refreshControl.endRefreshing()
         }
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -178,7 +182,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             self.ows.cityWeatherByZipcode(cities.cityAtIndex(0)) {
                 (cities) in
                 tempCity.append(cities)
-                print("name: \(cities.name)     temp: \(cities.currentTemp_F)")
+                //print("name: \(cities.name)     temp: \(cities.currentTemp_F)")
                 //self.tableView.reloadData()
             }
         }
@@ -208,9 +212,12 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            print("delete")
+            print("before delete:")
+            cities.printCities()
             cities.removeCityAtIndex(indexPath.item)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            print("after delete:")
+            cities.printCities()
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -221,6 +228,10 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
         print("rearrange")
+        cities.printCities()
+        cities.rearrangeCities(fromIndexPath.row, toIndex: toIndexPath.row)
+        print("after")
+        cities.printCities()
     }
     
 
