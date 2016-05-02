@@ -6,6 +6,10 @@
 //  Copyright © 2016 Katie Kuenster. All rights reserved.
 //
 
+// http://stackoverflow.com/questions/28365939/how-to-loop-through-json-with-swiftyjson
+// http://stackoverflow.com/questions/24056205/how-to-use-background-thread-in-swift
+// http://api.openweathermap.org/data/2.5/forecast?q=London,us&APPID=93d98c361bc0d24cb301adc549eea5c4
+
 import Foundation
 import CoreLocation
 import SwiftyJSON
@@ -16,7 +20,6 @@ class OpenWeatherService {
     var apiKey: String = "93d98c361bc0d24cb301adc549eea5c4"
     var cityWeather = City()
     var cityForecast = Forecast()
-    // http://api.openweathermap.org/data/2.5/forecast?q=London,us&APPID=93d98c361bc0d24cb301adc549eea5c4
     
     func cityWeatherByZipcode(cities: City, callback: (City)->Void) {
 
@@ -34,7 +37,7 @@ class OpenWeatherService {
                 if (data == nil) {
                     print("data is nil")
                 }
-                // http://stackoverflow.com/questions/24056205/how-to-use-background-thread-in-swift
+                
                 self.cityWeather = self.parseJSONZipcodeResponse(data!, city: cities)
                 dispatch_async(dispatch_get_main_queue(), {
                     callback(self.cityWeather)
@@ -45,7 +48,6 @@ class OpenWeatherService {
     }
     
     func cityWeatherForecast(city: City, callback: (Forecast)->Void) {
-        g
         let coordURL = "\(baseURL)forecast?id=\(city.id),&APPID=\(apiKey)"
         let searchURL = NSURL(string: coordURL)
         let request = NSMutableURLRequest(URL: searchURL!)
@@ -177,7 +179,7 @@ class OpenWeatherService {
         var max_F = 0.0
         var min_C = 0.0
         var max_C = 0.0
-        // http://stackoverflow.com/questions/28365939/how-to-loop-through-json-with-swiftyjson
+        
         for (_, day) in json["list"] {
             let date = day["dt_txt"].stringValue
             let dateComp = date.componentsSeparatedByString(" ")

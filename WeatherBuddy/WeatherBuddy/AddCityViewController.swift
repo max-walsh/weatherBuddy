@@ -10,7 +10,7 @@ import UIKit
 
 class AddCityViewController: UIViewController, UITextFieldDelegate {
 
-    var cities : FavoriteCities?
+    var cities: FavoriteCities?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var zipTextField: UITextField!

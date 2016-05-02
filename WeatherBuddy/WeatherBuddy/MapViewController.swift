@@ -13,8 +13,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    var i:Int = 0
-    var j:Int = 0
+    var i = 0
+    var j = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
