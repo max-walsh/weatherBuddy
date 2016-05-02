@@ -47,6 +47,7 @@ class FavoriteCities: NSObject {
     func changeWeather(updatedCities: [City]) {
         
         var index:Int = 0
+
         for city in updatedCities {
             
             cities[index].barometricPressure = city.barometricPressure
@@ -73,6 +74,7 @@ class FavoriteCities: NSObject {
             cities[index].zipcode = city.zipcode
             index += 1
         }
+
     }
     
     func rearrangeCities(fromIndex: Int, toIndex: Int) {

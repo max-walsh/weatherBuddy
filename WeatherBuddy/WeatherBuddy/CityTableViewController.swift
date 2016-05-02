@@ -83,7 +83,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             self.canRefresh = false
-            var i:Int = 0
+            var i = 0
             self.tempCity.removeAll()
             while (i < cities.cityCount() ) {
                 self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
@@ -145,7 +145,6 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cities.cityCount()
     }
-
  
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
        
@@ -206,7 +205,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     // for conditional editing of the table view
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+        // return false if empty
         if indexPath.item != 0 {
             return true
         } else {
@@ -218,7 +217,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     // for editing the table view
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            // delete from cities array, then delete from tableview
             cities.removeCityAtIndex(indexPath.item)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
@@ -233,7 +232,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     // for conditional rearranging of the table view
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
+        // returns false if tableview is empty
         if indexPath.item != 0 {
             return true
         } else {

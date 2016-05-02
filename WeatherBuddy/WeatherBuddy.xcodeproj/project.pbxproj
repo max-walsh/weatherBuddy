@@ -73,11 +73,11 @@
 		232A8B4E1CAC6E690008E9D5 /* WeatherBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		232A8B521CAC6E690008E9D5 /* WeatherBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBuddyUITests.swift; sourceTree = "<group>"; };
 		232A8B541CAC6E690008E9D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2387A2AA1CD0873000F4303D /* SunView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunView.swift; sourceTree = "<group>"; };
-		23A4C83B1CD6E54D0063D17A /* VignetteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VignetteView.swift; sourceTree = "<group>"; };
+		2387A2AA1CD0873000F4303D /* SunView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SunView.swift; path = ../SunView.swift; sourceTree = "<group>"; };
+		23A4C83B1CD6E54D0063D17A /* VignetteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VignetteView.swift; path = ../VignetteView.swift; sourceTree = "<group>"; };
 		23B2D9211CB2003800344E7F /* CityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityTableViewController.swift; sourceTree = "<group>"; };
 		23B2D9231CB2012600344E7F /* CityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
-		23E652B01CD3E33200FD9EE3 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		23E652B01CD3E33200FD9EE3 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradientView.swift; path = ../GradientView.swift; sourceTree = "<group>"; };
 		4E40392710CD8D618F0E8348 /* Pods_WeatherBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59110C39406B24D321572ACC /* Pods-WeatherBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherBuddy/Pods-WeatherBuddy.release.xcconfig"; sourceTree = "<group>"; };
 		DB4BBF4A3CB66921F24E0D47 /* Pods-WeatherBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherBuddy/Pods-WeatherBuddy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -181,6 +181,9 @@
 			isa = PBXGroup;
 			children = (
 				232A8B331CAC6E690008E9D5 /* Main.storyboard */,
+				2387A2AA1CD0873000F4303D /* SunView.swift */,
+				23E652B01CD3E33200FD9EE3 /* GradientView.swift */,
+				23A4C83B1CD6E54D0063D17A /* VignetteView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -191,8 +194,8 @@
 				23B2D9211CB2003800344E7F /* CityTableViewController.swift */,
 				231671FE1CB379C400CCA23D /* AddCityViewController.swift */,
 				231671FC1CB375AF00CCA23D /* CityDetailViewController.swift */,
-				2319BA211CBEE30F004FF936 /* ContactTableViewController.swift */,
 				F14C242C1CB5A3AC0049D363 /* MapViewController.swift */,
+				2319BA211CBEE30F004FF936 /* ContactTableViewController.swift */,
 				23200A9F1CD2F42F006566DC /* SettingsViewController.swift */,
 			);
 			name = Controllers;
@@ -221,19 +224,16 @@
 		F121A6C21CB18E920022E964 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				23A4C83B1CD6E54D0063D17A /* VignetteView.swift */,
-				23E652B01CD3E33200FD9EE3 /* GradientView.swift */,
-				2387A2AA1CD0873000F4303D /* SunView.swift */,
-				2319BA231CBEE542004FF936 /* ContactTableViewCell.swift */,
-				23B2D9231CB2012600344E7F /* CityTableViewCell.swift */,
+				F121A6C31CB18EEB0022E964 /* OpenWeatherService.swift */,
 				F13F20271CAC71CB00FC87AD /* City.swift */,
 				231672001CB3FBC600CCA23D /* FavoriteCities.swift */,
-				F121A6C01CB18E4C0022E964 /* Contact.swift */,
-				F121A6BE1CB18DC80022E964 /* Coordinates.swift */,
-				F121A6C31CB18EEB0022E964 /* OpenWeatherService.swift */,
-				F1FDC0211CD120D400E3C93A /* Forecast.swift */,
 				F1FDC0231CD1216600E3C93A /* ForecastDay.swift */,
+				F1FDC0211CD120D400E3C93A /* Forecast.swift */,
+				F121A6C01CB18E4C0022E964 /* Contact.swift */,
 				F121A6C71CB18F8C0022E964 /* Settings.swift */,
+				F121A6BE1CB18DC80022E964 /* Coordinates.swift */,
+				23B2D9231CB2012600344E7F /* CityTableViewCell.swift */,
+				2319BA231CBEE542004FF936 /* ContactTableViewCell.swift */,
 			);
 			name = Model;
 			path = ..;

@@ -21,38 +21,31 @@ class GradientView: UIView {
     override func drawRect(rect: CGRect) {
         
         let context = UIGraphicsGetCurrentContext()
+        
         var colors = [startColor.CGColor, endColor.CGColor]
         
-        if (clouds == 1) {
+        if (clouds == 1) { // if clouds, rain, storm, etc.
             colors = [startColor_gray.CGColor, endColor_gray.CGColor]
-            
         }
         
-            let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
         
-            let colorLocations:[CGFloat] = [0.0, 1.0]
+        let colorLocations:[CGFloat] = [0.0, 1.0]
             
-            let gradient = CGGradientCreateWithColors(colorSpace,
-                                                      colors,
-                                                      colorLocations)
+        let gradient = CGGradientCreateWithColors(colorSpace, colors, colorLocations)
     
-            var startPoint:CGPoint
-            var endPoint:CGPoint
-            if (leftToRight == 0) { // gradient draws left to right
-                startPoint = CGPoint.zero
-                endPoint = CGPoint(x:self.bounds.width, y:self.bounds.height)
-                
-            }
-            else { // gradient draws right to left
-                startPoint = CGPoint(x:self.bounds.width, y:self.bounds.height)
-                endPoint = CGPoint.zero
-            }
+        var startPoint: CGPoint
+        var endPoint: CGPoint
         
-            CGContextDrawLinearGradient(context,
-                                        gradient,
-                                        startPoint,
-                                        endPoint,
-                                        CGGradientDrawingOptions(rawValue: 0))
+        if (leftToRight == 0) { // gradient draws left to right
+            startPoint = CGPoint.zero
+            endPoint = CGPoint(x:self.bounds.width, y:self.bounds.height)
+        } else { // gradient draws right to left
+            startPoint = CGPoint(x:self.bounds.width, y:self.bounds.height)
+            endPoint = CGPoint.zero
+        }
+        
+        CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, CGGradientDrawingOptions(rawValue: 0))
 
     }
 }
