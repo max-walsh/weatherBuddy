@@ -22,7 +22,6 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     //var cities = [City]()
     let locManager = CLLocationManager()
     let ows = OpenWeatherService()
-    let tbc = TabBarController()
     
     var canRefresh = false
     

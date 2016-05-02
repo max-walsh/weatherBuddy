@@ -10,24 +10,21 @@ import UIKit
 
 class ContactTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var vignetteView: VignetteView!
-    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var vignetteView: VignetteView! // gradient over the background image
+    @IBOutlet weak var backgroundImage: UIImageView! // image corresponds to weather
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var contactImage: UIImageView!
-    @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var degreeLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel! // name of contact
+    @IBOutlet weak var addressLabel: UILabel! // contact's city
+    @IBOutlet weak var contactImage: UIImageView! // image of contact
+    @IBOutlet weak var detailLabel: UILabel! // description of current weather
+    @IBOutlet weak var degreeLabel: UILabel! // current temp
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
