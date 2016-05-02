@@ -13,80 +13,102 @@ import SwiftyJSON
 
 class City {
     
+    // current temps
     var currentTemp_F:Double
     var currentTemp_C:Double
     var currentTemp_K:Double
-    var humidity:Int
-    var description:String
-    var detail:String
+    
+    // min and max temps
     var minTemp_F:Double
     var maxTemp_F:Double
     var minTemp_C:Double
     var maxTemp_C:Double
     var minTemp_K:Double
     var maxTemp_K:Double
-    var windSpeed:Double
-    var windDirection:String
-    var clouds:String
+    
+    // details
+    var description:String // overall description (ex: Clouds)
+    var detail:String // more descriptive (ex: "overcast clouds")
+    var humidity:Int // percentage of humidity
+    var windSpeed:Double // wind speed in mph
+    var windDirection:String // direction of wind (ex: NE)
+    var barometricPressure:Double // pressure in psi
+    var clouds:String // percentage of cloud coverage
+
+    // sunrise and sunset info
     var sunrise:String
     var sunset:String
+    var sunrise1970:Double
+    var sunset1970:Double
+    var sunrise_date:Int?
+    var sunset_date:Int?
+    var timeZone:NSTimeZone
+    var timeZoneOffset:Double
+    
+    // city info
     var name:String
     var state:String
     var zipcode:String
     var country:String
-    var barometricPressure:Double
     var coordinates:CLLocation
+    var id:String // unique city id is given by OpenWeatherService
+    
+    // images
     var icon:UIImage
-    var timeZone:NSTimeZone
-    var sunrise1970:Double
-    var sunset1970:Double
-    var id:String
-    //var id:Int
-    var sunrise_date:Int?
-    var sunset_date:Int?
     var backgroundImage_c:UIImage
     var backgroundImage_nd:UIImage
     var backgroundImage_dog:UIImage
-    //var backgroundImage_d:UIImage
-    var timeZoneOffset:Double
+    
     
     init() {
+        
+        // current temps
         self.currentTemp_F = 0.0
         self.currentTemp_C = 0.0
         self.currentTemp_K = 0.0
-        self.humidity = 0
-        self.description = ""
-        self.detail = ""
+        
+        // min and max temps
         self.minTemp_F = 0.0
         self.maxTemp_F = 0.0
         self.minTemp_C = 0.0
         self.maxTemp_C = 0.0
         self.minTemp_K = 0.0
         self.maxTemp_K = 0.0
+
+        // details
+        self.description = ""
+        self.detail = ""
+        self.humidity = 0
         self.windSpeed = 0.0
         self.windDirection = ""
+        self.barometricPressure = 0.0
         self.clouds = ""
+        
+        // sunrise and sunset info
         self.sunrise = ""
         self.sunset = ""
+        self.sunrise1970 = 0.0 //NSDate().timeIntervalSince1970
+        self.sunset1970 = 0.0 //NSDate().timeIntervalSince1970
+        self.sunrise_date = 0
+        self.sunset_date = 0
+        self.timeZone = NSTimeZone()
+        self.timeZoneOffset = 0.0
+        
+        // city info
         self.name = ""
         self.state = ""
         self.zipcode = ""
         self.country = "United States of America"
-        self.barometricPressure = 0
         let lat:CLLocationDegrees = 41.7056
         let long:CLLocationDegrees = 86.2353
         self.coordinates = CLLocation(latitude: lat, longitude: long)
+        self.id = ""
+        
+        // images
         self.icon = UIImage(named: "Sun")!
         self.backgroundImage_c = UIImage(named: "Clear_big")!
         self.backgroundImage_nd = UIImage(named: "nd_Clear")!
         self.backgroundImage_dog = UIImage(named: "Clear_dog")!
-        self.timeZone = NSTimeZone()
-        self.sunrise1970 = 0.0 //NSDate().timeIntervalSince1970
-        self.sunset1970 = 0.0 //NSDate().timeIntervalSince1970
-        self.id = ""
-        self.sunrise_date = 0
-        self.sunset_date = 0
-        self.timeZoneOffset = 0.0
 
     }
     

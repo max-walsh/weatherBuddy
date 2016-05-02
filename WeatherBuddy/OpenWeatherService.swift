@@ -92,7 +92,7 @@ class OpenWeatherService {
     
     var resultJSON : String = "" {
         didSet {
-           // print("setting output as \(resultJSON)")
+            print("JSON result: \(resultJSON)")
             //print("\n")
         }
     }
@@ -113,7 +113,7 @@ class OpenWeatherService {
         city.description = json["weather"][0]["main"].stringValue // more general
         city.detail = json["weather"][0]["description"].stringValue // more specific
         city.windSpeed = round((json["wind"]["speed"].doubleValue) * 2.23694 * 10) / 10
-        let degree = json["wind"]["deg"].doubleValue
+        city.windDirection = degreeToDirection(json["wind"]["deg"].doubleValue)
         city.clouds = json["clouds"]["all"].stringValue
         /*
 
@@ -133,12 +133,11 @@ class OpenWeatherService {
         city.sunset = dateFormatter.stringFromDate(sset)
         city.sunset = city.sunset.stringByAppendingString(" PM")
         */
-        city.barometricPressure = round((json["main"]["pressure"].doubleValue)*100*0.014503773773022)/100
+        city.barometricPressure = round((json["main"]["pressure"].doubleValue)*100*100*0.00014503773773022)/100
         let long = json["coord"]["lon"].doubleValue
         let lat = json["coord"]["lat"].doubleValue
         city.coordinates = CLLocation(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(long))
         city.id = json["id"].stringValue
-        //print("\(city.id)\n\n\n\n\n\n\n\n\n\n")
         
         // settting icon image and background image
         if (city.description == "Clear") {
@@ -191,34 +190,6 @@ class OpenWeatherService {
             city.backgroundImage_dog = UIImage(named: "Clear_dog")!
         }
 
-        if (degree >= 337.5 || degree < 22.5) {
-            city.windDirection = "N"
-        }
-        else if (degree >= 22.5 && degree < 67.5) {
-            city.windDirection = "NE"
-        }
-        else if (degree >= 67.5 && degree < 112.5) {
-            city.windDirection = "E"
-        }
-        else if (degree >= 112.5 && degree < 157.5) {
-            city.windDirection = "SE"
-        }
-        else if (degree >= 157.5 && degree < 202.5) {
-            city.windDirection = "S"
-        }
-        else if (degree >= 202.5 && degree < 247.5) {
-            city.windDirection = "SW"
-        }
-        else if (degree >= 247.5 && degree < 292.5) {
-            city.windDirection = "W"
-        }
-        else if (degree >= 292.5 && degree < 337.5) {
-            city.windDirection = "NW"
-        }
-        else {
-            city.windDirection = "N"
-        }
-        
         city.updateSun(city.coordinates)
 
         
@@ -321,10 +292,45 @@ class OpenWeatherService {
         return forecast
     }
     
+    // functions for converting units
     func KtoF(K_Temp: Double) -> Double {
         return round(((K_Temp - 273.15)*1.8000) + 32.00)
     }
+    
     func KtoC(K_Temp: Double) -> Double {
         return round(K_Temp - 273.15)
     }
+    
+    func degreeToDirection(degree: Double) -> String {
+        if (degree >= 337.5 || degree < 22.5) {
+            return "N"
+        }
+        else if (degree >= 22.5 && degree < 67.5) {
+            return "NE"
+        }
+        else if (degree >= 67.5 && degree < 112.5) {
+            return "E"
+        }
+        else if (degree >= 112.5 && degree < 157.5) {
+            return "SE"
+        }
+        else if (degree >= 157.5 && degree < 202.5) {
+            return "S"
+        }
+        else if (degree >= 202.5 && degree < 247.5) {
+            return "SW"
+        }
+        else if (degree >= 247.5 && degree < 292.5) {
+            return "W"
+        }
+        else if (degree >= 292.5 && degree < 337.5) {
+            return "NW"
+        }
+        else {
+            return "N"
+        }
+
+    }
+    
+    
 }

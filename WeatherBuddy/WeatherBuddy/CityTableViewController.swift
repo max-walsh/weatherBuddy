@@ -184,7 +184,6 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -204,7 +203,11 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
 
         if let cityCell = cell as? CityTableViewCell {
             cityCell.nameLabel.text = cities.cityAtIndex(indexPath.row).name
-            if (cities.cityAtIndex(indexPath.row).description == "Clouds" || cities.cityAtIndex(indexPath.row).description == "Rain") {
+            if (cities.cityAtIndex(indexPath.row).description == "Clear" || cities.cityAtIndex(indexPath.row).description == "Haze" || cities.cityAtIndex(indexPath.row).description == "Mist") {
+                cityCell.gradientView.clouds = 0
+                cityCell.gradientView.setNeedsDisplay()
+            }
+            else {
                 cityCell.gradientView.clouds = 1
                 cityCell.gradientView.setNeedsDisplay()
             }

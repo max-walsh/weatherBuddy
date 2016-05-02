@@ -26,8 +26,6 @@ class CityDetailViewController: UIViewController {
     @IBOutlet weak var sunsetLabel: UILabel!
     @IBOutlet weak var barometricLabel: UILabel!
     @IBOutlet weak var cloudLabel: UILabel!
-    @IBOutlet weak var sunsetImage: UIImageView!
-    @IBOutlet weak var sunriseImage: UIImageView!
     @IBOutlet weak var backgroundImage: UIImageView!
     
     // 5 Day Forecast Labels
@@ -180,7 +178,7 @@ class CityDetailViewController: UIViewController {
         let day = 86400 // seconds in a day
         //let currentDay = city!.sunrise_date
         
-        var currentDay = Int(NSDate().timeIntervalSince1970 + city!.timeZoneOffset)
+        let currentDay = Int(NSDate().timeIntervalSince1970 + city!.timeZoneOffset)
         print("currentDay: \(currentDay)")
         let day1 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay + day))
         let day2 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay + (2*day)))
