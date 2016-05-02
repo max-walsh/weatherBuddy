@@ -21,39 +21,6 @@ class ContactTableViewController: UITableViewController {
     var contacts_addr = [Contact]() // holds contacts with address
     var tempCity = [City]()
     
-   
-    func getContacts() {
-        
-        let store = CNContactStore()
-        // checks if authorized to access contacts
-        if CNContactStore.authorizationStatusForEntityType(.Contacts) == .NotDetermined {
-            store.requestAccessForEntityType(.Contacts, completionHandler: { (authorized: Bool, error: NSError?) -> Void in
-                if authorized {
-                    self.retrieveContactsWithStore(store)
-                }
-            })
-        } else if CNContactStore.authorizationStatusForEntityType(.Contacts) == .Authorized {
-            self.retrieveContactsWithStore(store)
-        }
-    }
-    
-    
-    func retrieveContactsWithStore(store: CNContactStore) {
-        
-        do { // retrieves contacts while requesting specific keys, like address and image
-            let containerId = CNContactStore().defaultContainerIdentifier()
-            let predicate: NSPredicate = CNContact.predicateForContactsInContainerWithIdentifier(containerId)
-            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactEmailAddressesKey, CNContactPostalAddressesKey, CNContactImageDataKey, CNContactImageDataAvailableKey, CNContactThumbnailImageDataKey]
-            // store info into contacts array
-            self.contacts = try store.unifiedContactsMatchingPredicate(predicate, keysToFetch: keysToFetch)
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadData()
-            })
-        } catch {
-            print(error)
-        }
-    }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,10 +51,10 @@ class ContactTableViewController: UITableViewController {
             }
         }
         
-        // gets weather for each contact
+        // gets weather for each contact's city
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            var i:Int = 0
+            var i = 0
             while (i < self.contacts_addr.count) {
                 self.ows.cityWeatherByZipcode(self.contacts_addr[i].city) {
                     (city) in
@@ -162,6 +129,36 @@ class ContactTableViewController: UITableViewController {
         return cell
     }
     
+    // functions for retrieving contacts
+    func getContacts() {
+        
+        let store = CNContactStore()
+        // checks if authorized to access contacts
+        if CNContactStore.authorizationStatusForEntityType(.Contacts) == .NotDetermined {
+            store.requestAccessForEntityType(.Contacts, completionHandler: { (authorized: Bool, error: NSError?) -> Void in
+                if authorized {
+                    self.retrieveContactsWithStore(store)
+                }
+            })
+        } else if CNContactStore.authorizationStatusForEntityType(.Contacts) == .Authorized {
+            self.retrieveContactsWithStore(store)
+        }
+    }
+    func retrieveContactsWithStore(store: CNContactStore) {
+        
+        do { // retrieves contacts while requesting specific keys, like address and image
+            let containerId = CNContactStore().defaultContainerIdentifier()
+            let predicate: NSPredicate = CNContact.predicateForContactsInContainerWithIdentifier(containerId)
+            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactEmailAddressesKey, CNContactPostalAddressesKey, CNContactImageDataKey, CNContactImageDataAvailableKey, CNContactThumbnailImageDataKey]
+            // store info into contacts array
+            self.contacts = try store.unifiedContactsMatchingPredicate(predicate, keysToFetch: keysToFetch)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        } catch {
+            print(error)
+        }
+    }
     
     // function checks if a contact's zip code is valid
     func checkZipcode(zip: String) -> Bool {
