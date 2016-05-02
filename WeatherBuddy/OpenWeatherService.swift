@@ -33,7 +33,7 @@ class OpenWeatherService {
         let task = session.dataTaskWithRequest(request) {
         (data, responseText, error) -> Void in
             if error != nil {
-                print(error)
+                print("error: \(error)")
             } else {
                 let result = String(data: data!, encoding: NSASCIIStringEncoding)!
                 if (data == nil) {
@@ -43,7 +43,7 @@ class OpenWeatherService {
                 //`let qualityOfServiceClass = QOS_CLASS_BACKGROUND
                 //let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
                 //print("in apicall")
-                self.resultJSON = result
+                //self.resultJSON = result
                 self.cityWeather = self.parseJSONZipcodeResponse(data!, city: cities)
                 
                 dispatch_async(dispatch_get_main_queue(), {
@@ -99,6 +99,7 @@ class OpenWeatherService {
     
     func parseJSONZipcodeResponse(data: NSData, city: City) -> City {
         let json = JSON(data: data)
+        //city.name = json["name"].stringValue
         city.currentTemp_F = KtoF(json["main"]["temp"].doubleValue)
         city.currentTemp_C = KtoC(json["main"]["temp"].doubleValue)
         city.currentTemp_K = round(json["main"]["temp"].doubleValue)
@@ -278,14 +279,14 @@ class OpenWeatherService {
                 else if (desc == "Drizzle" ) {
                     icon = UIImage(named: "Drizzle")
                 }
-                print("not Today: \(dateComp[0])")
+                //print("not Today: \(dateComp[0])")
                 currentDate = dateComp[0]
                 forecast.addDay(ForecastDay(minTemp_F: min_F, maxTemp_F: max_F,
                                             minTemp_C: min_C, maxTemp_C: max_C,
                                             minTemp_K: min_K, maxTemp_K: max_K, desc: desc, icon: icon!))
 
             } else {
-                print("today")
+                //print("today")
             }
         }
         

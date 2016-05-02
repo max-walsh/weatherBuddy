@@ -68,7 +68,7 @@ class FavoriteCities: NSObject {
             cities[index].windSpeed = city.windSpeed
             cities[index].zipcode = city.zipcode
             
-            print ("name: \(cities[index].name)     temp: \(cities[index].currentTemp_F)")
+            //print ("name: \(cities[index].name)     temp: \(cities[index].currentTemp_F)")
             index += 1
         }
         //print(index)
@@ -77,6 +77,19 @@ class FavoriteCities: NSObject {
         
     }
     
+    func rearrangeCities(fromIndex: Int, toIndex: Int) {
+        let cityToMove = cities[fromIndex]
+        cities.removeAtIndex(fromIndex)
+        cities.insert(cityToMove, atIndex: toIndex)
+    }
     
+    func printCities() {
+        for city in cities {
+            if city.name != "" {
+                print("\(city.name): \(city.zipcode)")
+            }
+        }
+        print("")
+    }
 
 }
