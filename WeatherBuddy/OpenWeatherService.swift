@@ -30,7 +30,7 @@ class OpenWeatherService {
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) {
         (data, responseText, error) -> Void in
-            if error != nil {
+            if (error != nil) {
                 print("error: \(error)")
             } else {
                 let result = String(data: data!, encoding: NSASCIIStringEncoding)!
@@ -39,6 +39,7 @@ class OpenWeatherService {
                 }
                 
                 self.cityWeather = self.parseJSONZipcodeResponse(data!, city: cities)
+                self.resultJSON = result
                 dispatch_async(dispatch_get_main_queue(), {
                     callback(self.cityWeather)
                 })
@@ -55,7 +56,7 @@ class OpenWeatherService {
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
-            if error != nil {
+            if (error != nil) {
                 print(error)
             } else {
                 let result = String(data: data!, encoding:NSASCIIStringEncoding)!
@@ -63,6 +64,7 @@ class OpenWeatherService {
                     print("something went wrong in cityWeatherForecast")
                 }
                 self.cityForecast = self.parseJSONForecastResponse(data!, timeZoneOffset: city.timeZoneOffset)
+                self.resultJSON = result
                 dispatch_async(dispatch_get_main_queue(), {
                     callback(self.cityForecast)
                 })
@@ -114,44 +116,37 @@ class OpenWeatherService {
             city.backgroundImage_c = UIImage(named: "Clear_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Clear")!
             city.backgroundImage_dog = UIImage(named: "Clear_dog")!
-        }
-        else if (city.description == "Clouds") {
+        } else if (city.description == "Clouds") {
             city.icon = UIImage(named: "Cloud")!
             city.backgroundImage_c = UIImage(named: "Cloud_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Cloud")!
             city.backgroundImage_dog = UIImage(named: "Cloud_dog")!
-        }
-        else if (city.description == "Drizzle") {
+        } else if (city.description == "Drizzle") {
             city.icon = UIImage(named: "Drizzle")!
             city.backgroundImage_c = UIImage(named: "Rain_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Rain")!
             city.backgroundImage_dog = UIImage(named: "Rain_dog")!
-        }
-        else if (city.description == "Rain") {
+        } else if (city.description == "Rain") {
             city.icon = UIImage(named: "Rain")!
             city.backgroundImage_c = UIImage(named: "Rain_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Rain")!
             city.backgroundImage_dog = UIImage(named: "Rain_dog")!
-        }
-        else if (city.description == "Thunderstorm") {
+        } else if (city.description == "Thunderstorm") {
             city.icon = UIImage(named: "Storm")!
             city.backgroundImage_c = UIImage(named: "Storm_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Storm")!
             city.backgroundImage_dog = UIImage(named: "Storm_dog")!
-        }
-        else if (city.description == "Snow") {
+        } else if (city.description == "Snow") {
             city.icon = UIImage(named: "Snow")!
             city.backgroundImage_c = UIImage(named: "Snow_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Snow")!
             city.backgroundImage_dog = UIImage(named: "Snow_dog")!
-        }
-        else if (city.description == "Mist" || city.description == "Haze" ) {
+        } else if (city.description == "Mist" || city.description == "Haze" ) {
             city.icon = UIImage(named: "FogDay")!
             city.backgroundImage_c = UIImage(named: "Fog_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Fog")!
             city.backgroundImage_dog = UIImage(named: "Fog_dog")!
-        }
-        else {
+        } else {
             print("Description: \(city.description)")
             city.backgroundImage_c = UIImage(named: "Clear_big")!
             city.icon = UIImage(named: "Sun")!
@@ -171,7 +166,7 @@ class OpenWeatherService {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let currentDateSeconds = NSDate().timeIntervalSince1970 + timeZoneOffset
-        let today = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(currentDateSeconds)))
+        _ = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(currentDateSeconds)))
         
         var currentDate = ""
         var min_K = 0.0

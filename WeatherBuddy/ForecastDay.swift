@@ -24,7 +24,6 @@ class ForecastDay {
     // icon corresponding to the description
     var icon = UIImage(named: "Sun")!
     
-    
     init(minTemp_F: Double, maxTemp_F: Double,
          minTemp_C: Double, maxTemp_C: Double,
          minTemp_K: Double, maxTemp_K: Double, desc: String, icon:UIImage) {

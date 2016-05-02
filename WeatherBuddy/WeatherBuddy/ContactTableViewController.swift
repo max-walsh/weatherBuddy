@@ -26,13 +26,13 @@ class ContactTableViewController: UITableViewController {
         
         let store = CNContactStore()
         // checks if authorized to access contacts
-        if CNContactStore.authorizationStatusForEntityType(.Contacts) == .NotDetermined {
+        if (CNContactStore.authorizationStatusForEntityType(.Contacts) == .NotDetermined) {
             store.requestAccessForEntityType(.Contacts, completionHandler: { (authorized: Bool, error: NSError?) -> Void in
                 if authorized {
                     self.retrieveContactsWithStore(store)
                 }
             })
-        } else if CNContactStore.authorizationStatusForEntityType(.Contacts) == .Authorized {
+        } else if (CNContactStore.authorizationStatusForEntityType(.Contacts) == .Authorized) {
             self.retrieveContactsWithStore(store)
         }
     }
@@ -64,7 +64,7 @@ class ContactTableViewController: UITableViewController {
         getContacts() // fetch all contacts in phone
         
         for contact in contacts { // gets contacts with address
-            if contact.isKeyAvailable(CNContactPostalAddressesKey) {
+            if (contact.isKeyAvailable(CNContactPostalAddressesKey)) {
                 let newContact = Contact(name: "", city: City())
                 if let addr = contact.postalAddresses.first?.value as? CNPostalAddress {
                     if (checkZipcode(addr.postalCode)) { // checks if zip code is valid
@@ -165,6 +165,7 @@ class ContactTableViewController: UITableViewController {
     
     // function checks if a contact's zip code is valid
     func checkZipcode(zip: String) -> Bool {
+        
         if (zip == "") { // no zip entered
             return false
         } else if (zip.characters.count != 5) { // not 5 characters
@@ -178,6 +179,7 @@ class ContactTableViewController: UITableViewController {
     
     
     func changeWeather(updatedCities: [City]) {
+        
         var index = 0
         for city in updatedCities {
             contacts_addr[index].city.barometricPressure = city.barometricPressure
@@ -207,6 +209,5 @@ class ContactTableViewController: UITableViewController {
         }
         
     }
-
 
 }
