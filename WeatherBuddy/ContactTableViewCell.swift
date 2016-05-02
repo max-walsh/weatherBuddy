@@ -10,11 +10,12 @@ import UIKit
 
 class ContactTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var gradientView: GradientView!
+    @IBOutlet weak var vignetteView: VignetteView!
+    @IBOutlet weak var backgroundImage: UIImageView!
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var contactImage: UIImageView!
-    @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var degreeLabel: UILabel!
     
@@ -28,5 +29,5 @@ class ContactTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

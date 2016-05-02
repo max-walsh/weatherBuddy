@@ -844,104 +844,82 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="112"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fdJ-ri-cYl" customClass="GradientView" customModule="WeatherBuddy" customModuleProvider="target">
+                                        <imageView userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z2h-uR-a7j">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="112"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                    <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="0.1019665948" colorSpace="calibratedRGB"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                                    <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="0.27914870689999999" colorSpace="calibratedRGB"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="startColor_gray">
-                                                    <color key="value" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="endColor_gray">
-                                                    <color key="value" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ov-qi-DgG" customClass="VignetteView" customModule="WeatherBuddy" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="112"/>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZx-lK-RQU">
-                                            <rect key="frame" x="78" y="31" width="55" height="25"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="25" id="oQx-OC-69r"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="vgz-eH-aSU"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iZx-lK-RQU">
+                                            <rect key="frame" x="104" y="31" width="55" height="22"/>
                                             <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="22"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IP4-4T-CWA">
-                                            <rect key="frame" x="8" y="23" width="66" height="66"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cN-p0-BIE">
+                                            <rect key="frame" x="538" y="27" width="34" height="30"/>
+                                            <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="30"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="detail" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmA-eA-EwG">
+                                            <rect key="frame" x="513" y="58" width="74" height="17"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="66" id="TfR-OL-ZpD"/>
-                                                <constraint firstAttribute="width" constant="66" id="aXM-Xu-6AH"/>
+                                                <constraint firstAttribute="width" constant="74" id="Nev-zW-Mno"/>
                                             </constraints>
-                                        </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y6T-a7-tC4">
-                                            <rect key="frame" x="502" y="0.0" width="75" height="75"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="75" id="jP4-Cb-vKM"/>
-                                                <constraint firstAttribute="height" constant="75" id="tFR-Ck-bhh"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cN-p0-BIE">
-                                            <rect key="frame" x="530" y="29" width="23" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="iaM-r3-8qN"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="20"/>
+                                            <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rD-ou-x3J">
-                                            <rect key="frame" x="78" y="59" width="28" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="KhD-zK-tgw"/>
-                                            </constraints>
+                                            <rect key="frame" x="104" y="56" width="28" height="17"/>
                                             <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmA-eA-EwG">
-                                            <rect key="frame" x="502" y="62" width="80" height="42"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IP4-4T-CWA">
+                                            <rect key="frame" x="15" y="16" width="79" height="79"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="aya-0P-Hap"/>
-                                                <constraint firstAttribute="height" constant="42" id="dIl-FR-cpr"/>
+                                                <constraint firstAttribute="width" constant="79" id="dfC-5q-lQg"/>
+                                                <constraint firstAttribute="height" constant="79" id="wqy-b0-bkE"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="fdJ-ri-cYl" firstAttribute="centerX" secondItem="7fI-GJ-Yrb" secondAttribute="centerX" id="3lV-5h-Kxe"/>
-                                        <constraint firstItem="y6T-a7-tC4" firstAttribute="centerY" secondItem="7fI-GJ-Yrb" secondAttribute="centerY" constant="-18.5" id="8WG-H3-Rsz"/>
-                                        <constraint firstItem="8rD-ou-x3J" firstAttribute="top" secondItem="iZx-lK-RQU" secondAttribute="bottom" constant="3" id="Asq-cd-o5G"/>
-                                        <constraint firstItem="IP4-4T-CWA" firstAttribute="centerY" secondItem="7fI-GJ-Yrb" secondAttribute="centerY" id="BQI-fa-EdD"/>
-                                        <constraint firstItem="0cN-p0-BIE" firstAttribute="centerX" secondItem="y6T-a7-tC4" secondAttribute="centerX" constant="2" id="EOY-3e-PFD"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="y6T-a7-tC4" secondAttribute="trailing" constant="15" id="HAY-Zf-9IM"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="IP4-4T-CWA" secondAttribute="leading" id="THL-aK-WCv"/>
-                                        <constraint firstItem="fdJ-ri-cYl" firstAttribute="height" secondItem="7fI-GJ-Yrb" secondAttribute="height" id="UDG-BS-kUg"/>
-                                        <constraint firstItem="gmA-eA-EwG" firstAttribute="centerX" secondItem="y6T-a7-tC4" secondAttribute="centerX" constant="2.5" id="Xt6-ac-Vv0"/>
-                                        <constraint firstItem="iZx-lK-RQU" firstAttribute="leading" secondItem="IP4-4T-CWA" secondAttribute="trailing" constant="4" id="XwF-C1-QXV"/>
-                                        <constraint firstItem="8rD-ou-x3J" firstAttribute="leading" secondItem="IP4-4T-CWA" secondAttribute="trailing" constant="4" id="YYX-Xn-eka"/>
-                                        <constraint firstItem="0cN-p0-BIE" firstAttribute="centerY" secondItem="y6T-a7-tC4" secondAttribute="centerY" constant="2" id="ZSv-3M-GUL"/>
-                                        <constraint firstItem="iZx-lK-RQU" firstAttribute="top" secondItem="IP4-4T-CWA" secondAttribute="top" constant="8" id="d6t-VA-cYV"/>
-                                        <constraint firstItem="fdJ-ri-cYl" firstAttribute="centerY" secondItem="7fI-GJ-Yrb" secondAttribute="centerY" id="eW6-zJ-xTX"/>
-                                        <constraint firstItem="fdJ-ri-cYl" firstAttribute="width" secondItem="7fI-GJ-Yrb" secondAttribute="width" id="ype-5l-SE6"/>
-                                        <constraint firstItem="gmA-eA-EwG" firstAttribute="top" secondItem="y6T-a7-tC4" secondAttribute="bottom" constant="-13" id="zRf-Ru-168"/>
+                                        <constraint firstItem="8ov-qi-DgG" firstAttribute="centerX" secondItem="7fI-GJ-Yrb" secondAttribute="centerX" id="36y-Uh-dkd"/>
+                                        <constraint firstItem="0cN-p0-BIE" firstAttribute="leading" secondItem="gmA-eA-EwG" secondAttribute="trailing" constant="-33" id="3z8-6e-6zb"/>
+                                        <constraint firstItem="gmA-eA-EwG" firstAttribute="centerX" secondItem="0cN-p0-BIE" secondAttribute="centerX" constant="-5" id="50U-8f-5ib"/>
+                                        <constraint firstItem="8ov-qi-DgG" firstAttribute="height" secondItem="7fI-GJ-Yrb" secondAttribute="height" id="7bd-kV-PnU"/>
+                                        <constraint firstItem="8ov-qi-DgG" firstAttribute="width" secondItem="7fI-GJ-Yrb" secondAttribute="width" id="ABp-Gn-Q3s"/>
+                                        <constraint firstItem="gmA-eA-EwG" firstAttribute="top" secondItem="0cN-p0-BIE" secondAttribute="bottom" constant="1" id="Blx-Uy-UD2"/>
+                                        <constraint firstItem="8rD-ou-x3J" firstAttribute="top" secondItem="iZx-lK-RQU" secondAttribute="bottom" constant="3" id="KXt-z2-hhD"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="0cN-p0-BIE" secondAttribute="trailing" constant="20" id="S96-XG-AJR"/>
+                                        <constraint firstItem="8ov-qi-DgG" firstAttribute="centerY" secondItem="7fI-GJ-Yrb" secondAttribute="centerY" id="SEc-dZ-9yF"/>
+                                        <constraint firstItem="IP4-4T-CWA" firstAttribute="centerY" secondItem="7fI-GJ-Yrb" secondAttribute="centerY" id="Uv0-78-J8i"/>
+                                        <constraint firstItem="0cN-p0-BIE" firstAttribute="centerY" secondItem="iZx-lK-RQU" secondAttribute="centerY" id="WYS-5F-rny"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="IP4-4T-CWA" secondAttribute="leading" constant="-7" id="X2v-Gp-fIp"/>
+                                        <constraint firstItem="iZx-lK-RQU" firstAttribute="leading" secondItem="IP4-4T-CWA" secondAttribute="trailing" constant="10" id="fzR-ad-Web"/>
+                                        <constraint firstItem="iZx-lK-RQU" firstAttribute="top" secondItem="IP4-4T-CWA" secondAttribute="top" constant="15" id="gBJ-vd-ykt"/>
+                                        <constraint firstItem="z2h-uR-a7j" firstAttribute="height" secondItem="7fI-GJ-Yrb" secondAttribute="height" id="otg-jd-Emq"/>
+                                        <constraint firstItem="8rD-ou-x3J" firstAttribute="leading" secondItem="IP4-4T-CWA" secondAttribute="trailing" constant="10" id="pcT-8w-xsW"/>
+                                        <constraint firstItem="z2h-uR-a7j" firstAttribute="width" secondItem="7fI-GJ-Yrb" secondAttribute="width" id="plQ-7U-w2k"/>
+                                        <constraint firstItem="z2h-uR-a7j" firstAttribute="centerY" secondItem="7fI-GJ-Yrb" secondAttribute="centerY" id="qKF-Pu-y49"/>
+                                        <constraint firstItem="z2h-uR-a7j" firstAttribute="centerX" secondItem="7fI-GJ-Yrb" secondAttribute="centerX" id="zct-DQ-kzq"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="3z8-6e-6zb"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addressLabel" destination="8rD-ou-x3J" id="Svz-pS-sY8"/>
+                                    <outlet property="backgroundImage" destination="z2h-uR-a7j" id="mfs-vc-Qxe"/>
                                     <outlet property="contactImage" destination="IP4-4T-CWA" id="vZv-Lf-w8E"/>
                                     <outlet property="degreeLabel" destination="0cN-p0-BIE" id="7ui-be-dQs"/>
                                     <outlet property="detailLabel" destination="gmA-eA-EwG" id="EIo-lN-tky"/>
-                                    <outlet property="gradientView" destination="fdJ-ri-cYl" id="YDE-7e-zZc"/>
-                                    <outlet property="iconImage" destination="y6T-a7-tC4" id="znv-6s-W1g"/>
                                     <outlet property="nameLabel" destination="iZx-lK-RQU" id="gO2-Jq-Dul"/>
+                                    <outlet property="vignetteView" destination="8ov-qi-DgG" id="yVV-qX-hgk"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -42,7 +42,7 @@ class ContactTableViewController: UITableViewController {
             
             let containerId = CNContactStore().defaultContainerIdentifier()
             let predicate: NSPredicate = CNContact.predicateForContactsInContainerWithIdentifier(containerId)
-            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactEmailAddressesKey, CNContactPostalAddressesKey, CNContactImageDataKey, CNContactImageDataAvailableKey]
+            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactEmailAddressesKey, CNContactPostalAddressesKey, CNContactImageDataKey, CNContactImageDataAvailableKey, CNContactThumbnailImageDataKey]
             
             self.contacts = try store.unifiedContactsMatchingPredicate(predicate, keysToFetch: keysToFetch)
             
@@ -70,12 +70,10 @@ class ContactTableViewController: UITableViewController {
                     city.name = addr.city
                     new_contact.city = city
                     new_contact.name = CNContactFormatter().stringFromContact(contact)!
-                    /*if contact.imageDataAvailable {
-                        if let image = contact.imageData {
-                            new_contact.image = UIImage(data: image)!
-                        }
-                    }*/
-                    if let image = contact.imageData { new_contact.image = UIImage(data:image)! }
+                    if let image = contact.thumbnailImageData {
+                        new_contact.image = UIImage(data:image)!
+                    }
+                    //if let image = contact.imageData { new_contact.image = UIImage(data:image)! }
                     our_contacts.append(new_contact)
                 }
             }
@@ -169,18 +167,25 @@ class ContactTableViewController: UITableViewController {
             else {
                 contactCell.degreeLabel.text = "\(Int(contact.city.currentTemp_F))\u{00B0}"
             }
-            contactCell.iconImage.image = contact.city.icon
             contactCell.detailLabel.text = contact.city.detail
             contactCell.selectionStyle = UITableViewCellSelectionStyle.None
-            if (contact.city.description == "Clouds" || contact.city.description == "Rain") {
-                contactCell.gradientView.clouds = 1
-                contactCell.gradientView.setNeedsDisplay()
+            
+            if (contact.city.description == "Clouds") {
+                contactCell.backgroundImage.image = UIImage(named: "Cloud_contact")
+            }
+            else if (contact.city.description == "Snow") {
+                contactCell.backgroundImage.image = UIImage(named: "Snow_contact")
+            }
+            else if (contact.city.description == "Thunderstorm") {
+                contactCell.backgroundImage.image = UIImage(named: "Storm_contact")
+            }
+            else if (contact.city.description == "Rain" || contact.city.description == "Drizzle") {
+                contactCell.backgroundImage.image = UIImage(named: "Rain_contact")
             }
             else {
-                contactCell.gradientView.clouds = 0
-                contactCell.gradientView.setNeedsDisplay()
+                contactCell.backgroundImage.image = UIImage(named: "Clear_contact")
             }
-            contactCell.gradientView.leftToRight = (indexPath.row)%2
+            
         }
         
         return cell
