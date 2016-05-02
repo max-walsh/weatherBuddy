@@ -20,13 +20,37 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set data sources and delegates for the picker views
         self.themePickerView.dataSource = self
         self.themePickerView.delegate = self
         self.degreePickerView.dataSource = self
         self.degreePickerView.delegate = self
         
-        self.backgroundImage.image = UIImage(named: "Theme_c")
-
+        // set the initial row selected for themePicker
+        if (settings.theme == .Dogs) {
+            themePickerView.selectRow(1, inComponent: 0, animated: true)
+            self.backgroundImage.image = UIImage(named: "Theme_dog")
+        }
+        else if (settings.theme == .NotreDame) {
+            self.backgroundImage.image = UIImage(named: "Theme_nd")
+            themePickerView.selectRow(2, inComponent: 0, animated: true)
+        }
+        else {
+            self.backgroundImage.image = UIImage(named: "Theme_c")
+            themePickerView.selectRow(0, inComponent: 0, animated: true)
+        }
+        
+        // set the initial row selected for degreePicker
+        if (settings.units == .Celsius) {
+            degreePickerView.selectRow(1, inComponent: 0, animated: true)
+        }
+        else if (settings.units == .Kelvin) {
+            degreePickerView.selectRow(2, inComponent: 0, animated: true)
+        }
+        else {
+            degreePickerView.selectRow(0, inComponent: 0, animated: true)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +80,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         }
     }
     
+    // function for when a setting is changed
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         if (pickerView == themePickerView) {
@@ -86,7 +111,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
     }
     
-    // This function is for changing the font of the pickerViews
+    // function for changing the font of the pickerViews
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
         
         var pickerLabel = view as? UILabel

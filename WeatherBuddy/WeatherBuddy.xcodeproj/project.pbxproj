@@ -21,7 +21,6 @@
 		232A8B481CAC6E690008E9D5 /* WeatherBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A8B471CAC6E690008E9D5 /* WeatherBuddyTests.swift */; };
 		232A8B531CAC6E690008E9D5 /* WeatherBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232A8B521CAC6E690008E9D5 /* WeatherBuddyUITests.swift */; };
 		2387A2AB1CD0873000F4303D /* SunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2387A2AA1CD0873000F4303D /* SunView.swift */; };
-		2398F7451CB5A55A0039FA2B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2398F7441CB5A55A0039FA2B /* TabBarController.swift */; };
 		23A4C83C1CD6E54D0063D17A /* VignetteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4C83B1CD6E54D0063D17A /* VignetteView.swift */; };
 		23B2D9221CB2003800344E7F /* CityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B2D9211CB2003800344E7F /* CityTableViewController.swift */; };
 		23B2D9241CB2012600344E7F /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B2D9231CB2012600344E7F /* CityTableViewCell.swift */; };
@@ -30,7 +29,6 @@
 		F121A6BF1CB18DC80022E964 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121A6BE1CB18DC80022E964 /* Coordinates.swift */; };
 		F121A6C11CB18E4C0022E964 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121A6C01CB18E4C0022E964 /* Contact.swift */; };
 		F121A6C41CB18EEB0022E964 /* OpenWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121A6C31CB18EEB0022E964 /* OpenWeatherService.swift */; };
-		F121A6C61CB18F380022E964 /* GoogleMapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121A6C51CB18F380022E964 /* GoogleMapsService.swift */; };
 		F121A6C81CB18F8C0022E964 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121A6C71CB18F8C0022E964 /* Settings.swift */; };
 		F13F20281CAC71CB00FC87AD /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13F20271CAC71CB00FC87AD /* City.swift */; };
 		F14C242D1CB5A3AC0049D363 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14C242C1CB5A3AC0049D363 /* MapViewController.swift */; };
@@ -76,7 +74,6 @@
 		232A8B521CAC6E690008E9D5 /* WeatherBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBuddyUITests.swift; sourceTree = "<group>"; };
 		232A8B541CAC6E690008E9D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2387A2AA1CD0873000F4303D /* SunView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunView.swift; sourceTree = "<group>"; };
-		2398F7441CB5A55A0039FA2B /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		23A4C83B1CD6E54D0063D17A /* VignetteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VignetteView.swift; sourceTree = "<group>"; };
 		23B2D9211CB2003800344E7F /* CityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityTableViewController.swift; sourceTree = "<group>"; };
 		23B2D9231CB2012600344E7F /* CityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
@@ -87,7 +84,6 @@
 		F121A6BE1CB18DC80022E964 /* Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		F121A6C01CB18E4C0022E964 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		F121A6C31CB18EEB0022E964 /* OpenWeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherService.swift; sourceTree = "<group>"; };
-		F121A6C51CB18F380022E964 /* GoogleMapsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsService.swift; sourceTree = "<group>"; };
 		F121A6C71CB18F8C0022E964 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		F13F20271CAC71CB00FC87AD /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		F14C242C1CB5A3AC0049D363 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -192,7 +188,6 @@
 		23B2D91F1CB1FE2C00344E7F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2398F7441CB5A55A0039FA2B /* TabBarController.swift */,
 				23B2D9211CB2003800344E7F /* CityTableViewController.swift */,
 				231671FE1CB379C400CCA23D /* AddCityViewController.swift */,
 				231671FC1CB375AF00CCA23D /* CityDetailViewController.swift */,
@@ -238,7 +233,6 @@
 				F121A6C31CB18EEB0022E964 /* OpenWeatherService.swift */,
 				F1FDC0211CD120D400E3C93A /* Forecast.swift */,
 				F1FDC0231CD1216600E3C93A /* ForecastDay.swift */,
-				F121A6C51CB18F380022E964 /* GoogleMapsService.swift */,
 				F121A6C71CB18F8C0022E964 /* Settings.swift */,
 			);
 			name = Model;
@@ -432,7 +426,6 @@
 				2319BA221CBEE30F004FF936 /* ContactTableViewController.swift in Sources */,
 				23E652B11CD3E33200FD9EE3 /* GradientView.swift in Sources */,
 				23A4C83C1CD6E54D0063D17A /* VignetteView.swift in Sources */,
-				2398F7451CB5A55A0039FA2B /* TabBarController.swift in Sources */,
 				232A8B381CAC6E690008E9D5 /* WeatherBuddy.xcdatamodeld in Sources */,
 				231672011CB3FBC600CCA23D /* FavoriteCities.swift in Sources */,
 				23B2D9221CB2003800344E7F /* CityTableViewController.swift in Sources */,
@@ -445,7 +438,6 @@
 				23200AA01CD2F42F006566DC /* SettingsViewController.swift in Sources */,
 				F13F20281CAC71CB00FC87AD /* City.swift in Sources */,
 				231671FF1CB379C400CCA23D /* AddCityViewController.swift in Sources */,
-				F121A6C61CB18F380022E964 /* GoogleMapsService.swift in Sources */,
 				F121A6BF1CB18DC80022E964 /* Coordinates.swift in Sources */,
 				F14C242D1CB5A3AC0049D363 /* MapViewController.swift in Sources */,
 				2387A2AB1CD0873000F4303D /* SunView.swift in Sources */,
