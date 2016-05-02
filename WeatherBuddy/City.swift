@@ -144,7 +144,7 @@ class City {
                 self.sunset1970 += (Double(self.timeZone.secondsFromGMT) + 14400)
                 self.sunset_date = Int(self.sunset1970)
                 let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "HH:mm"
+                dateFormatter.dateFormat = "hh:mm"
                 let srise = NSDate(timeIntervalSince1970: self.sunrise1970)
                 self.sunrise = dateFormatter.stringFromDate(srise)
                 self.sunrise = self.sunrise.stringByAppendingString(" AM")

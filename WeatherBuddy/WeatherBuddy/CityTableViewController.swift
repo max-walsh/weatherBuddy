@@ -15,6 +15,7 @@ var settings = Settings()
 
 
 class CityTableViewController: UITableViewController, CLLocationManagerDelegate {
+    //var cities = FavoriteCities()
     let defaults = NSUserDefaults.standardUserDefaults()
     //var cities = FavoriteCities()
     var city1=[City]()
@@ -27,7 +28,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("city table view did load")
         // https://www.andrewcbancroft.com/2015/03/17/basics-of-pull-to-refresh-for-swift-developers/#table-view-controller
         
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
@@ -68,6 +69,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         self.canRefresh = false
+    
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             self.canRefresh = false
             var i:Int = 0
@@ -96,7 +98,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             print("refreshed:")
             cities.printCities()
             let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            //dispatch_async(dispatch_get_global_queue(priority, 0)) {
                 var i:Int = 0
                 print("in dispatch_async:")
                 cities.printCities()
@@ -108,12 +110,13 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
                     self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
                         (city) in
                         self.city1.append(city)
+                        self.tableView.reloadData()
                         //print("name: \(city.name)     temp: \(city.zipcode)")
                         //self.tableView.reloadData()
                     }
                     i += 1
                 }
-            }
+            //}
             cities.changeWeather(self.city1)
             canRefresh = true
             self.tableView.reloadData()
@@ -129,7 +132,32 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        tableView.reloadData() // comment if doing async call
+        
+        //print("viewWillAppear")
+        
+        /*
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        self.canRefresh = false
+        
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            self.canRefresh = false
+            var i:Int = 0
+            self.city1.removeAll()
+            while (i < cities.cityCount() ) {
+                self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
+                    (cities) in
+                    self.city1.append(cities)
+                    //print("name: \(cities.name)     temp: \(cities.zipcode)")
+                    self.tableView.reloadData()
+                }
+                i += 1
+            }
+            self.canRefresh = true
+        }
+        */
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -130,7 +130,7 @@ class ContactTableViewController: UITableViewController {
             our_contacts[index].city.windSpeed = city.windSpeed
             our_contacts[index].city.zipcode = city.zipcode
             
-            print ("name: \(our_contacts[index].city.name)     temp: \(our_contacts[index].city.currentTemp_F)")
+            //print ("name: \(our_contacts[index].city.name)     temp: \(our_contacts[index].city.currentTemp_F)")
             index += 1
         }
         
