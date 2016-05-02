@@ -173,18 +173,16 @@ class CityDetailViewController: UIViewController {
     }
     
     func setDayLabels() {
-        //print("in function")
         let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
         let day = 86400 // seconds in a day
-        //let currentDay = city!.sunrise_date
         
         let currentDay = Int(NSDate().timeIntervalSince1970 + city!.timeZoneOffset)
-        print("currentDay: \(currentDay)")
-        let day1 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay + day))
-        let day2 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay + (2*day)))
-        let day3 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay + (3*day)))
-        let day4 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay + (4*day)))
-        let day5 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay + (5*day)))
+ 
+        let day1 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay))
+        let day2 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay + day))
+        let day3 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay + (2*day)))
+        let day4 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay + (3*day)))
+        let day5 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay + (4*day)))
      
         let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
         

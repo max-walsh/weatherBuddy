@@ -9,8 +9,8 @@
 import Foundation
 
 struct Coordinates {
-    var longitude:Double
-    var latitude:Double
+    var longitude: Double
+    var latitude: Double
     
     init() {
         longitude = 0.0

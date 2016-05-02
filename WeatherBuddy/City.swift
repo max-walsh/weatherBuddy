@@ -14,50 +14,50 @@ import SwiftyJSON
 class City {
     
     // current temps
-    var currentTemp_F:Double
-    var currentTemp_C:Double
-    var currentTemp_K:Double
+    var currentTemp_F: Double
+    var currentTemp_C: Double
+    var currentTemp_K: Double
     
     // min and max temps
-    var minTemp_F:Double
-    var maxTemp_F:Double
-    var minTemp_C:Double
-    var maxTemp_C:Double
-    var minTemp_K:Double
-    var maxTemp_K:Double
+    var minTemp_F: Double
+    var maxTemp_F: Double
+    var minTemp_C: Double
+    var maxTemp_C: Double
+    var minTemp_K: Double
+    var maxTemp_K: Double
     
     // details
-    var description:String // overall description (ex: Clouds)
-    var detail:String // more descriptive (ex: "overcast clouds")
-    var humidity:Int // percentage of humidity
-    var windSpeed:Double // wind speed in mph
-    var windDirection:String // direction of wind (ex: NE)
-    var barometricPressure:Double // pressure in psi
-    var clouds:String // percentage of cloud coverage
+    var description: String // overall description (ex: Clouds)
+    var detail: String // more descriptive (ex: "overcast clouds")
+    var humidity: Int // percentage of humidity
+    var windSpeed: Double // wind speed in mph
+    var windDirection: String // direction of wind (ex: NE)
+    var barometricPressure: Double // pressure in psi
+    var clouds: String // percentage of cloud coverage
 
     // sunrise and sunset info
-    var sunrise:String
-    var sunset:String
-    var sunrise1970:Double
-    var sunset1970:Double
-    var sunrise_date:Int?
-    var sunset_date:Int?
-    var timeZone:NSTimeZone
-    var timeZoneOffset:Double
+    var sunrise: String
+    var sunset: String
+    var sunrise1970: Double
+    var sunset1970: Double
+    var sunrise_date: Int?
+    var sunset_date: Int?
+    var timeZone: NSTimeZone
+    var timeZoneOffset: Double
     
     // city info
-    var name:String
-    var state:String
-    var zipcode:String
-    var country:String
-    var coordinates:CLLocation
-    var id:String // unique city id is given by OpenWeatherService
+    var name: String
+    var state: String
+    var zipcode: String
+    var country: String
+    var coordinates: CLLocation
+    var id: String // unique city id is given by OpenWeatherService
     
     // images
-    var icon:UIImage
-    var backgroundImage_c:UIImage
-    var backgroundImage_nd:UIImage
-    var backgroundImage_dog:UIImage
+    var icon: UIImage
+    var backgroundImage_c: UIImage
+    var backgroundImage_nd: UIImage
+    var backgroundImage_dog: UIImage
     
     
     init() {
