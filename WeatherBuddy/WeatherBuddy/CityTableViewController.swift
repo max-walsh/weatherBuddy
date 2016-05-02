@@ -42,8 +42,28 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         self.tableView.backgroundColor = UIColor.whiteColor()
 
    
-            self.tableView.backgroundColor = UIColor.init(red: 214/255, green: 238/255, blue: 255/255, alpha: 1.0)
+        self.tableView.backgroundColor = UIColor.init(red: 214/255, green: 238/255, blue: 255/255, alpha: 1.0)
     
+        
+        //let defaults = NSUserDefaults.standardUserDefaults()
+        if let theme = defaults.valueForKey("savedTheme") as? String {
+            if (theme == "Classic") {
+                settings.theme = .Classic
+            } else if (theme == "Dogs") {
+                settings.theme = .Dogs
+            } else {
+                settings.theme = .NotreDame
+            }
+        }
+        if let unit = defaults.valueForKey("savedUnits") as? String {
+            if (unit == "Fahrenheit") {
+                settings.units = .Fahrenheit
+            } else if (unit == "Celsius") {
+                settings.units = .Celsius
+            } else {
+                settings.units = .Kelvin
+            }
+        }
         
         if (defaults.objectForKey("savedCityNames") == nil) {
             cities.addCity("", state: "", zip: "")

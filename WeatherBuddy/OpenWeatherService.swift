@@ -80,7 +80,7 @@ class OpenWeatherService {
                 }
                 //self.resultJSON = result
                 //// add forcast to each city not done called in CityDetailViewController
-                self.cityForecast = self.parseJSONForecastResponse(data!)
+                self.cityForecast = self.parseJSONForecastResponse(data!, timeZoneOffset: city.timeZoneOffset)
                 dispatch_async(dispatch_get_main_queue(), {
                     callback(self.cityForecast)
                 })
@@ -226,67 +226,95 @@ class OpenWeatherService {
         
     }
     
-    func parseJSONForecastResponse(data: NSData) -> Forecast {
+    func parseJSONForecastResponse(data: NSData, timeZoneOffset: Double) -> Forecast {
         let json = JSON(data: data)
         let forecast = Forecast()
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        var currentDate = dateFormatter.stringFromDate(NSDate())
+        let currentDateSeconds = NSDate().timeIntervalSince1970 + timeZoneOffset
+        //var currentDate = dateFormatter.stringFromDate(NSDate())
+        let today = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(currentDateSeconds)))
         
-        print("currentDate: \(currentDate)")
+        print("currentDate: \(today)")
         // http://stackoverflow.com/questions/28365939/how-to-loop-through-json-with-swiftyjson
         //for (key, day) in json["list"] {
+        var currentDate = ""
+        var min_K = 0.0
+        var max_K = 0.0
+        var min_F = 0.0
+        var max_F = 0.0
+        var min_C = 0.0
+        var max_C = 0.0
+        // http://stackoverflow.com/questions/28365939/how-to-loop-through-json-with-swiftyjson
         for (_, day) in json["list"] {
             let date = day["dt_txt"].stringValue
             let dateComp = date.componentsSeparatedByString(" ")
-            var min_K = 0.0
-            var max_K = 0.0
-            var min_F = 0.0
-            var max_F = 0.0
-            var min_C = 0.0
-            var max_C = 0.0
-            if (dateComp[0] != currentDate) {
-                if (settings.units == .Kelvin) {
-                    min_K = round(day["main"]["temp_min"].doubleValue)
-                    max_K = round(day["main"]["temp_max"].doubleValue)
-                }
-                else if (settings.units == .Celsius) {
-                    min_C = KtoC(day["main"]["temp_min"].doubleValue)
-                    max_C = KtoC(day["main"]["temp_max"].doubleValue)
+            var desc = ""
+            var icon = UIImage(named: "Sun")
+            if (dateComp[0] != today) {
+                if (dateComp[0] != currentDate) {
+                    currentDate = dateComp[0]
+                        min_K = round(day["main"]["temp_min"].doubleValue)
+                        max_K = round(day["main"]["temp_max"].doubleValue)
+
+                        min_C = KtoC(day["main"]["temp_min"].doubleValue)
+                        max_C = KtoC(day["main"]["temp_max"].doubleValue)
+
+                        min_F = KtoF(day["main"]["temp_min"].doubleValue)
+                        max_F = KtoF(day["main"]["temp_max"].doubleValue)
+
+                    desc = day["weather"][0]["main"].stringValue
+                    if (desc == "Rain" ) {
+                        icon = UIImage(named: "Rain")
+                    }
+                    else if (desc == "Snow" ) {
+                        icon = UIImage(named: "Snow")
+                    }
+                    else if (desc == "Clouds" ) {
+                        icon = UIImage(named: "Cloud")
+                    }
+                    else if (desc == "Mist" || desc == "Haze" ) {
+                        icon = UIImage(named: "FogDay")
+                    }
+                    else if (desc == "Thunderstorm" ) {
+                        icon = UIImage(named: "Storm")
+                    }
+                    else if (desc == "Drizzle" ) {
+                        icon = UIImage(named: "Drizzle")
+                    }
+                currentDate = dateComp[0]
                 }
                 else {
-                    min_F = KtoF(day["main"]["temp_min"].doubleValue)
-                    max_F = KtoF(day["main"]["temp_max"].doubleValue)
+                    var posMin = round(day["main"]["temp_min"].doubleValue)
+                    var posMax = round(day["main"]["temp_max"].doubleValue)
+                    if (posMin < min_K) {
+                        min_K = posMin
+                    }
+                    if (posMax > max_K) {
+                        max_K = posMax
+                    }
+                    posMin = KtoC(day["main"]["temp_min"].doubleValue)
+                    posMax = KtoC(day["main"]["temp_max"].doubleValue)
+                    if (posMin < min_C) {
+                        min_C = posMin
+                    }
+                    if (posMax > max_C) {
+                        max_C = posMax
+                    }
+                    posMin = KtoF(day["main"]["temp_min"].doubleValue)
+                    posMax = KtoF(day["main"]["temp_max"].doubleValue)
+                    if (posMin < min_F) {
+                        min_F = posMin
+                    }
+                    if (posMax > max_F) {
+                        max_F = posMax
+                    }
                 }
-                let desc = day["weather"][0]["main"].stringValue
-
-                var icon = UIImage(named: "Sun")
-                if (desc == "Rain" ) {
-                    icon = UIImage(named: "Rain")
-                }
-                else if (desc == "Snow" ) {
-                    icon = UIImage(named: "Snow")
-                }
-                else if (desc == "Clouds" ) {
-                    icon = UIImage(named: "Cloud")
-                }
-                else if (desc == "Mist" || desc == "Haze" ) {
-                    icon = UIImage(named: "FogDay")
-                }
-                else if (desc == "Thunderstorm" ) {
-                    icon = UIImage(named: "Storm")
-                }
-                else if (desc == "Drizzle" ) {
-                    icon = UIImage(named: "Drizzle")
-                }
-                //print("not Today: \(dateComp[0])")
-                currentDate = dateComp[0]
+            }
+            if (dateComp[1] == "21:00:00") {
                 forecast.addDay(ForecastDay(minTemp_F: min_F, maxTemp_F: max_F,
-                                            minTemp_C: min_C, maxTemp_C: max_C,
-                                            minTemp_K: min_K, maxTemp_K: max_K, desc: desc, icon: icon!))
-
-            } else {
-                //print("today")
+                    minTemp_C: min_C, maxTemp_C: max_C,
+                    minTemp_K: min_K, maxTemp_K: max_K, desc: desc, icon: icon!))
             }
         }
         

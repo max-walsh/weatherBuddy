@@ -18,14 +18,14 @@ class Settings {
     }
 }
 
-enum Theme {
-    case Classic
-    case Dogs
-    case NotreDame
+enum Theme: String {
+    case Classic = "Classic"
+    case Dogs = "Dogs"
+    case NotreDame = "NotreDame"
 }
 
-enum Unit {
-    case Fahrenheit
-    case Celsius
-    case Kelvin
+enum Unit: String {
+    case Fahrenheit = "Fahrenheit"
+    case Celsius = "Celsius"
+    case Kelvin = "Kelvin"
 }

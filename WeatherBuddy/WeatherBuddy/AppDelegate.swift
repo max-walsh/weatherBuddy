@@ -14,7 +14,7 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let tbc = TabBarController()
+    //let tbc = TabBarController()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -63,6 +63,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.setObject(cityNames, forKey: "savedCityNames")
         defaults.setObject(cityStates, forKey: "savedCityStates")
         defaults.setObject(cityZips, forKey: "savedCityZips")
+        
+        defaults.setValue(settings.theme.rawValue, forKey: "savedTheme")
+        defaults.setValue(settings.units.rawValue, forKey: "savedUnits")
         
         self.saveContext()
     }
