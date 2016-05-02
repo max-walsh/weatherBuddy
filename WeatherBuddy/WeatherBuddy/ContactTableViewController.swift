@@ -14,13 +14,12 @@ import UIKit
 import Contacts
 import ContactsUI
 
-
 class ContactTableViewController: UITableViewController {
     
     let ows = OpenWeatherService()
     var contacts = [CNContact]() // holds all the phone's contacts
     var contacts_addr = [Contact]() // holds contacts with address
-    var city1 = [City]()
+    var tempCity = [City]()
     
     func getContacts() {
         let store = CNContactStore()
@@ -87,7 +86,7 @@ class ContactTableViewController: UITableViewController {
             while (i < self.contacts_addr.count) {
                 self.ows.cityWeatherByZipcode(self.contacts_addr[i].city) {
                     (city) in
-                        self.city1.append(city)
+                        self.tempCity.append(city)
                         //print("name: \(city.name)     temp: \(city.currentTemp_F)")
                         self.tableView.reloadData()
                 }
@@ -95,7 +94,7 @@ class ContactTableViewController: UITableViewController {
             }
         }
         
-        changeWeather(self.city1)
+        changeWeather(self.tempCity)
     }
     
     func changeWeather(updatedCities: [City]) {

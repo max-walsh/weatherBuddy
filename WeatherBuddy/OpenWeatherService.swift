@@ -156,7 +156,7 @@ class OpenWeatherService {
             city.backgroundImage_dog = UIImage(named: "Clear_dog")!
         }
 
-        city.updateSun(city.coordinates)
+        city.updateSunriseSunsetData(city.coordinates)
 
         return city
     }

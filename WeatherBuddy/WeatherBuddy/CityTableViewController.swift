@@ -6,30 +6,26 @@
 //  Copyright © 2016 Katie Kuenster. All rights reserved.
 //
 
+// https://www.andrewcbancroft.com/2015/03/17/basics-of-pull-to-refresh-for-swift-developers/#table-view-controller
+
 import UIKit
 import CoreLocation
 
-// global variables to keep track of favorite cities and settings
+// global variables to keep track of favorite cities and settings across tabs
 var cities = FavoriteCities()
 var settings = Settings()
 
 
 class CityTableViewController: UITableViewController, CLLocationManagerDelegate {
-    //var cities = FavoriteCities()
+
     let defaults = NSUserDefaults.standardUserDefaults()
-    //var cities = FavoriteCities()
-    var city1=[City]()
-    //var cities = [City]()
     let locManager = CLLocationManager()
     let ows = OpenWeatherService()
-    
+    var tempCity = [City]()
     var canRefresh = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("city table view did load")
-        // https://www.andrewcbancroft.com/2015/03/17/basics-of-pull-to-refresh-for-swift-developers/#table-view-controller
         
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
         
@@ -38,13 +34,10 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         locManager.startUpdatingLocation()
         
         tableView.separatorStyle = .None
-        self.tableView.backgroundColor = UIColor.whiteColor()
-
-   
+        
         self.tableView.backgroundColor = UIColor.init(red: 214/255, green: 238/255, blue: 255/255, alpha: 1.0)
     
-        
-        //let defaults = NSUserDefaults.standardUserDefaults()
+        // persistance for settings
         if let theme = defaults.valueForKey("savedTheme") as? String {
             if (theme == "Classic") {
                 settings.theme = .Classic
@@ -64,52 +57,48 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             }
         }
         
+        // persistance for cities
         if (defaults.objectForKey("savedCityNames") == nil) {
-            cities.addCity("", state: "", zip: "")
+            cities.addCity("", state: "", zip: "") // placeholder for current location
             cities.addCity("New York City", state: "NY", zip: "10001")
             cities.addCity("Chicago", state: "IL", zip: "60290")
             cities.addCity("Los Angeles", state: "CA", zip: "90001")
-            cities.addCity("Gann Valley", state: "SD", zip: "57341")
-            //print("no cities")
         } else {
-            //cities = defaults.objectForKey("savedCities")! as! FavoriteCities
             let cityNames = defaults.objectForKey("savedCityNames") as! [String]
             let cityStates = defaults.objectForKey("savedCityStates") as! [String]
             let cityZips = defaults.objectForKey("savedCityZips") as! [String]
             
-            var i:Int = 0
+            var i = 0
             while (i < cityNames.count) {
                 cities.addCity(cityNames[i], state: cityStates[i], zip: cityZips[i])
                 i += 1
             }
-            
-            //print("already cities")
         }
         
         
+        // get the weather for each city
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         self.canRefresh = false
     
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             self.canRefresh = false
             var i:Int = 0
-            self.city1.removeAll()
+            self.tempCity.removeAll()
             while (i < cities.cityCount() ) {
                 self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
                     (cities) in
-                    self.city1.append(cities)
-                    //print("name: \(cities.name)     temp: \(cities.zipcode)")
+                    self.tempCity.append(cities)
                     self.tableView.reloadData()
+                    self.canRefresh = true
                 }
                 i += 1
             }
-            self.canRefresh = true
+            
         }
         
-        cities.changeWeather(self.city1)
-        canRefresh = true
-        //defaults.setObject(cities, forKey: "savedCities")
+        cities.changeWeather(self.tempCity)
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+   
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
@@ -118,33 +107,27 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             print("refreshed:")
             cities.printCities()
             let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-            //dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                var i:Int = 0
+                var i = 0
                 print("in dispatch_async:")
                 cities.printCities()
-                self.city1.removeAll()
+                self.tempCity.removeAll()
                 while (i < cities.cityCount() ) {
-                    print("while:")
                     cities.printCities()
-                    //print("callback: \(cities.cityAtIndex(i).name)")
                     self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
                         (city) in
-                        self.city1.append(city)
+                        self.tempCity.append(city)
                         self.tableView.reloadData()
-                        //print("name: \(city.name)     temp: \(city.zipcode)")
-                        //self.tableView.reloadData()
                     }
                     i += 1
                 }
-            //}
-            cities.changeWeather(self.city1)
+
+            cities.changeWeather(self.tempCity)
             canRefresh = true
             self.tableView.reloadData()
             print("end of refresh")
             cities.printCities()
             refreshControl.endRefreshing()
-        }
-        else {
+        } else {
             refreshControl.endRefreshing()
         }
 
@@ -153,32 +136,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController!.navigationBar.topItem!.title = "WeatherBuddy"
-        tableView.reloadData() // comment if doing async call
-        
-        //print("viewWillAppear")
-        
-        /*
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        self.canRefresh = false
-        
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            self.canRefresh = false
-            var i:Int = 0
-            self.city1.removeAll()
-            while (i < cities.cityCount() ) {
-                self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
-                    (cities) in
-                    self.city1.append(cities)
-                    //print("name: \(cities.name)     temp: \(cities.zipcode)")
-                    self.tableView.reloadData()
-                }
-                i += 1
-            }
-            self.canRefresh = true
-        }
-        */
-        
-        
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -202,21 +160,21 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
 
         if let cityCell = cell as? CityTableViewCell {
             cityCell.nameLabel.text = cities.cityAtIndex(indexPath.row).name
+            
+            // set gradient color
             if (cities.cityAtIndex(indexPath.row).description == "Clear" || cities.cityAtIndex(indexPath.row).description == "Haze" || cities.cityAtIndex(indexPath.row).description == "Mist") {
                 cityCell.gradientView.clouds = 0
                 cityCell.gradientView.setNeedsDisplay()
-            }
-            else {
+            } else {
                 cityCell.gradientView.clouds = 1
                 cityCell.gradientView.setNeedsDisplay()
             }
+            // set temperature label
             if (settings.units == .Kelvin) {
                 cityCell.degreesLabel.text = "\(Int(cities.cityAtIndex(indexPath.row).currentTemp_K))\u{00B0}"
-            }
-            else if (settings.units == .Celsius) {
+            } else if (settings.units == .Celsius) {
                 cityCell.degreesLabel.text = "\(Int(cities.cityAtIndex(indexPath.row).currentTemp_C))\u{00B0}"
-            }
-            else {
+            } else {
                 cityCell.degreesLabel.text = "\(Int(cities.cityAtIndex(indexPath.row).currentTemp_F))\u{00B0}"
             }
             
@@ -226,6 +184,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
                 cityCell.locationImage.image = UIImage(named: "Location")
             }
             cityCell.gradientView.leftToRight = (indexPath.row)%2
+            
         }
         return cell
     }
@@ -241,15 +200,11 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             self.ows.cityWeatherByZipcode(cities.cityAtIndex(0)) {
                 (cities) in
                 tempCity.append(cities)
-                //print("name: \(cities.name)     temp: \(cities.currentTemp_F)")
-                //self.tableView.reloadData()
             }
         }
         
         cities.changeWeather(tempCity)
         self.tableView.reloadData()
-        
-        //locManager.stopUpdatingLocation() // stop looking at location
     }
     
     
@@ -309,7 +264,6 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "detailSegue" {
             if let detailVC = segue.destinationViewController as? CityDetailViewController,
