@@ -147,7 +147,7 @@ class OpenWeatherService {
         }
         else if (city.description == "Mist" || city.description == "Haze" ) {
             city.icon = UIImage(named: "FogDay")!
-            city.backgroundImage_c = UIImage(named: "Clear_big")!
+            city.backgroundImage_c = UIImage(named: "Fog_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Fog")!
             city.backgroundImage_dog = UIImage(named: "Fog_dog")!
         }
@@ -186,7 +186,6 @@ class OpenWeatherService {
             let dateComp = date.componentsSeparatedByString(" ")
             var desc = ""
             var icon = UIImage(named: "Sun")
-            //if (dateComp[0] != today) {
             if (dateComp[0] != currentDate) {
                 currentDate = dateComp[0]
                 min_K = round(day["main"]["temp_min"].doubleValue)
@@ -196,23 +195,8 @@ class OpenWeatherService {
                 min_F = KtoF(day["main"]["temp_min"].doubleValue)
                 max_F = KtoF(day["main"]["temp_max"].doubleValue)
 
-                desc = day["weather"][0]["main"].stringValue
-                if (desc == "Rain" ) {
-                    icon = UIImage(named: "Rain")
-                } else if (desc == "Snow" ) {
-                    icon = UIImage(named: "Snow")
-                } else if (desc == "Clouds" ) {
-                    icon = UIImage(named: "Cloud")
-                } else if (desc == "Mist" || desc == "Haze" ) {
-                    icon = UIImage(named: "FogDay")
-                } else if (desc == "Thunderstorm" ) {
-                    icon = UIImage(named: "Storm")
-                } else if (desc == "Drizzle" ) {
-                    icon = UIImage(named: "Drizzle")
-                }
                 currentDate = dateComp[0]
             } else {
-                print("else: \(dateComp[0])")
                 var posMin = round(day["main"]["temp_min"].doubleValue)
                 var posMax = round(day["main"]["temp_max"].doubleValue)
                 if (posMin < min_K) {
@@ -239,6 +223,20 @@ class OpenWeatherService {
                 if (posMax > max_F) {
                     max_F = posMax
                 }
+            }
+            desc = day["weather"][0]["main"].stringValue
+            if (desc == "Rain" ) {
+                icon = UIImage(named: "Rain")
+            } else if (desc == "Snow" ) {
+                icon = UIImage(named: "Snow")
+            } else if (desc == "Clouds" ) {
+                icon = UIImage(named: "Cloud")
+            } else if (desc == "Mist" || desc == "Haze" ) {
+                icon = UIImage(named: "FogDay")
+            } else if (desc == "Thunderstorm" ) {
+                icon = UIImage(named: "Storm")
+            } else if (desc == "Drizzle" ) {
+                icon = UIImage(named: "Drizzle")
             }
             if (dateComp[1] == "21:00:00") {
                 forecast.addDay(ForecastDay(minTemp_F: min_F, maxTemp_F: max_F,

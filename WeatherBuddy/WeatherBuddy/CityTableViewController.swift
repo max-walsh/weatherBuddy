@@ -36,7 +36,8 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         tableView.separatorStyle = .None
         
         self.tableView.backgroundColor = UIColor.init(red: 214/255, green: 238/255, blue: 255/255, alpha: 1.0)
-    
+        self.tableView.userInteractionEnabled = false
+        
         // persistance for settings
         if let theme = defaults.valueForKey("savedTheme") as? String {
             if (theme == "Classic") {
@@ -93,7 +94,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
                 }
                 i += 1
             }
-            
+            self.tableView.userInteractionEnabled = true
         }
         
         cities.changeWeather(self.tempCity)
@@ -104,28 +105,20 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     func handleRefresh(refreshControl: UIRefreshControl) {
         if (canRefresh) {
             canRefresh = false
-            print("refreshed:")
-            cities.printCities()
-            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-                var i = 0
-                print("in dispatch_async:")
-                cities.printCities()
-                self.tempCity.removeAll()
-                while (i < cities.cityCount() ) {
-                    cities.printCities()
-                    self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
-                        (city) in
-                        self.tempCity.append(city)
-                        self.tableView.reloadData()
-                    }
-                    i += 1
+            var i = 0
+            self.tempCity.removeAll()
+            while (i < cities.cityCount() ) {
+                self.ows.cityWeatherByZipcode(cities.cityAtIndex(i)) {
+                    (city) in
+                    self.tempCity.append(city)
+                    self.tableView.reloadData()
                 }
+                i += 1
+            }
 
             cities.changeWeather(self.tempCity)
             canRefresh = true
             self.tableView.reloadData()
-            print("end of refresh")
-            cities.printCities()
             refreshControl.endRefreshing()
         } else {
             refreshControl.endRefreshing()
@@ -160,8 +153,10 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
 
         if let cityCell = cell as? CityTableViewCell {
             cityCell.nameLabel.text = cities.cityAtIndex(indexPath.row).name
+            cityCell.detailLabel.text = cities.cityAtIndex(indexPath.row).detail
+            cityCell.iconImage.image = cities.cityAtIndex(indexPath.row).icon
             
-            // set gradient color
+            // set gradient color and direction
             if (cities.cityAtIndex(indexPath.row).description == "Clear" || cities.cityAtIndex(indexPath.row).description == "Haze" || cities.cityAtIndex(indexPath.row).description == "Mist") {
                 cityCell.gradientView.clouds = 0
                 cityCell.gradientView.setNeedsDisplay()
@@ -169,6 +164,8 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
                 cityCell.gradientView.clouds = 1
                 cityCell.gradientView.setNeedsDisplay()
             }
+            cityCell.gradientView.leftToRight = (indexPath.row)%2
+            
             // set temperature label
             if (settings.units == .Kelvin) {
                 cityCell.degreesLabel.text = "\(Int(cities.cityAtIndex(indexPath.row).currentTemp_K))\u{00B0}"
@@ -178,12 +175,11 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
                 cityCell.degreesLabel.text = "\(Int(cities.cityAtIndex(indexPath.row).currentTemp_F))\u{00B0}"
             }
             
-            cityCell.detailLabel.text = cities.cityAtIndex(indexPath.row).detail
-            cityCell.iconImage.image = cities.cityAtIndex(indexPath.row).icon
+            // if first cell, then set image for current location
             if (indexPath.row == 0) {
                 cityCell.locationImage.image = UIImage(named: "Location")
             }
-            cityCell.gradientView.leftToRight = (indexPath.row)%2
+            
             
         }
         return cell
@@ -206,11 +202,9 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         cities.changeWeather(tempCity)
         self.tableView.reloadData()
     }
-    
-    
 
     
-    // Override to support conditional editing of the table view.
+    // for conditional editing of the table view
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         if indexPath.item != 0 {
@@ -220,37 +214,24 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
         }
     }
     
-
     
-    // Override to support editing the table view.
+    // for editing the table view
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            print("before delete:")
-            cities.printCities()
             cities.removeCityAtIndex(indexPath.item)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            print("after delete:")
-            cities.printCities()
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     
-
     
-    // Override to support rearranging the table view.
+    // for rearranging the table view
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-        print("rearrange")
-        cities.printCities()
         cities.rearrangeCities(fromIndexPath.row, toIndex: toIndexPath.row)
-        print("after")
-        cities.printCities()
     }
-    
 
     
-    // Override to support conditional rearranging of the table view.
+    // for conditional rearranging of the table view
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         if indexPath.item != 0 {
@@ -259,8 +240,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
             return false
         }
     }
-
-
+    
 
     // MARK: - Navigation
 

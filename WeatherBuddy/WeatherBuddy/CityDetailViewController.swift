@@ -73,16 +73,16 @@ class CityDetailViewController: UIViewController {
         // Set temperature labels
         if (settings.units == .Kelvin) {
             tempLabel.text = "\(Int(city!.currentTemp_K))\u{00B0}"
-            maxLabel.text = String(Int(city!.maxTemp_K))
-            minLabel.text = String(Int(city!.minTemp_K))
+            maxLabel.text = "High: \(Int(city!.maxTemp_K))\u{00B0}"
+            minLabel.text = "Low: \(Int(city!.minTemp_K))\u{00B0}"
         } else if (settings.units == .Celsius) {
             tempLabel.text = "\(Int(city!.currentTemp_C))\u{00B0}"
-            maxLabel.text = String(Int(city!.maxTemp_C))
-            minLabel.text = String(Int(city!.minTemp_C))
+            maxLabel.text = "High: \(Int(city!.maxTemp_C))\u{00B0}"
+            minLabel.text = "Low: \(Int(city!.minTemp_C))\u{00B0}"
         } else {
             tempLabel.text = "\(Int(city!.currentTemp_F))\u{00B0}"
-            maxLabel.text = String(Int(city!.maxTemp_F))
-            minLabel.text = String(Int(city!.minTemp_F))
+            maxLabel.text = "High: \(Int(city!.maxTemp_F))\u{00B0}"
+            minLabel.text = "Low: \(Int(city!.minTemp_F))\u{00B0}"
         }
         
         
@@ -130,16 +130,16 @@ class CityDetailViewController: UIViewController {
         // set temperature labels
         if (settings.units == .Kelvin) {
             tempLabel.text = "\(Int(city!.currentTemp_K))\u{00B0}"
-            maxLabel.text = String(Int(city!.maxTemp_K))
-            minLabel.text = String(Int(city!.minTemp_K))
+            maxLabel.text = "High: \(Int(city!.maxTemp_K))\u{00B0}"
+            minLabel.text = "Low: \(Int(city!.minTemp_K))\u{00B0}"
         } else if (settings.units == .Celsius) {
             tempLabel.text = "\(Int(city!.currentTemp_C))\u{00B0}"
-            maxLabel.text = String(Int(city!.maxTemp_C))
-            minLabel.text = String(Int(city!.minTemp_C))
+            maxLabel.text = "High: \(Int(city!.maxTemp_C))\u{00B0}"
+            minLabel.text = "Low: \(Int(city!.minTemp_C))\u{00B0}"
         } else {
             tempLabel.text = "\(Int(city!.currentTemp_F))\u{00B0}"
-            maxLabel.text = String(Int(city!.maxTemp_F))
-            minLabel.text = String(Int(city!.minTemp_F))
+            maxLabel.text = "High: \(Int(city!.maxTemp_F))\u{00B0}"
+            minLabel.text = "Low: \(Int(city!.minTemp_F))\u{00B0}"
         }
         
         // Set data in sunView

@@ -6,6 +6,8 @@
 //  Copyright © 2016 Katie Kuenster. All rights reserved.
 //
 
+// http://stackoverflow.com/questions/24467408/swift-add-mkannotationview-to-mkmapview
+
 import UIKit
 import MapKit
 
@@ -15,6 +17,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var i = 0
     var j = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,8 +31,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(mapview: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
-        // http://stackoverflow.com/questions/24467408/swift-add-mkannotationview-to-mkmapview
-        //print("viewForAnnotation")
         if (annotation is MKUserLocation) {
             //if annotation is not an MKPointAnnotation (eg. MKUserLocation),
             //return nil so map draws default view for it (eg. blue dot)...
