@@ -18,8 +18,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // http://stackoverflow.com/questions/24467408/swift-add-mkannotationview-to-mkmapview
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,8 +25,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(mapview: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        // http://stackoverflow.com/questions/24467408/swift-add-mkannotationview-to-mkmapview
         
+        // http://stackoverflow.com/questions/24467408/swift-add-mkannotationview-to-mkmapview
+        //print("viewForAnnotation")
         if (annotation is MKUserLocation) {
             //if annotation is not an MKPointAnnotation (eg. MKUserLocation),
             //return nil so map draws default view for it (eg. blue dot)...
@@ -53,6 +52,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+        
         super.viewWillAppear(animated)
         i = 0
         j = 0
@@ -73,11 +73,5 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         i = 0
         j = 0
     }
-    
-    override func viewWillDisappear(animated: Bool) {
-        let annotationsToRemove = mapView.annotations
-        mapView.removeAnnotations(annotationsToRemove)
-    }
-
 
 }

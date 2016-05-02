@@ -45,7 +45,7 @@ class OpenWeatherService {
     }
     
     func cityWeatherForecast(city: City, callback: (Forecast)->Void) {
-        g
+
         let coordURL = "\(baseURL)forecast?id=\(city.id),&APPID=\(apiKey)"
         let searchURL = NSURL(string: coordURL)
         let request = NSMutableURLRequest(URL: searchURL!)
