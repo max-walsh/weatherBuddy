@@ -145,7 +145,7 @@ class OpenWeatherService {
             city.backgroundImage_nd = UIImage(named: "nd_Snow")!
             city.backgroundImage_dog = UIImage(named: "Snow_dog")!
         }
-        else if (city.description == "Mist" || city.description == "Haze" ) {
+        else if (city.description == "Mist" || city.description == "Haze") {
             city.icon = UIImage(named: "FogDay")!
             city.backgroundImage_c = UIImage(named: "Fog_big")!
             city.backgroundImage_nd = UIImage(named: "nd_Fog")!

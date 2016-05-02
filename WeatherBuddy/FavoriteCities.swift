@@ -43,7 +43,7 @@ class FavoriteCities: NSObject {
     }
     
     func changeWeather(updatedCities: [City]) {
-        var index:Int = 0
+        var index = 0
         for city in updatedCities {
             cities[index].barometricPressure = city.barometricPressure
             cities[index].coordinates = city.coordinates
@@ -68,12 +68,8 @@ class FavoriteCities: NSObject {
             cities[index].windSpeed = city.windSpeed
             cities[index].zipcode = city.zipcode
             
-            //print ("name: \(cities[index].name)     temp: \(cities[index].currentTemp_F)")
             index += 1
         }
-        //print(index)
-        //print(cities.count)
-        //cities[index] = city///hopefully works???
         
     }
     
