@@ -132,6 +132,68 @@ class CityDetailViewController: UIViewController {
     }
     
     
+    
+    override func viewWillAppear(animated: Bool) {
+        // Set temperature labels
+        if (settings.units == .Kelvin) {
+            tempLabel.text = "\(Int(city!.currentTemp_K))\u{00B0}"
+            maxLabel.text = String(Int(city!.maxTemp_K))
+            minLabel.text = String(Int(city!.minTemp_K))
+        }
+        else if (settings.units == .Celsius) {
+            tempLabel.text = "\(Int(city!.currentTemp_C))\u{00B0}"
+            maxLabel.text = String(Int(city!.maxTemp_C))
+            minLabel.text = String(Int(city!.minTemp_C))
+        }
+        else {
+            tempLabel.text = "\(Int(city!.currentTemp_F))\u{00B0}"
+            maxLabel.text = String(Int(city!.maxTemp_F))
+            minLabel.text = String(Int(city!.minTemp_F))
+        }
+        
+        
+        // Set data in sunView
+        sunView.riseTime = city!.sunrise_date
+        sunView.setTime = city!.sunset_date
+        sunView.timeZone = city!.timeZone
+        
+        
+        // Get forecast information and set labels
+        self.ows.cityWeatherForecast(city!) {
+            (forecast) in
+            self.forecast = forecast
+            //print(self.forecast)
+            self.day1Image.image = self.forecast!.dayAtIndex(0).icon
+            self.day2Image.image = self.forecast!.dayAtIndex(1).icon
+            self.day3Image.image = self.forecast!.dayAtIndex(2).icon
+            self.day4Image.image = self.forecast!.dayAtIndex(3).icon
+            self.day5Image.image = self.forecast!.dayAtIndex(4).icon
+            if (settings.units == .Kelvin) {
+                self.setLabels_K()
+            }
+            else if (settings.units == .Celsius) {
+                self.setLabels_C()
+            }
+            else {
+                self.setLabels_F()
+            }
+        }
+        
+        // Set background image
+        if (settings.theme == .Classic) {
+            backgroundImage.image = city?.backgroundImage_c
+        }
+        else if (settings.theme == .NotreDame) {
+            backgroundImage.image = city?.backgroundImage_nd
+        }
+        else if (settings.theme == .Dogs) {
+            backgroundImage.image = city?.backgroundImage_dog
+        }
+    }
+    
+    
+    
+    
     // Functions for setting forecast labels
     func setLabels_K() {
         self.day1MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(0).maxTemp_K)))\u{00B0}"
