@@ -222,7 +222,7 @@ class OpenWeatherService {
             let dateComp = date.componentsSeparatedByString(" ")
             var desc = ""
             var icon = UIImage(named: "Sun")
-            if (dateComp[0] != today) {
+            //if (dateComp[0] != today) {
                 if (dateComp[0] != currentDate) {
                     currentDate = dateComp[0]
                         min_K = round(day["main"]["temp_min"].doubleValue)
@@ -256,6 +256,7 @@ class OpenWeatherService {
                 currentDate = dateComp[0]
                 }
                 else {
+                    print("else: \(dateComp[0])")
                     var posMin = round(day["main"]["temp_min"].doubleValue)
                     var posMax = round(day["main"]["temp_max"].doubleValue)
                     if (posMin < min_K) {
@@ -281,12 +282,19 @@ class OpenWeatherService {
                         max_F = posMax
                     }
                 }
-            }
-            if (dateComp[1] == "21:00:00") {
+                if (dateComp[1] == "21:00:00") {
+                    print("\(dateComp[0]): \(min_K)")
+                    forecast.addDay(ForecastDay(minTemp_F: min_F, maxTemp_F: max_F,
+                        minTemp_C: min_C, maxTemp_C: max_C,
+                        minTemp_K: min_K, maxTemp_K: max_K, desc: desc, icon: icon!))
+                }
+            //}/*
+            /*if (dateComp[1] == "21:00:00") {
+                print("\(dateComp[0]): \(min_K)")
                 forecast.addDay(ForecastDay(minTemp_F: min_F, maxTemp_F: max_F,
                     minTemp_C: min_C, maxTemp_C: max_C,
                     minTemp_K: min_K, maxTemp_K: max_K, desc: desc, icon: icon!))
-            }
+            }*/
         }
         
         return forecast
