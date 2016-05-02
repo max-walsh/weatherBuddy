@@ -30,12 +30,10 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         if (settings.theme == .Dogs) {
             themePickerView.selectRow(1, inComponent: 0, animated: true)
             self.backgroundImage.image = UIImage(named: "Theme_dog")
-        }
-        else if (settings.theme == .NotreDame) {
+        } else if (settings.theme == .NotreDame) {
             self.backgroundImage.image = UIImage(named: "Theme_nd")
             themePickerView.selectRow(2, inComponent: 0, animated: true)
-        }
-        else {
+        } else {
             self.backgroundImage.image = UIImage(named: "Theme_c")
             themePickerView.selectRow(0, inComponent: 0, animated: true)
         }
@@ -43,11 +41,9 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // set the initial row selected for degreePicker
         if (settings.units == .Celsius) {
             degreePickerView.selectRow(1, inComponent: 0, animated: true)
-        }
-        else if (settings.units == .Kelvin) {
+        } else if (settings.units == .Kelvin) {
             degreePickerView.selectRow(2, inComponent: 0, animated: true)
-        }
-        else {
+        } else {
             degreePickerView.selectRow(0, inComponent: 0, animated: true)
         }
         
@@ -64,8 +60,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if (pickerView == themePickerView) {
             return themePickerDataSource.count
-        }
-        else {
+        } else {
             return degreePickerDataSource.count
         }
         
@@ -74,37 +69,30 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if (pickerView == themePickerView) {
             return themePickerDataSource[row]
-        }
-        else {
+        } else {
             return degreePickerDataSource[row]
         }
     }
     
     // function for when a setting is changed
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
-    {
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if (pickerView == themePickerView) {
             if(row == 0) {
                 settings.theme = .Classic
                 backgroundImage.image = UIImage(named: "Theme_c")
-            }
-            else if(row == 1) {
+            } else if(row == 1) {
                 settings.theme = .Dogs
                 backgroundImage.image = UIImage(named: "Theme_dog")
-            }
-            else if(row == 2) {
+            } else if(row == 2) {
                 settings.theme = .NotreDame
                 backgroundImage.image = UIImage(named: "Theme_nd")
             }
-        }
-        else {
+        } else {
             if(row == 0) {
                 settings.units = .Fahrenheit
-            }
-            else if(row == 1) {
+            } else if(row == 1) {
                 settings.units = .Celsius
-            }
-            else if(row == 2) {
+            } else if(row == 2) {
                 settings.units = .Kelvin
             }
         }
@@ -124,8 +112,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         if (pickerView == themePickerView) {
             pickerLabel?.text = themePickerDataSource[row]
-        }
-        else {
+        } else {
             pickerLabel?.text = degreePickerDataSource[row]
         }
         
