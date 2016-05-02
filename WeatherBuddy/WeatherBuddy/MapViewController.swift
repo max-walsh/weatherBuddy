@@ -18,6 +18,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.mapView.zoomEnabled = false
+        self.mapView.userInteractionEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
