@@ -18,13 +18,17 @@ class SunView: UIView {
     var riseTime: Int?
     var setTime: Int?
     var currentTime = Int(NSDate().timeIntervalSince1970)
+    var timeZone: NSTimeZone?
     
     override func drawRect(rect: CGRect) {
+        
+        // account for the time zone of the city for the current time
+        currentTime += timeZone!.secondsFromGMT + 14400
         
         // draw the arc
         let arcCenter = CGPoint(x:bounds.width/2, y: bounds.height/2)
         let radius: CGFloat = bounds.width - 17
-        let arcWidth: CGFloat = 5
+        let arcWidth: CGFloat = 3
         let startAngle: CGFloat = π
         let endAngle: CGFloat = 2*π
 

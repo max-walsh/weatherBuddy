@@ -68,6 +68,7 @@ class CityDetailViewController: UIViewController {
         cloudLabel.text = "Clouds: \(city!.clouds)%"
         sunriseLabel.text = "\(city!.sunrise)"
         sunsetLabel.text = "\(city!.sunset)"
+        setDayLabels()
         
         // Set temperature labels
         if (settings.units == .Kelvin) {
@@ -90,14 +91,8 @@ class CityDetailViewController: UIViewController {
         // Set data in sunView
         sunView.riseTime = city!.sunrise_date
         sunView.setTime = city!.sunset_date
-        
-        // Do any additional setup after loading the view.
-        /*
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_async(priority, 0)) {
-        
-        }
-        */
+        sunView.timeZone = city!.timeZone
+
         
         // Get forecast information and set labels
         self.ows.cityWeatherForecast(city!) {
@@ -118,8 +113,6 @@ class CityDetailViewController: UIViewController {
             else {
                 self.setLabels_F()
             }
-            //print("should have been called")
-            //self. MUST REFRESH THE DATA
         }
         
         // Set background image
@@ -139,7 +132,7 @@ class CityDetailViewController: UIViewController {
     }
     
     
-    // Functions for setting forecast temperature labels
+    // Functions for setting forecast labels
     func setLabels_K() {
         self.day1MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).maxTemp_K)))
         self.day2MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).maxTemp_K)))
@@ -177,5 +170,32 @@ class CityDetailViewController: UIViewController {
         self.day3MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).minTemp_F)))
         self.day4MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).minTemp_F)))
         self.day5MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).minTemp_F)))
+    }
+    
+    func setDayLabels() {
+        print("in function")
+        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        let day = 86400 // seconds in a day
+        let currentDay = city!.sunrise_date
+        let day1 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay! + day))
+        let day2 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay! + (2*day)))
+        let day3 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay! + (3*day)))
+        let day4 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay! + (4*day)))
+        let day5 = NSDate(timeIntervalSince1970: NSTimeInterval(currentDay! + (5*day)))
+     
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        
+        let myComponents_1 = myCalendar.components(.Weekday, fromDate: day1)
+        let myComponents_2 = myCalendar.components(.Weekday, fromDate: day2)
+        let myComponents_3 = myCalendar.components(.Weekday, fromDate: day3)
+        let myComponents_4 = myCalendar.components(.Weekday, fromDate: day4)
+        let myComponents_5 = myCalendar.components(.Weekday, fromDate: day5)
+        
+        self.day1Label.text = days[myComponents_1.weekday - 1]
+        self.day2Label.text = days[myComponents_2.weekday - 1]
+        self.day3Label.text = days[myComponents_3.weekday - 1]
+        self.day4Label.text = days[myComponents_4.weekday - 1]
+        self.day5Label.text = days[myComponents_5.weekday - 1]
+        
     }
 }

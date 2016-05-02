@@ -9,14 +9,15 @@
 import Foundation
 import UIKit
 class ForecastDay {
-    var minTemp_F:Double
-    var maxTemp_F:Double
-    var minTemp_C:Double
-    var maxTemp_C:Double
-    var minTemp_K:Double
-    var maxTemp_K:Double
-    var description:String
+    var minTemp_F: Double
+    var maxTemp_F: Double
+    var minTemp_C: Double
+    var maxTemp_C: Double
+    var minTemp_K: Double
+    var maxTemp_K: Double
+    var description: String
     var icon = UIImage(named: "Sun")!
+    
     
     init(minTemp_F: Double, maxTemp_F: Double,
          minTemp_C: Double, maxTemp_C: Double,

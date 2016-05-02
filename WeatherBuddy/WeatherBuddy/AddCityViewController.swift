@@ -22,6 +22,7 @@ class AddCityViewController: UIViewController, UITextFieldDelegate {
         
         zipTextField.delegate = self
         zipTextField.keyboardType = UIKeyboardType.NumberPad
+        
         imageView.image = UIImage(named: "City")
     }
 
@@ -42,17 +43,23 @@ class AddCityViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(action)
             presentViewController(alert, animated: true, completion: nil)
         }
-        let zip:String = zipTextField.text!
-        zip.characters.count
-        if (zipTextField.text!.characters.count != 5) {
+        else if (zipTextField.text!.characters.count != 5) {
             let alert = UIAlertController(title: "Invalid Zipcode", message: "Please enter a 5 digit zipcode.", preferredStyle: .Alert)
             let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alert.addAction(action)
             presentViewController(alert, animated: true, completion: nil)
         }
-        cities?.addCity(cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!)
+        else if (stateTextField.text!.characters.count != 2) {
+            let alert = UIAlertController(title: "Invalid State", message: "Please enter a 2 letter state abbreviation.", preferredStyle: .Alert)
+            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alert.addAction(action)
+            presentViewController(alert, animated: true, completion: nil)
+        }
+        else {
+            cities?.addCity(cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!)
+            dismissViewControllerAnimated(true, completion: nil)
+        }
         
-        dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
