@@ -48,6 +48,7 @@ class City {
     var backgroundImage_nd:UIImage
     var backgroundImage_dog:UIImage
     //var backgroundImage_d:UIImage
+    var timeZoneOffset:Double
     
     init() {
         self.currentTemp_F = 0.0
@@ -85,6 +86,7 @@ class City {
         self.id = ""
         self.sunrise_date = 0
         self.sunset_date = 0
+        self.timeZoneOffset = 0.0
 
     }
     
@@ -138,7 +140,8 @@ class City {
             if let pm = placemarks![0] as? CLPlacemark {
             
                 self.timeZone = pm.timeZone!
-                print(self.timeZone.secondsFromGMT)
+                //print(self.timeZone.secondsFromGMT)
+                self.timeZoneOffset = Double(self.timeZone.secondsFromGMT) + 14400
                 self.sunrise1970 += (Double(self.timeZone.secondsFromGMT) + 14400) // openWeather actually gives sunrise in only east coast time
                 self.sunrise_date = Int(self.sunrise1970)
                 self.sunset1970 += (Double(self.timeZone.secondsFromGMT) + 14400)
