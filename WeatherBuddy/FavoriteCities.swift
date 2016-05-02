@@ -25,6 +25,7 @@ class FavoriteCities: NSObject {
     }
     
     func cityByName(cityName: String) -> City {
+        
         for city in cities {
             if city.name == cityName {
                 return city
@@ -34,6 +35,7 @@ class FavoriteCities: NSObject {
     }
     
     func addCity(city: String, state: String, zip: String) {
+        
         let newCity = City()
         newCity.name = city
         newCity.state = state
@@ -43,8 +45,11 @@ class FavoriteCities: NSObject {
     }
     
     func changeWeather(updatedCities: [City]) {
-        var index = 0
+        
+        var index:Int = 0
+
         for city in updatedCities {
+            
             cities[index].barometricPressure = city.barometricPressure
             cities[index].coordinates = city.coordinates
             cities[index].country = city.country
@@ -67,13 +72,13 @@ class FavoriteCities: NSObject {
             cities[index].windDirection = city.windDirection
             cities[index].windSpeed = city.windSpeed
             cities[index].zipcode = city.zipcode
-            
             index += 1
         }
-        
+
     }
     
     func rearrangeCities(fromIndex: Int, toIndex: Int) {
+        
         let cityToMove = cities[fromIndex]
         cities.removeAtIndex(fromIndex)
         cities.insert(cityToMove, atIndex: toIndex)

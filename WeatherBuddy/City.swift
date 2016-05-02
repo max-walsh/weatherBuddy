@@ -87,8 +87,8 @@ class City {
         // sunrise and sunset info
         self.sunrise = ""
         self.sunset = ""
-        self.sunrise1970 = 0.0 //NSDate().timeIntervalSince1970
-        self.sunset1970 = 0.0 //NSDate().timeIntervalSince1970
+        self.sunrise1970 = 0.0
+        self.sunset1970 = 0.0
         self.sunrise_date = 0
         self.sunset_date = 0
         self.timeZone = NSTimeZone()
@@ -116,7 +116,7 @@ class City {
     func updateUserLocation(location: CLLocation) {
         
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
-            if error != nil {
+            if (error != nil) {
                 print("Reverse Geocoder failed with error: \(error!.localizedDescription)")
                 return
             } else {
@@ -134,7 +134,7 @@ class City {
     func updateSunriseSunsetData(location: CLLocation) {
         
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
-            if error != nil {
+            if (error != nil) {
                 print("Reverse Geocoder failed with error: \(error!.localizedDescription)")
                 return
             } else {
@@ -156,6 +156,5 @@ class City {
             }
         })
     }
-    
     
 }

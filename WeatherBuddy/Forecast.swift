@@ -9,6 +9,7 @@
 import Foundation
 
 class Forecast {
+    
     private var days:[ForecastDay] = []
     
     func addDay(day: ForecastDay) -> Void {

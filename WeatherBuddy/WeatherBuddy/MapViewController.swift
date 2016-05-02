@@ -21,6 +21,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Prevents user interaction with the map
         self.mapView.zoomEnabled = false
         self.mapView.userInteractionEnabled = false
     }
@@ -32,8 +33,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func mapView(mapview: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         if (annotation is MKUserLocation) {
-            //if annotation is not an MKPointAnnotation (eg. MKUserLocation),
-            //return nil so map draws default view for it (eg. blue dot)...
+            
+            // If there is not annotation, return nil so map draws default view
             return nil
         }
         
@@ -46,7 +47,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             anView!.canShowCallout = true
         }
         else {
-            //we are re-using a view, update its annotation reference...
+            // Update annotation reference if we are reusing a view
             anView!.annotation = annotation
         }
         j += 1
