@@ -14,24 +14,23 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var themePickerView: UIPickerView!
     @IBOutlet weak var degreePickerView: UIPickerView!
 
-    
     var themePickerDataSource = ["Classic", "Dogs", "Notre Dame"]
     var degreePickerDataSource = ["Fahrenheit", "Celsius", "Kelvin"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.themePickerView.dataSource = self
         self.themePickerView.delegate = self
         self.degreePickerView.dataSource = self
         self.degreePickerView.delegate = self
+        
         self.backgroundImage.image = UIImage(named: "Theme_c")
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -61,38 +60,33 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     {
         if (pickerView == themePickerView) {
             if(row == 0) {
-                print("Classic")
                 settings.theme = .Classic
                 backgroundImage.image = UIImage(named: "Theme_c")
             }
             else if(row == 1) {
-                print("Dogs")
                 settings.theme = .Dogs
                 backgroundImage.image = UIImage(named: "Theme_dog")
             }
             else if(row == 2) {
-                print("NotreDame")
                 settings.theme = .NotreDame
                 backgroundImage.image = UIImage(named: "Theme_nd")
             }
         }
         else {
             if(row == 0) {
-                print("F")
                 settings.units = .Fahrenheit
             }
             else if(row == 1) {
-                print("C")
                 settings.units = .Celsius
             }
             else if(row == 2) {
-                print("K")
                 settings.units = .Kelvin
             }
         }
 
     }
     
+    // This function is for changing the font of the pickerViews
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
         
         var pickerLabel = view as? UILabel
@@ -113,15 +107,5 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return pickerLabel!
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

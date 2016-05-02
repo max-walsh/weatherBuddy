@@ -28,6 +28,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         print("city table view did load")
         // https://www.andrewcbancroft.com/2015/03/17/basics-of-pull-to-refresh-for-swift-developers/#table-view-controller
         
@@ -132,6 +133,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController!.navigationBar.topItem!.title = "WeatherBuddy"
         tableView.reloadData() // comment if doing async call
         
         //print("viewWillAppear")

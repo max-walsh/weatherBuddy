@@ -59,6 +59,8 @@ class CityDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController!.navigationBar.topItem!.title = "Back"
+        
         // Set Labels
         nameLabel.text = "\(city!.name), \(city!.state)"
         detailLabel.text = city?.detail
@@ -134,42 +136,42 @@ class CityDetailViewController: UIViewController {
     
     // Functions for setting forecast labels
     func setLabels_K() {
-        self.day1MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).maxTemp_K)))
-        self.day2MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).maxTemp_K)))
-        self.day3MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).maxTemp_K)))
-        self.day4MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).maxTemp_K)))
-        self.day5MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).maxTemp_K)))
-        self.day1MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).minTemp_K)))
-        self.day2MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).minTemp_K)))
-        self.day3MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).minTemp_K)))
-        self.day4MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).minTemp_K)))
-        self.day5MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).minTemp_K)))
+        self.day1MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(0).maxTemp_K)))\u{00B0}"
+        self.day2MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(1).maxTemp_K)))\u{00B0}"
+        self.day3MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(2).maxTemp_K)))\u{00B0}"
+        self.day4MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(3).maxTemp_K)))\u{00B0}"
+        self.day5MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(4).maxTemp_K)))\u{00B0}"
+        self.day1MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(0).minTemp_K)))\u{00B0}"
+        self.day2MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(1).minTemp_K)))\u{00B0}"
+        self.day3MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(2).minTemp_K)))\u{00B0}"
+        self.day4MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(3).minTemp_K)))\u{00B0}"
+        self.day5MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(4).minTemp_K)))\u{00B0}"
     }
     
     func setLabels_C() {
-        self.day1MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).maxTemp_C)))
-        self.day2MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).maxTemp_C)))
-        self.day3MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).maxTemp_C)))
-        self.day4MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).maxTemp_C)))
-        self.day5MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).maxTemp_C)))
-        self.day1MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).minTemp_C)))
-        self.day2MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).minTemp_C)))
-        self.day3MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).minTemp_C)))
-        self.day4MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).minTemp_C)))
-        self.day5MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).minTemp_C)))
+        self.day1MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(0).maxTemp_C)))\u{00B0}"
+        self.day2MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(1).maxTemp_C)))\u{00B0}"
+        self.day3MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(2).maxTemp_C)))\u{00B0}"
+        self.day4MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(3).maxTemp_C)))\u{00B0}"
+        self.day5MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(4).maxTemp_C)))\u{00B0}"
+        self.day1MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(0).minTemp_C)))\u{00B0}"
+        self.day2MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(1).minTemp_C)))\u{00B0}"
+        self.day3MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(2).minTemp_C)))\u{00B0}"
+        self.day4MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(3).minTemp_C)))\u{00B0}"
+        self.day5MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(4).minTemp_C)))\u{00B0}"
     }
     
     func setLabels_F() {
-        self.day1MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).maxTemp_F)))
-        self.day2MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).maxTemp_F)))
-        self.day3MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).maxTemp_F)))
-        self.day4MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).maxTemp_F)))
-        self.day5MaxLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).maxTemp_F)))
-        self.day1MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(0).minTemp_F)))
-        self.day2MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(1).minTemp_F)))
-        self.day3MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(2).minTemp_F)))
-        self.day4MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(3).minTemp_F)))
-        self.day5MinLabel.text = String(Int(round(self.forecast!.dayAtIndex(4).minTemp_F)))
+        self.day1MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(0).maxTemp_F)))\u{00B0}"
+        self.day2MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(1).maxTemp_F)))\u{00B0}"
+        self.day3MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(2).maxTemp_F)))\u{00B0}"
+        self.day4MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(3).maxTemp_F)))\u{00B0}"
+        self.day5MaxLabel.text = "\(Int(round(self.forecast!.dayAtIndex(4).maxTemp_F)))\u{00B0}"
+        self.day1MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(0).minTemp_F)))\u{00B0}"
+        self.day2MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(1).minTemp_F)))\u{00B0}"
+        self.day3MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(2).minTemp_F)))\u{00B0}"
+        self.day4MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(3).minTemp_F)))\u{00B0}"
+        self.day5MinLabel.text = "\(Int(round(self.forecast!.dayAtIndex(4).minTemp_F)))\u{00B0}"
     }
     
     func setDayLabels() {

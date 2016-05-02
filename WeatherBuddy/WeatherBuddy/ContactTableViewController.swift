@@ -15,7 +15,6 @@ import Contacts
 import ContactsUI
 
 
-
 class ContactTableViewController: UITableViewController {
     
     let ows = OpenWeatherService()
@@ -73,7 +72,6 @@ class ContactTableViewController: UITableViewController {
                     if let image = contact.thumbnailImageData {
                         new_contact.image = UIImage(data:image)!
                     }
-                    //if let image = contact.imageData { new_contact.image = UIImage(data:image)! }
                     our_contacts.append(new_contact)
                 }
             }
@@ -95,11 +93,6 @@ class ContactTableViewController: UITableViewController {
         }
         
         changeWeather(self.city1)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     func changeWeather(updatedCities: [City]) {
@@ -128,7 +121,6 @@ class ContactTableViewController: UITableViewController {
             our_contacts[index].city.windSpeed = city.windSpeed
             our_contacts[index].city.zipcode = city.zipcode
             
-            //print ("name: \(our_contacts[index].city.name)     temp: \(our_contacts[index].city.currentTemp_F)")
             index += 1
         }
         
@@ -155,9 +147,14 @@ class ContactTableViewController: UITableViewController {
         let contact = self.our_contacts[indexPath.row]
         
         if let contactCell = cell as? ContactTableViewCell {
+            
             contactCell.nameLabel.text = contact.name
             contactCell.addressLabel.text = "\(contact.city.name), \(contact.city.state)"
             contactCell.contactImage.image = contact.image
+            contactCell.detailLabel.text = contact.city.detail
+            contactCell.selectionStyle = UITableViewCellSelectionStyle.None
+            
+            // check settings for temperature units
             if (settings.units == .Kelvin) {
                 contactCell.degreeLabel.text = "\(Int(contact.city.currentTemp_K))\u{00B0}"
             }
@@ -167,9 +164,8 @@ class ContactTableViewController: UITableViewController {
             else {
                 contactCell.degreeLabel.text = "\(Int(contact.city.currentTemp_F))\u{00B0}"
             }
-            contactCell.detailLabel.text = contact.city.detail
-            contactCell.selectionStyle = UITableViewCellSelectionStyle.None
-            
+
+            // check weather to get corresponding image
             if (contact.city.description == "Clouds") {
                 contactCell.backgroundImage.image = UIImage(named: "Cloud_contact")
             }
