@@ -1,2 +1,2 @@
-# weatherBuddy
-# Our final project for Mobile Applications
+#Welcome to WeatherBuddy!
+Our app gives you the current weather for all of your favorite cities. Tap on a city to see more details, like the forecast for the next few days, or the high and low temperatures for the day. You can also see all of your favorite cities' weather displayed on a map to get a better view of the current weather across the country. Tap on the contacts tab to see what your contacts' weather is like. Only your contacts that you have an address listed for will be shown. You can also adjust the settings in the app. You can choose from Classic, Notre Dame, and Dog themes, and switch from Fahrenheit, to Celsius, to Kelvin for the units of temperature.
