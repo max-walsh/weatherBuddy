@@ -7,12 +7,18 @@
 //
 
 import Foundation
+import UIKit
 
 class Forecast {
-    private var days:[ForecastDay] = []
+    
+    private var days: [ForecastDay] = []
     
     func addDay(day: ForecastDay) -> Void {
         days.append(day)
+    }
+    
+    func dayAtIndex(index: Int) -> ForecastDay {
+        return days[index]
     }
     
 }

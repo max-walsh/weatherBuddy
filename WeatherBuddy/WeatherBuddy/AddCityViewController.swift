@@ -10,16 +10,19 @@ import UIKit
 
 class AddCityViewController: UIViewController, UITextFieldDelegate {
 
-    var cities : FavoriteCities?
+    var cities: FavoriteCities?
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!    
     @IBOutlet weak var stateTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         zipTextField.delegate = self
         zipTextField.keyboardType = UIKeyboardType.NumberPad
+        imageView.image = UIImage(named: "City")
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,35 +34,30 @@ class AddCityViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func addButton(sender: AnyObject) {
+        
+        // check that all text fields are filled in
         if (zipTextField.text == "" || cityTextField.text == "" || stateTextField.text == "") {
-            let alert = UIAlertController(
-                title: "Empty Field", message: "You must fill in all text fields.", preferredStyle: .Alert)
-            let action = UIAlertAction(
-                title: "OK", style: .Default, handler: nil)
+            let alert = UIAlertController(title: "Empty Field", message: "You must fill in all text fields.", preferredStyle: .Alert)
+            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alert.addAction(action)
             presentViewController(alert, animated: true, completion: nil)
-        }
-        let zip:String = zipTextField.text!
-        zip.characters.count
-        if (zipTextField.text!.characters.count != 5) {
+        } else if (zipTextField.text!.characters.count != 5) {
+            // check that the zipcode is 5 numbers
             let alert = UIAlertController(title: "Invalid Zipcode", message: "Please enter a 5 digit zipcode.", preferredStyle: .Alert)
             let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alert.addAction(action)
             presentViewController(alert, animated: true, completion: nil)
+        } else if (stateTextField.text!.characters.count != 2) {
+            // check that the state is 2 letters
+            let alert = UIAlertController(title: "Invalid State", message: "Please enter a 2 letter state abbreviation.", preferredStyle: .Alert)
+            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alert.addAction(action)
+            presentViewController(alert, animated: true, completion: nil)
+        } else {
+            // add the city
+            cities?.addCity(cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!)
+            dismissViewControllerAnimated(true, completion: nil)
         }
-        cities?.addCity(cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!)
-        
-        dismissViewControllerAnimated(true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -14,7 +14,7 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let tbc = TabBarController()
+    //let tbc = TabBarController()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -42,6 +42,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var i:Int = 0
+        /*
+        cityNames.removeAll()
+        cityStates.removeAll()
+        cityZips.removeAll()
+        */
+        var cityNames = [String]()
+        var cityStates = [String]()
+        var cityZips = [String]()
+        
+        while (i < cities.cityCount()) {
+            let city = cities.cityAtIndex(i)
+            cityNames.append(city.name)
+            cityStates.append(city.state)
+            cityZips.append(city.zipcode)
+            i += 1
+        }
+        defaults.setObject(cityNames, forKey: "savedCityNames")
+        defaults.setObject(cityStates, forKey: "savedCityStates")
+        defaults.setObject(cityZips, forKey: "savedCityZips")
+        
+        defaults.setValue(settings.theme.rawValue, forKey: "savedTheme")
+        defaults.setValue(settings.units.rawValue, forKey: "savedUnits")
+        
         self.saveContext()
     }
 
