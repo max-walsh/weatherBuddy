@@ -33,13 +33,13 @@ class OpenWeatherService {
             if (error != nil) {
                 print("error: \(error)")
             } else {
-                let result = String(data: data!, encoding: NSASCIIStringEncoding)!
+                _ = String(data: data!, encoding: NSASCIIStringEncoding)!
                 if (data == nil) {
                     print("data is nil")
                 }
                 
                 self.cityWeather = self.parseJSONZipcodeResponse(data!, city: cities)
-                self.resultJSON = result
+                //self.resultJSON = result
                 dispatch_async(dispatch_get_main_queue(), {
                     callback(self.cityWeather)
                 })
@@ -59,12 +59,12 @@ class OpenWeatherService {
             if (error != nil) {
                 print(error)
             } else {
-                let result = String(data: data!, encoding:NSASCIIStringEncoding)!
+                _ = String(data: data!, encoding:NSASCIIStringEncoding)!
                 if (data == nil) {
                     print("something went wrong in cityWeatherForecast")
                 }
                 self.cityForecast = self.parseJSONForecastResponse(data!, timeZoneOffset: city.timeZoneOffset)
-                self.resultJSON = result
+                //self.resultJSON = result
                 dispatch_async(dispatch_get_main_queue(), {
                     callback(self.cityForecast)
                 })
