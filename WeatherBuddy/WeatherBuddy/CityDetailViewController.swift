@@ -73,16 +73,10 @@ class CityDetailViewController: UIViewController {
         // Set temperature labels
         if (settings.units == .Kelvin) {
             tempLabel.text = "\(Int(city!.currentTemp_K))\u{00B0}"
-            maxLabel.text = "High: \(Int(city!.maxTemp_K))\u{00B0}"
-            minLabel.text = "Low: \(Int(city!.minTemp_K))\u{00B0}"
         } else if (settings.units == .Celsius) {
             tempLabel.text = "\(Int(city!.currentTemp_C))\u{00B0}"
-            maxLabel.text = "High: \(Int(city!.maxTemp_C))\u{00B0}"
-            minLabel.text = "Low: \(Int(city!.minTemp_C))\u{00B0}"
         } else {
             tempLabel.text = "\(Int(city!.currentTemp_F))\u{00B0}"
-            maxLabel.text = "High: \(Int(city!.maxTemp_F))\u{00B0}"
-            minLabel.text = "Low: \(Int(city!.minTemp_F))\u{00B0}"
         }
         
         
@@ -103,10 +97,16 @@ class CityDetailViewController: UIViewController {
             self.day5Image.image = self.forecast!.dayAtIndex(4).icon
             if (settings.units == .Kelvin) {
                 self.setLabels_K()
+                self.maxLabel.text = "High: \(Int(self.forecast!.dayAtIndex(0).maxTemp_K))\u{00B0}"
+                self.minLabel.text = "Low: \(Int(self.forecast!.dayAtIndex(0).minTemp_K))\u{00B0}"
             } else if (settings.units == .Celsius) {
                 self.setLabels_C()
+                self.maxLabel.text = "High: \(Int(self.forecast!.dayAtIndex(0).maxTemp_C))\u{00B0}"
+                self.minLabel.text = "Low: \(Int(self.forecast!.dayAtIndex(0).minTemp_C))\u{00B0}"
             } else {
                 self.setLabels_F()
+                self.maxLabel.text = "High: \(Int(self.forecast!.dayAtIndex(0).maxTemp_F))\u{00B0}"
+                self.minLabel.text = "Low: \(Int(self.forecast!.dayAtIndex(0).minTemp_F))\u{00B0}"
             }
         }
         
