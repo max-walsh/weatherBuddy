@@ -21,9 +21,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Prevents user interaction with the map
+        // Prevents user interaction with the map, except for tapping icon and seeing city name
         self.mapView.zoomEnabled = false
-        self.mapView.userInteractionEnabled = false
+        self.mapView.rotateEnabled = false
+        self.mapView.scrollEnabled = false
+        self.mapView.pitchEnabled = false
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,21 +36,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func mapView(mapview: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         if (annotation is MKUserLocation) {
-            
-            // If there is not annotation, return nil so map draws default view
+            // if there is no annotation, return nil so map draws default view
             return nil
         }
         
-        let reuseId = "test"
+        let reuseId = "cityIcon"
         annotation.title
         var anView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
-        if anView == nil {
+        if (anView == nil) {
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             anView!.image = cities.cityByName(annotation.title!!).icon
             anView!.canShowCallout = true
         }
         else {
-            // Update annotation reference if we are reusing a view
+            // update annotation reference if we are reusing a view
             anView!.annotation = annotation
         }
         j += 1
@@ -57,10 +59,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         
-        super.viewWillAppear(animated)
         i = 0
         j = 0
-        while i < cities.cityCount() {
+        while (i < cities.cityCount()) {
             let city = cities.cityAtIndex(i)
             let tempPin = MKPointAnnotation()
             tempPin.coordinate = city.coordinates.coordinate
