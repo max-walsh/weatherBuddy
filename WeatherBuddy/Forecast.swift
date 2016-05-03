@@ -10,7 +10,7 @@ import Foundation
 
 class Forecast {
     
-    private var days:[ForecastDay] = []
+    private var days: [ForecastDay] = []
     
     func addDay(day: ForecastDay) -> Void {
         days.append(day)
