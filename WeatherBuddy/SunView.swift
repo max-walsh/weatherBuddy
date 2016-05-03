@@ -23,7 +23,11 @@ class SunView: UIView {
     override func drawRect(rect: CGRect) {
         
         // account for the time zone of the city for the current time
-        currentTime += timeZone!.secondsFromGMT + 14400
+        if (timeZone != nil) {
+            currentTime += timeZone!.secondsFromGMT + 14400
+        } else {
+            currentTime += 14400
+        }
         
         // draw the arc
         let arcCenter = CGPoint(x:bounds.width/2, y: bounds.height/2)

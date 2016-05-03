@@ -206,7 +206,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     // for conditional editing of the table view
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // return false if empty
-        if indexPath.item != 0 {
+        if (indexPath.item != 0) {
             return true
         } else {
             return false
@@ -216,7 +216,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     // for editing the table view
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+        if (editingStyle == .Delete) {
             // delete from cities array, then delete from tableview
             cities.removeCityAtIndex(indexPath.item)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
@@ -233,7 +233,7 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     // for conditional rearranging of the table view
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // returns false if tableview is empty
-        if indexPath.item != 0 {
+        if (indexPath.item != 0) {
             return true
         } else {
             return false
@@ -244,13 +244,12 @@ class CityTableViewController: UITableViewController, CLLocationManagerDelegate 
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "detailSegue" {
+        if (segue.identifier == "detailSegue") {
             if let detailVC = segue.destinationViewController as? CityDetailViewController,
                 indexPath = tableView.indexPathForSelectedRow {
                     detailVC.city = cities.cityAtIndex(indexPath.row)
             }
-        }
-        if segue.identifier == "addSegue" {
+        } else if (segue.identifier == "addSegue") {
             if let addVC = segue.destinationViewController as? AddCityViewController {
                 addVC.cities = cities
             }

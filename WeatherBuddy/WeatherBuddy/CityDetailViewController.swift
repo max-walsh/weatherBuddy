@@ -85,6 +85,10 @@ class CityDetailViewController: UIViewController {
         sunView.setTime = city!.sunset_date
         sunView.timeZone = city!.timeZone
 
+        if (city!.id == "") { // checks for valid id before the forecast call
+            city!.id = "4140963"
+            print("Error: City ID not given, setting to Washington DC")
+        }
         
         // get forecast information and set labels
         self.ows.cityWeatherForecast(city!) {
